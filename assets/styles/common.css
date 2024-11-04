@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/Pretendard-Black.otf) format("otf");
+}
+
+@font-face {
+  font-family: "ZenDots";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/ZenDots-Regular.ttf) format("ttf");
+}
+
+* {
+  box-sizing: border-box;
+}
