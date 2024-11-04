@@ -2,22 +2,25 @@ const videos = document.querySelectorAll(".video");
 const texts = document.querySelectorAll(".video-text");
 const indicator = document.getElementById("videoIndicator");
 const scrollFill = document.getElementById("scrollFill");
+const footer = document.getElementById("footer");
 let currentVideo = 0;
-let wheelCount = 0; // 휠 카운트 초기화
+let wheelCount = 0;
 
 function updateIndicator() {
   indicator.textContent = currentVideo + 1;
-  scrollFill.style.height = ((currentVideo + 1) / videos.length) * 100 + "%";
+  scrollFill.style.height =
+    ((videos.length - currentVideo - 1) / (videos.length - 1)) * 100 +
+    "%"; // Adjust to count down
+  footer.classList.toggle("active", currentVideo === 2);
 }
 
 window.addEventListener("wheel", (event) => {
   event.preventDefault();
-  wheelCount++; // 휠 카운트 증가
+  wheelCount++;
 
   if (wheelCount >= 5) {
-    // 휠이 5번 돌리면
     handleScroll(event.deltaY);
-    wheelCount = 0; // 카운트 초기화
+    wheelCount = 0;
   }
 });
 
@@ -51,6 +54,5 @@ function updateVideosAndTexts() {
   });
 }
 
-// 초기 상태 설정
 texts[currentVideo].classList.add("active");
 updateIndicator();
