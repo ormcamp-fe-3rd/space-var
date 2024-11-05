@@ -14,6 +14,7 @@ body {
   background: #040404;
 }
 
+/* 소개섹션 */
 .bg {
   width: 100%;
   height: 100vh;
@@ -49,6 +50,7 @@ body {
   font-family: "Pretendard";
 }
 
+/* 캐러셀 */
 .carousel {
   width: 1440px;
   height: 100vh;
@@ -190,12 +192,7 @@ body {
   animation-delay: 8s;
 }
 
-/* 중심에 올 때 애니메이션 효과 */
-.planet.centered {
-  opacity: 1;
-  transform: scale(1.2); /* 확대 효과 */
-}
-
+/* 크루 */
 h2 {
   margin: 50px;
   font-size: 32px;
