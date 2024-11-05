@@ -43,3 +43,10 @@
   width: 1400px;
   height: inherit;
 }
+
+@media all and (max-width: 1440px) {
+  .inner {
+    padding: 0 15px;
+    width: 100%;
+  }
+}
