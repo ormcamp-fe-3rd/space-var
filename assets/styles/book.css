@@ -42,6 +42,8 @@ body {
 }
 
 .content {
+  display: flex;
+  flex-direction: column;
   margin: 0px 35px 0px 65px;
   width: 1440px;
   height: 1696px;
@@ -67,4 +69,170 @@ body {
   align-content: center;
   padding: 0px 0px 0px 0px;
   gap: 50px;
+}
+
+/* book-form */
+.book-form {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  padding: 35px 35px 0 65px;
+}
+
+.book-form .border {
+  border: 1px solid #bcbcbc;
+  border-radius: 5px;
+}
+
+.book-form .info-container label {
+  display: inline;
+  text-wrap: nowrap;
+  margin: 0 10px 0 0;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.book-form .input {
+  border: none;
+  outline: none;
+  font-size: 20px;
+}
+
+.book-form .policy {
+  width: 100%;
+  max-height: 301px;
+  display: flex;
+  font-size: 20px;
+  padding: 13px;
+  margin: 10px 0;
+  overflow-y: scroll;
+}
+
+.customer {
+  width: 100%;
+}
+
+.customer .title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 50px 10px 0;
+}
+
+.customer .info1 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.customer .info-container {
+  min-width: 48%;
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 13px 12px;
+  margin: 0 0 40px 0;
+}
+
+.customer .info-container input {
+  width: 100%;
+}
+
+.customer .certification-btn {
+  min-width: 140px;
+  height: 32px;
+  background-color: #5b5b5b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin: 0 0 0 20px;
+}
+
+.customer .certification-btn:hover {
+  cursor: pointer;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  margin: 0 0 40px 0;
+}
+
+.check .checkbox {
+}
+
+.check label {
+}
+
+.payment {
+  width: 100%;
+}
+
+.payment .title-container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin: 0 0 10px 0;
+}
+
+.payment .title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 50px 0 0;
+}
+.payment .info2 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.payment .info-container {
+  min-width: 48%;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 13px 12px;
+  margin: 0 0 20px 0;
+}
+
+.book-form .submit-btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.book-form .submit-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 302px;
+  height: 62px;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  background: -moz-linear-gradient(
+    90deg,
+    rgba(33, 128, 225, 1) 0%,
+    rgba(80, 96, 241, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    90deg,
+    rgba(33, 128, 225, 1) 0%,
+    rgba(80, 96, 241, 1) 100%
+  );
+  background: linear-gradient(
+    90deg,
+    rgba(33, 128, 225, 1) 0%,
+    rgba(80, 96, 241, 1) 100%
+  );
+  border-radius: 5px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border: none;
+  box-shadow: 0 4px 4px #000000;
+}
+
+.book-form .submit-btn:hover {
+  cursor: pointer;
 }
