@@ -154,16 +154,42 @@ body {
   cursor: pointer;
 }
 
-.check {
-  display: flex;
-  align-items: center;
+.book-form .check {
   margin: 0 0 40px 0;
 }
 
-.check .checkbox {
+.book-form .check input[type="checkbox"] {
+  display: none;
 }
 
-.check label {
+.book-form .check .checkbox {
+  position: relative;
+  position: relative;
+  padding-left: 35px;
+  padding-top: 4px;
+  cursor: pointer;
+}
+
+.book-form .check .checkbox::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 5px;
+  background-color: #232323;
+}
+
+.book-form .check input[type="checkbox"]:checked + .checkbox::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 1.5px 1.5px 0;
+  transform: rotate(40deg);
 }
 
 .payment {
