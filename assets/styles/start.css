@@ -164,7 +164,7 @@ body::-webkit-scrollbar {
   right: 20px;
   z-index: 1000;
   display: flex;
-  gap: 10px;
+  gap: 30px;
   display: none; /* 기본적으로 숨김 */
 }
 
@@ -186,8 +186,8 @@ body::-webkit-scrollbar {
   background: none;
   perspective: 2em;
   font-family: "Raleway", sans-serif;
-  font-size: 1.5em;
-  font-weight: 900;
+  font-size: 1em;
+  font-weight: 1000;
   letter-spacing: 0.5em;
 
   -webkit-box-shadow: inset 0px 0px 0.5em 0px var(--glow-color),
@@ -200,6 +200,7 @@ body::-webkit-scrollbar {
 }
 
 .glowing-txt {
+  font-family: "Zen Dots", sans-serif;
   float: left;
   margin-right: -0.8em;
   -webkit-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3),
@@ -223,7 +224,7 @@ body::-webkit-scrollbar {
   left: 0;
   right: 0;
   opacity: 0.7;
-  filter: blur(1em);
+  filter: blur(3em);
   transform: translateY(120%) rotateX(95deg) scale(1, 0.35);
   background: var(--glow-color);
   pointer-events: none;
@@ -260,7 +261,7 @@ body::-webkit-scrollbar {
 }
 
 .glowing-btn:hover:before {
-  filter: blur(1.5em);
+  filter: blur(1em);
   opacity: 1;
 }
 
