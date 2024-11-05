@@ -144,7 +144,7 @@ body::-webkit-scrollbar {
   transition: opacity 2s ease-in-out;
   pointer-events: none;
   font-size: 10px;
-  justify-content: space-evenly;
+  
   font-family: "Zen Dots", sans-serif;
   font-weight: 400;
 }
@@ -155,6 +155,7 @@ body::-webkit-scrollbar {
 }
 .footer-txt {
   line-height: 5px;
+  margin: 0 50% 0 0;
 }
 
 /* 우측 상단 버튼 스타일 */
@@ -202,7 +203,7 @@ body::-webkit-scrollbar {
 .glowing-txt {
   font-family: "Zen Dots", sans-serif;
   float: left;
-  margin-right: -0.8em;
+  margin:0 -0.8em 0 0 ;
   -webkit-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3),
     0 0 0.45em var(--glow-color);
   -moz-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3),
@@ -388,7 +389,13 @@ body::-webkit-scrollbar {
 .top-left-img.show {
   display: block; /* 첫 번째 비디오에서만 보여주기 */
 }
-#footer-logo_1 {
+#footer-mainlogo {
   height: auto;
   width: 100px;
+  margin: 10px;
+}
+
+.footer-facebook,.footer-insta{
+  width: 20px;  /* 원하는 가로 크기 */
+  height: auto;  /* 비율에 맞게 세로 크기 자동 조정 */
 }
