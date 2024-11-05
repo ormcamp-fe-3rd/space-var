@@ -57,6 +57,7 @@
   position: relative;
   margin: 0 auto;
   width: 1400px;
+  height: inherit;
 }
 
 @media all and (max-width: 1440px) {
