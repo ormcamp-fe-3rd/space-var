@@ -8,8 +8,8 @@
 }
 
 body {
-    background-color: black;
-    color: white;
+    color: #fff;
+    background: #040404;
 }
 
 .bg {
@@ -35,11 +35,6 @@ body {
     margin: 0 0 100px 0;
     font-size: 20px;
     font-family: 'Pretendard';
-}
-
-.venus {
-    width: 100px;
-    height: 100px;
 }
 
 .carousel {
@@ -91,12 +86,6 @@ h3 {
     cursor: pointer;
 
 }
-
-body {
-  color: #fff;
-  background: #040404;
-}
-
 h2 {
   font-size: 32px;
   font-weight: 700;
