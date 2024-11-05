@@ -3,6 +3,9 @@ const texts = document.querySelectorAll(".video-text");
 const indicator = document.getElementById("videoIndicator");
 const scrollFill = document.getElementById("scrollFill");
 const footer = document.getElementById("footer");
+const buttonContainer = document.getElementById("buttonContainer");
+const topLeftImage = document.getElementById("topLeftImage");
+
 let currentVideo = 0;
 let wheelCount = 0;
 
@@ -10,8 +13,19 @@ function updateIndicator() {
   indicator.textContent = currentVideo + 1;
   scrollFill.style.height =
     ((videos.length - currentVideo - 1) / (videos.length - 1)) * 100 +
-    "%"; // Adjust to count down
+    "%";
   footer.classList.toggle("active", currentVideo === 2);
+  toggleButtonAndImage();
+}
+
+function toggleButtonAndImage() {
+  if (currentVideo === 0) {
+    buttonContainer.classList.add("show");
+    topLeftImage.classList.add("show");
+  } else {
+    buttonContainer.classList.remove("show");
+    topLeftImage.classList.remove("show");
+  }
 }
 
 window.addEventListener("wheel", (event) => {
