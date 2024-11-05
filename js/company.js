@@ -49,6 +49,6 @@ function centerSolar6() {
     .to('#solar2', 1, {xPercent: -70, z: -400}, 0)
 }
 
-#(function() {
+(function() {
     centerSolar4();
 })
