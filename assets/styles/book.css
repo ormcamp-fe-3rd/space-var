@@ -152,7 +152,7 @@ body {
 .customer .title {
   font-size: 24px;
   font-weight: 700;
-  margin: 0 50px 10px 0;
+  margin: 50px 50px 10px 0;
 }
 
 .customer .info1 {
@@ -222,7 +222,7 @@ body {
   width: 5px;
   height: 10px;
   border: solid white;
-  border-width: 0 1.5px 1.5px 0;
+  border-width: 0 2px 2px 0;
   transform: rotate(40deg);
 }
 
@@ -256,6 +256,10 @@ body {
   margin: 0 0 20px 0;
 }
 
+.payment .info-container input {
+  width: 100%;
+}
+
 .book-form .submit-btn-container {
   width: 100%;
   display: flex;
@@ -272,6 +276,13 @@ body {
   font-weight: 600;
   color: #fff;
   text-decoration: none;
+  border-radius: 5px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border: none;
+  box-shadow: 0 4px 4px #6b6b6b;
+}
+
+.book-form .activated {
   background: -moz-linear-gradient(
     90deg,
     rgba(33, 128, 225, 1) 0%,
@@ -287,12 +298,10 @@ body {
     rgba(33, 128, 225, 1) 0%,
     rgba(80, 96, 241, 1) 100%
   );
-  border-radius: 5px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  border: none;
-  box-shadow: 0 4px 4px #6b6b6b;
+  cursor: pointer;
 }
 
-.book-form .submit-btn:hover {
-  cursor: pointer;
+.book-form .disabled {
+  background-color: #9c9c9c;
+  cursor: not-allowed;
 }

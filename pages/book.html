@@ -61,143 +61,167 @@
             <img src="../assets/images/book/right-btn.svg" />
           </button>
         </ul>
-          <!-- book-form -->
-          <div>
-            <form class="book-form">
-              <div class="customer">
-                <div class="title">CUSTOMER INFORMATION</div>
-                <div class="info1">
-                  <div class="info-container border">
-                    <label>NAME</label>
-                    <input class="input" type="text" />
-                  </div>
-                  <div class="info-container border">
-                    <label>BIRTH</label>
-                    <input class="input" type="text" />
-                  </div>
+        <!-- book-form -->
+        <div>
+          <form class="book-form">
+            <div class="customer">
+              <div class="title">CUSTOMER INFORMATION</div>
+              <div class="info1">
+                <div class="info-container border">
+                  <label>NAME</label>
+                  <input class="input" type="text" id="name" />
                 </div>
-                <div class="info2">
-                  <div class="info-container border">
-                    <label>PHONE NUMBER</label>
-                    <input class="input" type="text" />
-                    <button type="button" class="certification-btn">
-                      CERTIFICATION
-                    </button>
-                  </div>
-                  <div class="info-container border">
-                    <label>EMAIL</label>
-                    <input class="input" type="text" />
-                    <button type="button" class="certification-btn">
-                      CERTIFICATION
-                    </button>
-                  </div>
-                </div>
-                <div class="info3">
-                  <div class="policy border">
-                    1. We hereby notify that space flights may involve safety
-                    risks due to unexpected weather changes. <br />For this, Space
-                    Bar (our company) is enrolled in Zero_Mileage Insurance.
-                    <br />
-                    2. (Insurance Policy Number: FA20229654654650 / Insurance
-                    Period: Valid until January 28, 2024) <br />
-                    3. Those with cardiovascular diseases, panic disorders, or
-                    those undergoing psychiatric treatment must disclose their
-                    conditions. <br />During the flight, there are risks of
-                    circulatory disorders that may cause symptoms such as
-                    myocardial infarction, dizziness, and vomiting. <br />Please
-                    consult with the pilot in advance. <br />
-                    Those with severe conditions cannot participate in the flight.
-                    <br />
-                    In case of violation of disclosure obligations, the
-                    responsibility lies with the individual, and no compensation
-                    will be provided. <br />4. Use of prohibited substances
-                    (alcohol, drugs, etc.) must be disclosed. <br />
-                    Failure to disclose will result in the responsibility lying
-                    with the individual, and no compensation will be provided.
-                    <br />
-                    5. You must follow the instructions of the pilot and
-                    supervisor. <br />Accidents caused by independent or sudden
-                    actions will not be eligible for damage compensation, and you
-                    will be responsible for restoring any material or other
-                    damages. <br />
-                    6. After safety training before the experience flight, only
-                    actual medical expenses will be compensated in case of injury
-                    accidents, and no compensation for pain and suffering will be
-                    provided.
-                  </div>
-                  <div class="check">
-                    <input type="checkbox" id="accident-rules" />
-                    <label class="checkbox" for="accident-rules"></label>
-                    <label
-                      >I agree that the company is not liable for any accidents
-                      during space travel, especially those resulting from not
-                      following instructions.
-                    </label>
-                  </div>
-                </div>
-                <div class="info4">
-                  <div class="policy border">
-                    1. Personal Information Collection Space Bar collects
-                    essential information required for basic membership
-                    services.<br />
-                    Service access requires providing this mandatory
-                    information.<br />
-                    2. Information Usage and Retention We maintain minimal
-                    personal information necessary for Space Bar travel
-                    services.<br />
-                    You may withdraw consent anytime. Your information will be
-                    immediately deleted upon membership withdrawal, fulfillment of
-                    purpose, expiration of retention period, or business closure.
-                  </div>
-                  <div class="check">
-                    <input type="checkbox" id="personal-info" />
-                    <label for="personal-info" class="checkbox"></label>
-                    <label
-                      >Do you consent to our collection and use of your personal
-                      information?
-                    </label>
-                  </div>
+                <div class="info-container border">
+                  <label>BIRTH</label>
+                  <input class="input" type="text" id="birth" maxlength="10" />
                 </div>
               </div>
-              <div class="payment">
-                <div class="title-container">
-                  <div class="title">PAYMENT</div>
-                  <div>
-                    <img src="../assets/images/book/form/visa.svg" alt="" />
-                    <img src="../assets/images/book/form/jcb.svg" alt="" />
-                    <img src="../assets/images/book/form/mastercard.svg" alt="" />
-                  </div>
+              <div class="info2">
+                <div class="info-container border">
+                  <label>PHONE NUMBER</label>
+                  <input class="input" type="text" id="phone" maxlength="13" />
+                  <button type="button" class="certification-btn">
+                    CERTIFICATION
+                  </button>
                 </div>
-                <div class="info1">
-                  <div class="info-container border">
-                    <label>CARD NUMBER</label>
-                    <input class="input" type="text" />
-                  </div>
+                <div class="info-container border">
+                  <label>EMAIL</label>
+                  <input class="input" type="email" id="email" />
+                  <button type="button" class="certification-btn">
+                    CERTIFICATION
+                  </button>
                 </div>
-                <div class="info2">
-                  <div class="info-container border">
-                    <label>EXPIRATION (MM/YY)</label>
-                    <input class="input" type="text" />
-                  </div>
-                  <div class="info-container border">
-                    <label>SECURITY CODE</label>
-                    <input class="input" type="password" maxlength="4" />
-                  </div>
+              </div>
+              <div class="info3">
+                <div class="policy border">
+                  1. We hereby notify that space flights may involve safety
+                  risks due to unexpected weather changes. <br />For this, Space
+                  Bar (our company) is enrolled in Zero_Mileage Insurance.
+                  <br />
+                  2. (Insurance Policy Number: FA20229654654650 / Insurance
+                  Period: Valid until January 28, 2024) <br />
+                  3. Those with cardiovascular diseases, panic disorders, or
+                  those undergoing psychiatric treatment must disclose their
+                  conditions. <br />During the flight, there are risks of
+                  circulatory disorders that may cause symptoms such as
+                  myocardial infarction, dizziness, and vomiting. <br />Please
+                  consult with the pilot in advance. <br />
+                  Those with severe conditions cannot participate in the flight.
+                  <br />
+                  In case of violation of disclosure obligations, the
+                  responsibility lies with the individual, and no compensation
+                  will be provided. <br />4. Use of prohibited substances
+                  (alcohol, drugs, etc.) must be disclosed. <br />
+                  Failure to disclose will result in the responsibility lying
+                  with the individual, and no compensation will be provided.
+                  <br />
+                  5. You must follow the instructions of the pilot and
+                  supervisor. <br />Accidents caused by independent or sudden
+                  actions will not be eligible for damage compensation, and you
+                  will be responsible for restoring any material or other
+                  damages. <br />
+                  6. After safety training before the experience flight, only
+                  actual medical expenses will be compensated in case of injury
+                  accidents, and no compensation for pain and suffering will be
+                  provided.
                 </div>
                 <div class="check">
-                  <input type="checkbox" id="check-all" />
-                  <label for="check-all" class="checkbox"></label>
+                  <input
+                    type="checkbox"
+                    class="checkbox-hidden"
+                    id="accident-rules"
+                  />
+                  <label class="checkbox" for="accident-rules"></label>
                   <label
-                    >I hereby confirm that I have read and understood all terms
-                    and conditions, and agree to proceed with payment.
+                    >I agree that the company is not liable for any accidents
+                    during space travel, especially those resulting from not
+                    following instructions.
                   </label>
                 </div>
               </div>
-              <div class="submit-btn-container">
-                <button class="submit-btn" type="submit">BOOK NOW</button>
+              <div class="info4">
+                <div class="policy border">
+                  1. Personal Information Collection Space Bar collects
+                  essential information required for basic membership
+                  services.<br />
+                  Service access requires providing this mandatory
+                  information.<br />
+                  2. Information Usage and Retention We maintain minimal
+                  personal information necessary for Space Bar travel
+                  services.<br />
+                  You may withdraw consent anytime. Your information will be
+                  immediately deleted upon membership withdrawal, fulfillment of
+                  purpose, expiration of retention period, or business closure.
+                </div>
+                <div class="check">
+                  <input
+                    type="checkbox"
+                    class="checkbox-hidden"
+                    id="personal-info"
+                  />
+                  <label for="personal-info" class="checkbox"></label>
+                  <label
+                    >Do you consent to our collection and use of your personal
+                    information?
+                  </label>
+                </div>
               </div>
-            </form>
-          </div>
+            </div>
+            <div class="payment">
+              <div class="title-container">
+                <div class="title">PAYMENT</div>
+                <div>
+                  <img src="../assets/images/book/form/visa.svg" alt="" />
+                  <img src="../assets/images/book/form/jcb.svg" alt="" />
+                  <img src="../assets/images/book/form/mastercard.svg" alt="" />
+                </div>
+              </div>
+              <div class="info1">
+                <div class="info-container border">
+                  <label>CARD NUMBER</label>
+                  <input
+                    class="input"
+                    type="text"
+                    id="card-number"
+                    maxlength="19"
+                  />
+                </div>
+              </div>
+              <div class="info2">
+                <div class="info-container border">
+                  <label>EXPIRATION (MM/YY)</label>
+                  <input
+                    class="input"
+                    type="text"
+                    id="expiration"
+                    maxlength="5"
+                  />
+                </div>
+                <div class="info-container border">
+                  <label>SECURITY CODE</label>
+                  <input
+                    class="input"
+                    type="password"
+                    maxlength="4"
+                    id="security-code"
+                  />
+                </div>
+              </div>
+              <div class="check">
+                <input type="checkbox" class="checkbox-hidden" id="check-all" />
+                <label for="check-all" class="checkbox"></label>
+                <label
+                  >I hereby confirm that I have read and understood all terms
+                  and conditions, and agree to proceed with payment.
+                </label>
+              </div>
+            </div>
+            <div class="submit-btn-container">
+              <button class="submit-btn disabled" type="button">
+                BOOK NOW
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </section>
