@@ -5,29 +5,29 @@ ul, li {
     list-style-type: none;
 }
 h1 {
-    font-family: 'Zen Dots';
+    font-family: Pretendard;
     font-size: 32px;
 }
 h2, h3, h4 {
-    font-family: 'Pretendard';
+    font-family: Pretendard;
 }
 h2 {
     font-size: 32px;
+    font-family: Pretendard;
 }
 h3 {
     font-size: 20px;
 }
 body {
-    width: 1920px;
-    height: 1856px;
+    width: 100%;
 }
-.book {
+.book-planet {
     display: flex;
 }
 .side {
     width: 572px;
     height: 1856px;
-    background-image: url(/space-var/assets/images/book/side-temp.jpg);
+    background-image: url(../images/book/side-temp.jpg);
 }
 .side h1 {
     background-color: white;
@@ -40,32 +40,52 @@ body {
 
 .content {
     margin: 0px 35px 0px 65px;
-    width: 1440px;
+    width: 1248px;
     height: 1696px;
 }
 .book-price h3 {
     margin: 11px 0px 38px 29px;
+    font-family: Pretendard;
 }
 .carousel {
     display: flex;
-    justify-content: space-between;
     background-color: black;
-    padding: 0 40px;
-    width: 1248px;
+
     height: 160px;
 }
+.carouel-prevbtn {
+    margin: 0px 0px 0px 40px;
+}
+.carouel-nextbtn {
+    margin: 0px 40px 0px 0px;
+}
+.saturn-img{
+    min-width: 198px;
+}
+
 .carousel button {
-    
     background-color: black;
     border: none;
-    padding: 0px 0px 0px 0px;
+}
+.animation {
+    align-content: center;
+    overflow: hidden;
 }
 .carouel-animation {
     display: flex;
-    align-content: center;
-    padding: 0px 0px 0px 0px;
-    gap: 50px;
+    margin: 0px 20px 0px 20px;
+    transition: transform 0.8s;
 }
+.carouel-animation button {
+    padding: 0px 50px 0px 0px}
+.carouel-animation button:nth-child(7) {
+    padding: 0px 40px 0px 0px}
 
-
-
+@keyframes sizeup {
+    from { transform: scale(1);
+    }
+    to { transform: scale(1.2); }
+}
+.sizeup-animation {
+ animation: sizeup 0.3s forwards;
+}
