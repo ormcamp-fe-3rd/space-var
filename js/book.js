@@ -264,16 +264,32 @@ function submitBtnStyleToggle() {
 }
 
 //2. certification
-
 function checkCertication(event) {
-  setTimeout(() => {
+  let id = event.target.id;
+  let isValid = false;
+  let waitingTimer, resultTimer;
+
+  clearTimeout(waitingTimer);
+  clearTimeout(resultTimer);
+
+  waitingTimer = setTimeout(() => {
     event.target.textContent = "Waiting...";
   }, 0);
 
-  setTimeout(() => {
-    event.target.classList.remove("not-verified");
-    event.target.classList.add("verified");
-    event.target.textContent = "VERIFIED";
+  isValid = id ? "phone" : isPhoneValid ? "email" : isEmailValid;
+
+  resultTimer = setTimeout(() => {
+    if (isValid) {
+      event.target.classList.remove("not-verified");
+      event.target.classList.remove("rejected");
+      event.target.classList.add("verified");
+      event.target.textContent = "VERIFIED";
+    } else {
+      event.target.classList.remove("not-verified");
+      event.target.classList.remove("verified");
+      event.target.classList.add("rejected");
+      event.target.textContent = "FAILED";
+    }
   }, 1000);
 }
 

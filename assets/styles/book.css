@@ -194,6 +194,12 @@ body {
   background-color: #43b96b;
   color: white;
 }
+
+.customer .certification-btn.rejected {
+  background-color: #b94343;
+  color: white;
+}
+
 .book-form .check {
   margin: 0 0 40px 0;
 }
