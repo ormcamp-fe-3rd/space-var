@@ -96,7 +96,10 @@ carousel_Button.forEach((selected_Button, index) => {
 const bookForm = document.querySelector(".book-form");
 
 // 1. form validation
-// 1) input
+// 1) planet
+let isPlanetSelected = false;
+
+// 2-1) input
 let isInputsValid = false;
 
 let isNameValid = false;
@@ -228,63 +231,10 @@ function checkInputValidation(event) {
     isEmailValid &&
     isCardNumberValid &&
     isExpirationValid &&
-    isSecurityValid
-      ? true
-      : false;
+    isSecurityValid;
 }
 
-// 2) checkbox
-let isCheckValid = false;
-
-let isAccidentRulesChecked = false;
-let isPersonalInfoChecked = false;
-let isAllConfirmed = false;
-
-function checkCheckboxVaildation(event) {
-  let id = event.target.id;
-  switch (id) {
-    case "accident-rules":
-      isAccidentRulesChecked = event.target.checked;
-      break;
-
-    case "personal-info":
-      isPersonalInfoChecked = event.target.checked;
-      break;
-
-    case "check-all":
-      isAllConfirmed = event.target.checked;
-      break;
-  }
-
-  isCheckValid =
-    isAccidentRulesChecked && isPersonalInfoChecked && isAllConfirmed
-      ? true
-      : false;
-}
-
-// 3) form
-let isFormValid = false;
-
-function checkFormValidation(event) {
-  checkInputValidation(event);
-  checkCheckboxVaildation(event);
-
-  isFormValid = isInputsValid && isCheckValid && phoneVerified && emailVerfied;
-
-  return isFormValid;
-}
-
-function submitBtnStyleToggle() {
-  if (isFormValid) {
-    submitFormBtn.classList.remove("disabled");
-    submitFormBtn.classList.add("activated");
-  } else {
-    submitFormBtn.classList.remove("activated");
-    submitFormBtn.classList.add("disabled");
-  }
-}
-
-//2. certification
+// 2-2) certification
 let timer;
 let phoneVerified = false;
 let emailVerfied = false;
@@ -310,6 +260,55 @@ function checkCertication(event) {
       btn.textContent = "FAILED";
     }
   }, 1000);
+}
+
+// 3) checkbox
+let isCheckValid = false;
+
+let isAccidentRulesChecked = false;
+let isPersonalInfoChecked = false;
+let isAllConfirmed = false;
+
+function checkCheckboxVaildation(event) {
+  let id = event.target.id;
+  switch (id) {
+    case "accident-rules":
+      isAccidentRulesChecked = event.target.checked;
+      break;
+
+    case "personal-info":
+      isPersonalInfoChecked = event.target.checked;
+      break;
+
+    case "check-all":
+      isAllConfirmed = event.target.checked;
+      break;
+  }
+
+  isCheckValid =
+    isAccidentRulesChecked && isPersonalInfoChecked && isAllConfirmed;
+}
+
+// 4) form
+let isFormValid = false;
+
+function checkFormValidation(event) {
+  checkInputValidation(event);
+  checkCheckboxVaildation(event);
+
+  isFormValid = isInputsValid && isCheckValid && phoneVerified && emailVerfied;
+
+  return isFormValid;
+}
+
+function submitBtnStyleToggle() {
+  if (isFormValid) {
+    submitFormBtn.classList.remove("disabled");
+    submitFormBtn.classList.add("activated");
+  } else {
+    submitFormBtn.classList.remove("activated");
+    submitFormBtn.classList.add("disabled");
+  }
 }
 
 //3. after submit
