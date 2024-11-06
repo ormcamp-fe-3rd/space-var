@@ -29,11 +29,11 @@ body {
 }
 .book-planet {
   display: flex;
-  position: absolute;
-  z-index: 1;
+  position: absolute; /*absolute 적용*/
+  z-index: 1; /*absolute 적용 */
 }
 .side {
-  width: 572px;
+  width: 372px; /*absolute 적용 후 넓어져서 바꿈*/
   padding: 0 40px;
   background-image: url(../images/book/side-temp.jpg);
 }
@@ -391,7 +391,7 @@ body {
 }
 
 .ticket .info {
-  margin: 5px 0;
+  margin: 5px 50px 0 0;
 }
 
 .ticket .key {
@@ -432,4 +432,8 @@ body {
   left: -20px;
   opacity: 0.5;
   transform: rotate(-30deg);
+}
+
+.flex {
+  display: flex;
 }
