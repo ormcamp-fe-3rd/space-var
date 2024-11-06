@@ -95,8 +95,8 @@ carousel_Button.forEach((selected_Button, index) => {
 // book-form
 const bookForm = document.querySelector(".book-form");
 
-// form validation
-// input
+// 1. form validation
+// 1) input
 let isInputsValid = false;
 
 let isNameValid = false;
@@ -212,7 +212,7 @@ function checkInputValidation(event) {
       : false;
 }
 
-// checkbox
+// 2) checkbox
 let isCheckValid = false;
 
 let isAccidentRulesChecked = false;
@@ -241,7 +241,7 @@ function checkCheckboxVaildation(event) {
       : false;
 }
 
-// form
+// 3) form
 let isFormValid = false;
 
 function checkFormValidation(event) {
@@ -263,8 +263,25 @@ function submitBtnStyleToggle() {
   }
 }
 
-// apply
+//2. certification
+
+function checkCertication(event) {
+  setTimeout(() => {
+    event.target.textContent = "Waiting...";
+  }, 0);
+
+  setTimeout(() => {
+    event.target.classList.remove("not-verified");
+    event.target.classList.add("verified");
+    event.target.textContent = "VERIFIED";
+  }, 1000);
+}
+
+//3. after submit
+
+//4. handle
 const inputs = bookForm.querySelectorAll(".input");
+const certificationBtns = bookForm.querySelectorAll(".certification-btn");
 const checkboxes = bookForm.querySelectorAll(".checkbox-hidden");
 const submitFormBtn = bookForm.querySelector(".submit-btn");
 
@@ -273,18 +290,25 @@ function handleFormInput(event) {
   submitBtnStyleToggle();
 }
 
+function handleCertificationBtnCilick(event) {
+  checkCertication(event);
+}
+
 function handleCheckboxClick(event) {
   checkFormValidation(event);
   submitBtnStyleToggle();
 }
 
 function handleSubmitBtnClick(event) {
-  checkFormValidation(event);
-  submitBtnStyleToggle();
+  // window.location.href = "../pages/start.html";
 }
 
 inputs.forEach((input) => {
   input.addEventListener("input", handleFormInput);
+});
+
+certificationBtns.forEach((certificationBtn) => {
+  certificationBtn.addEventListener("click", handleCertificationBtnCilick);
 });
 
 checkboxes.forEach((checkbox) => {
