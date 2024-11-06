@@ -74,6 +74,9 @@ nextButton.addEventListener("click", () => {
   }
 });
 
+// 나중에 쓰게 추가 좀 할게요...
+let selectedPlanet;
+
 carousel_Button.forEach((selected_Button, index) => {
   selected_Button.addEventListener("click", () => {
     const selected_Img = selected_Button.querySelector("img");
@@ -82,6 +85,12 @@ carousel_Button.forEach((selected_Button, index) => {
     planet_Price.innerHTML = `${planet_Imfr[index].name}<br>$${planet_Imfr[index].price}(price) + $${planet_Imfr[index].price}(deposit)`;
     side_Img.style.backgroundImage = `url("${localhostUrl}${planet_Imfr[index].image}")`;
     total_Price.textContent = `Total $ ${planet_Imfr[index].price * 2}`;
+
+    // 추가
+    selectedPlanet = {
+      name: planet_Imfr[index].name,
+      price: planet_Imfr[index].price * 2,
+    };
 
     carousel_Button.forEach((other_Button, otherIndex) => {
       const other_Img = other_Button.querySelector("img");
@@ -329,8 +338,57 @@ function submitBtnStyleToggle() {
 }
 
 //3. after submit
+function saveReservationInfo() {
+  inputs.forEach((input, i) => {
+    switch (i) {
+      case 0:
+        window.localStorage.setItem("name", input.value);
+        break;
+      case 1:
+        window.localStorage.setItem("birth", input.value);
+        break;
+      case 2:
+        window.localStorage.setItem("phone", input.value);
+        break;
+      case 3:
+        window.localStorage.setItem("email", input.value);
+        break;
+    }
+
+    window.localStorage.setItem("planet", selectedPlanet.name);
+    window.localStorage.setItem("price", selectedPlanet.price);
+  });
+}
+
 function showTicket() {
   const ticketSection = document.querySelector(".ticket-section");
+  const ticketValues = document.querySelectorAll(".value");
+
+  ticketValues.forEach((value, i) => {
+    switch (i) {
+      case 0:
+        value.textContent = window.localStorage.getItem("planet");
+        break;
+      case 1:
+        value.textContent = window.localStorage.getItem("seat");
+        break;
+      case 2:
+        value.textContent = window.localStorage.getItem("name");
+        break;
+      case 3:
+        value.textContent = window.localStorage.getItem("birth");
+        break;
+      case 4:
+        value.textContent = window.localStorage.getItem("phone");
+        break;
+      case 5:
+        value.textContent = window.localStorage.getItem("email");
+        break;
+      case 6:
+        value.textContent = window.localStorage.getItem("price");
+        break;
+    }
+  });
 
   ticketSection.classList.add("ticket-show");
   submitFormBtn.textContent = "DONE";
@@ -365,6 +423,8 @@ function handleCheckboxClick(event) {
 }
 
 function handleSubmitBtnClick() {
+  saveReservationInfo();
+
   clearTimeout(submitTimer);
 
   if (isFormValid) {
