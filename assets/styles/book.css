@@ -9,18 +9,18 @@ li {
 h1 {
   font-family: Pretendard;
   font-size: 32px;
+  font-weight: 700;
 }
-h2,
-h3,
-h4 {
+h2, h3, h4 {
   font-family: Pretendard;
 }
 h2 {
   font-size: 32px;
-  font-family: Pretendard;
+  font-weight: 700;
 }
 h3 {
   font-size: 20px;
+  font-weight: 600;
 }
 body {
   width: 100%;
@@ -43,6 +43,7 @@ body {
 }
 .side-bar {
   position: fixed;
+  z-index: 6;
 }
 
 .content {
