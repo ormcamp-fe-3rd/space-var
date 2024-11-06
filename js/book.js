@@ -353,8 +353,9 @@ function handleCheckboxClick(event) {
 }
 
 function handleSubmitBtnClick() {
-  // confirm("Are you sure to confirm?");
-  // window.location.href = "../pages/start.html";
+  if (isFormValid) {
+    window.location.href = "../pages/start.html";
+  }
 }
 
 inputs.forEach((input) => {
