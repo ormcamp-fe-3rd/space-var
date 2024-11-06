@@ -269,7 +269,8 @@ function checkFormValidation(event) {
   checkInputValidation(event);
   checkCheckboxVaildation(event);
 
-  isFormValid = isInputsValid && isCheckValid ? true : false;
+  isFormValid = isInputsValid && isCheckValid && phoneVerified && emailVerfied;
+  console.log(phoneVerified, emailVerfied, isFormValid);
 
   return isFormValid;
 }
@@ -286,10 +287,16 @@ function submitBtnStyleToggle() {
 
 //2. certification
 let timer;
+let phoneVerified = false;
+let emailVerfied = false;
+
 function checkCertication(event) {
   const id = event.target.id;
   const btn = event.target;
   const isValid = id === "certification-phone" ? isPhoneValid : isEmailValid;
+
+  phoneVerified = id === "certification-phone" ? isValid : phoneVerified;
+  emailVerfied = id === "certification-email" ? isValid : emailVerfied;
 
   clearTimeout(timer);
 
@@ -321,6 +328,8 @@ function handleFormInput(event) {
 
 function handleCertificationBtnCilick(event) {
   checkCertication(event);
+  checkFormValidation(event);
+  submitBtnStyleToggle();
 }
 
 function handleCheckboxClick(event) {
