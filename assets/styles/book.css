@@ -19,8 +19,7 @@ h3 {
     font-size: 20px;
 }
 body {
-    width: 1920px;
-    height: 1856px;
+    width: 100%;
 }
 .book-planet {
     display: flex;
@@ -55,10 +54,10 @@ body {
     height: 160px;
 }
 .carouel-prevbtn {
-    margin: 0px 42px 0px 40px;
+    margin: 0px 0px 0px 40px;
 }
 .carouel-nextbtn {
-    margin: 0px 40px 0px 24px;
+    margin: 0px 40px 0px 0px;
 }
 .saturn-img{
     min-width: 198px;
@@ -67,8 +66,6 @@ body {
 .carousel button {
     background-color: black;
     border: none;
-    padding: 0px 0px 0px 0px;
-    z-index: 2;
 }
 .animation {
     align-content: center;
@@ -76,8 +73,7 @@ body {
 }
 .carouel-animation {
     display: flex;
-    padding: 0px 0px 0px 0px;
-    z-index: 1;
+    margin: 0px 20px 0px 20px;
     transition: transform 0.8s;
 }
 .carouel-animation button {
@@ -85,4 +81,11 @@ body {
 .carouel-animation button:nth-child(7) {
     padding: 0px 40px 0px 0px}
 
-
+@keyframes sizeup {
+    from { transform: scale(1);
+    }
+    to { transform: scale(1.2); }
+}
+.sizeup-animation {
+ animation: sizeup 0.3s forwards;
+}

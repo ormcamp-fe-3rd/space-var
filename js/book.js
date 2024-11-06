@@ -1,5 +1,5 @@
 const carousel = document.querySelector('.carouel-animation');
-const carousel_Count = document.querySelectorAll(".carouel-animation button")
+const carousel_Button = document.querySelectorAll(".carouel-animation button")
 const prevButton = document.querySelector('.carouel-prevbtn')
 const nextButton = document.querySelector('.carouel-nextbtn')
 let carouselIndex = 0;
@@ -11,10 +11,10 @@ prevButton.addEventListener('click', () => {
 
     carouselIndex -= 1;
     carousel.style.transform = `translateX(-${150 * carouselIndex}px)`;
-    prevButton.disabled = false;
+    nextButton.style.opacity = `100%`;
 
     if (carouselIndex === 0) {
-        // prevButtonImg.src = '/img_folder/btn/left_Disabled.svg';
+        prevButton.style.opacity = `50%`;
     }
 });
 nextButton.addEventListener('click', () => {
@@ -22,10 +22,23 @@ nextButton.addEventListener('click', () => {
 
     carouselIndex += 1;
     carousel.style.transform = `translateX(-${150 * carouselIndex}px)`;
-    //prevButtonImg.src = '/img_folder/btn/left_Enabled.svg';
+    prevButton.style.opacity = `100%`;
 
     if (carouselIndex === hiddent_Count) {
-        //nextButtonImg.src = '/img_folder/btn/right_Disabled.svg';
+        nextButton.style.opacity = `50%`;
     }
 });
 
+carousel_Button.forEach((selected_Button, index) => {
+    selected_Button.addEventListener("click", () => {
+        const selected_Img = selected_Button.querySelector("img");
+        selected_Img.classList.add("sizeup-animation");
+
+        carousel_Button.forEach((other_Button, otherIndex) => {
+            const other_Img = other_Button.querySelector("img");
+            if (otherIndex !== index) {
+                other_Img.classList.remove("sizeup-animation");;
+        }
+      });
+    });
+  });
