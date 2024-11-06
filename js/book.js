@@ -7,9 +7,9 @@ let hiddent_Count = 2;
 
 const side_Img = document.querySelector('.side');
 const localhostUrl = window.location.origin;
-console.log(localhostUrl)
 
 const planet_Price = document.querySelector('.planet-price')
+const total_Price = document.querySelector('.total-price');
 const planet_Imfr = [ {name : 'Mercurius', price : '100', image : `/assets/images/book/planet/Mercurius.svg`} 
                      ,{name : 'Venus',     price : '200', image : `/assets/images/book/planet/Venus.svg`} 
                      ,{name : 'Mars',      price : '300', image : `/assets/images/book/planet/Mars.svg`} 
@@ -47,9 +47,11 @@ carousel_Button.forEach((selected_Button, index) => {
     selected_Button.addEventListener("click", () => {
         const selected_Img = selected_Button.querySelector("img");
         selected_Img.classList.add("sizeup-animation");
-        planet_Price.innerHTML = `<strong>${planet_Imfr[index].name}</strong><br>$${planet_Imfr[index].price}(price) + $${planet_Imfr[index].price}(deposit)`;
 
+        planet_Price.innerHTML = `<strong>${planet_Imfr[index].name}</strong><br>$${planet_Imfr[index].price}(price) + $${planet_Imfr[index].price}(deposit)`;
         side_Img.style.backgroundImage = `url("${localhostUrl}${planet_Imfr[index].image}")`
+        total_Price.textContent = `Total $ ${planet_Imfr[index].price * 2}`
+
 
         carousel_Button.forEach((other_Button, otherIndex) => {
             const other_Img = other_Button.querySelector("img");
