@@ -121,6 +121,11 @@ body {
   border-radius: 5px;
 }
 
+.required {
+  border: 1px solid rgb(240, 82, 82);
+  border-radius: 5px;
+}
+
 .book-form .info-container label {
   display: inline;
   text-wrap: nowrap;

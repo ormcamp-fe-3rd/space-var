@@ -170,34 +170,55 @@ function checkSecurityRegex(event) {
   return event.target.value;
 }
 
+function updateInputBorder(event, valid) {
+  const input = event.target;
+  const inputContainer = input.closest(".info-container");
+
+  if (!valid) {
+    inputContainer.classList.remove("border");
+    inputContainer.classList.add("required");
+  } else {
+    inputContainer.classList.remove("required");
+    inputContainer.classList.add("border");
+  }
+}
+
 function checkInputValidation(event) {
   let id = event.target.id;
   switch (id) {
     case "name":
       isNameValid = checkNameRegex(event).length > 0;
+      updateInputBorder(event, isNameValid);
       break;
 
     case "birth":
-      isBirthValid = checkBirthRegex(event);
+      isBirthValid = checkBirthRegex(event).length === 10;
+      updateInputBorder(event, isBirthValid);
       break;
 
     case "phone":
       isPhoneValid = checkPhoneRegex(event).length === 13;
+      updateInputBorder(event, isPhoneValid);
       break;
 
     case "email":
       isEmailValid = checkEmailRegex(event);
+      updateInputBorder(event, isEmailValid);
       break;
 
     case "card-number":
       isCardNumberValid = checkCardNumberRegex(event).length === 19;
+      updateInputBorder(event, isCardNumberValid);
       break;
     case "expiration":
       isExpirationValid = checkExpirationRegex(event).length === 5;
+      updateInputBorder(event, isExpirationValid);
       break;
 
     case "security-code":
       isSecurityValid = checkSecurityRegex(event).length === 4;
+      updateInputBorder(event, isSecurityValid);
+      break;
   }
 
   isInputsValid =
@@ -265,7 +286,6 @@ function submitBtnStyleToggle() {
 
 //2. certification
 let timer;
-
 function checkCertication(event) {
   const id = event.target.id;
   const btn = event.target;
@@ -308,7 +328,8 @@ function handleCheckboxClick(event) {
   submitBtnStyleToggle();
 }
 
-function handleSubmitBtnClick(event) {
+function handleSubmitBtnClick() {
+  // confirm("Are you sure to confirm?");
   // window.location.href = "../pages/start.html";
 }
 
