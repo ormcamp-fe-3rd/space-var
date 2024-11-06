@@ -99,6 +99,17 @@ const bookForm = document.querySelector(".book-form");
 // 1) planet
 let isPlanetSelected = false;
 
+function checkPlanetSeleceted() {
+  const planetInfoElement = document.querySelector(".planet-price");
+  const planetInfoElementContent = planetInfoElement.textContent;
+
+  if (planetInfoElementContent === "Select your journey") {
+    isPlanetSelected = false;
+  } else {
+    isPlanetSelected = true;
+  }
+}
+
 // 2-1) input
 let isInputsValid = false;
 
@@ -293,10 +304,16 @@ function checkCheckboxVaildation(event) {
 let isFormValid = false;
 
 function checkFormValidation(event) {
+  checkPlanetSeleceted();
   checkInputValidation(event);
   checkCheckboxVaildation(event);
 
-  isFormValid = isInputsValid && isCheckValid && phoneVerified && emailVerfied;
+  isFormValid =
+    isPlanetSelected &&
+    isInputsValid &&
+    isCheckValid &&
+    phoneVerified &&
+    emailVerfied;
 
   return isFormValid;
 }
