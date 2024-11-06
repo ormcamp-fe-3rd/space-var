@@ -55,22 +55,27 @@ const planet_Imfr = [
 prevButton.addEventListener("click", () => {
   if (carouselIndex === 0) return;
   carouselIndex -= 1;
-  carousel.style.transform = `translateX(-${150 * carouselIndex}px)`;
   nextButton.style.opacity = `100%`;
 
   if (carouselIndex === 0) {
     prevButton.style.opacity = `50%`;
+    carousel.style.transform = `translateX(-${190 * carouselIndex}px)`;
+  }
+  else {
+    carousel.style.transform = `translateX(-${150 * carouselIndex}px)`;
   }
 });
 nextButton.addEventListener("click", () => {
   if (carouselIndex === hiddent_Count) return;
-
   carouselIndex += 1;
-  carousel.style.transform = `translateX(-${150 * carouselIndex}px)`;
   prevButton.style.opacity = `100%`;
 
   if (carouselIndex === hiddent_Count) {
+    carousel.style.transform = `translateX(-${190 * carouselIndex}px)`;
     nextButton.style.opacity = `50%`;
+  }
+  else {
+    carousel.style.transform = `translateX(-${150 * carouselIndex}px)`;
   }
 });
 
