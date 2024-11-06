@@ -10,14 +10,14 @@ const localhostUrl = window.location.origin;
 
 const planet_Price = document.querySelector('.planet-price')
 const total_Price = document.querySelector('.total-price');
-const planet_Imfr = [ {name : 'Mercurius', price : '100', image : `/assets/images/book/planet/Mercurius.svg`} 
-                     ,{name : 'Venus',     price : '200', image : `/assets/images/book/planet/Venus.svg`} 
-                     ,{name : 'Mars',      price : '300', image : `/assets/images/book/planet/Mars.svg`} 
-                     ,{name : 'Jupiter',   price : '400', image : `/assets/images/book/planet/Jupiter.svg`} 
-                     ,{name : 'Pluto',     price : '500', image : `/assets/images/book/planet/Pluto.svg`} 
-                     ,{name : 'Saturn',    price : '600', image : `/assets/images/book/planet/Saturn.svg`} 
-                     ,{name : 'Uranus',    price : '700', image : `/assets/images/book/planet/Uranus.svg`} 
-                     ,{name : 'Neptune',   price : '800', image : `/assets/images/book/planet/Neptune.svg`}    
+const planet_Imfr = [ {name : 'Mercurius', price : '100', image : `/assets/images/book/planet/planet_Surface/Mercurius.svg`} 
+                     ,{name : 'Venus',     price : '200', image : `/assets/images/book/planet/planet_Surface/Venus.svg`} 
+                     ,{name : 'Mars',      price : '300', image : `/assets/images/book/planet/planet_Surface/Mars.svg`} 
+                     ,{name : 'Jupiter',   price : '400', image : `/assets/images/book/planet/planet_Surface/Jupiter.svg`} 
+                     ,{name : 'Pluto',     price : '500', image : `/assets/images/book/planet/planet_Surface/Pluto.svg`} 
+                     ,{name : 'Saturn',    price : '600', image : `/assets/images/book/planet/planet_Surface/Saturn.svg`} 
+                     ,{name : 'Uranus',    price : '700', image : `/assets/images/book/planet/planet_Surface/Uranus.svg`} 
+                     ,{name : 'Neptune',   price : '800', image : `/assets/images/book/planet/planet_Surface/Neptune.svg`}    
                     ]
 prevButton.addEventListener('click', () => {
 
