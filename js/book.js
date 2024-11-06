@@ -108,9 +108,10 @@ let isExpirationValid = false;
 let isSecurityValid = false;
 
 function checkNameRegex(event) {
-  event.target.value = event.target.value
-    .replace(/[^ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z\s]/g, "")
-    .trim();
+  event.target.value = event.target.value.replace(
+    /[^ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z ]/g,
+    ""
+  );
 
   return event.target.value;
 }
