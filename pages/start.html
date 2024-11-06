@@ -13,7 +13,24 @@
       rel="stylesheet"
     />
   </head>
-
+  <header>
+    <div class="button-container" id="buttonContainer">
+      <a href="./company.html">
+        <button class="glowing-btn">
+          <span class="glowing-txt">
+            Con<span class="faulty-letter">Ta</span>cKT
+          </span>
+        </button>
+      </a>
+      <a href="./book.html">
+        <button class="glowing-btn">
+          <span class="glowing-txt">
+            Bo<span class="faulty-letter">oK</span>NoW
+          </span>
+        </button>
+      </a>
+    </div>
+  </header>
   <body>
     <div class="video-container">
       <video
@@ -41,40 +58,22 @@
         loop
       ></video>
 
-      <div class="indicator" id="videoIndicator">1</div>
-      <div class="scroll-progress">
-        <div class="scroll-fill" id="scrollFill"></div>
-      </div>
+      <main>
+        <div class="indicator" id="videoIndicator">1</div>
+        <div class="scroll-progress">
+          <div class="scroll-fill" id="scrollFill"></div>
+        </div>
+        <div class="video-text" id="text1">
+          Have you ever thought about leaving the Earth?
+        </div>
+        <div class="video-text" id="text2">
+          This is your life chance to change everything.
+        </div>
+        <div class="video-text" id="text3">
+          Take your opportunity, We will join you.
+        </div>
+      </main>
 
-      <div class="video-text" id="text1">
-        Have you ever thought about leaving the Earth?
-      </div>
-      <div class="video-text" id="text2">
-        This is your life chance to change everything.
-      </div>
-      <div class="video-text" id="text3">
-        Take your opportunity, We will join you...
-      </div>
-
-      <!-- 우측 상단 버튼 2개 -->
-      <div class="button-container" id="buttonContainer">
-        <a href="./company.html">
-          <button class="glowing-btn">
-            <span class="glowing-txt">
-              Con<span class="faulty-letter">Ta</span>cKT
-            </span>
-          </button>
-        </a>
-        <a href="./book.html">
-          <button class="glowing-btn">
-            <span class="glowing-txt">
-              Bo<span class="faulty-letter">oK</span>NoW
-            </span>
-          </button>
-        </a>
-      </div>
-
-      <!-- 좌측 상단 이미지 -->
       <img
         src="../assets/images/common/logo.png"
         alt="Logo"
@@ -82,24 +81,45 @@
         id="topLeftImage"
       />
     </div>
+    <footer>
+      <footer class="footer" id="footer">
+        <div class="footer-logo">
+          <img
+            id="footer-mainlogo"
+            src="../assets/images/common/logo.png"
+            alt=""
+          />
+        </div>
+        <div class="footer-txt">
+          <p>
+            ADDRESS : 서울 강남구 강남대로 324 역삼 디오슈페리움 2 층
+            모두의연구소.
+          </p>
+          <p>CONTACT : 010-0000-0000.</p>
+          <p>E-MAIL : ZERO-MILEAGE@gmail.com.</p>
+        </div>
 
-    <footer class="footer" id="footer">
-      <div class="footer-logo">
-        <img
-          id="footer-mainlogo"
-          src="../assets/images/common/logo.png"
-          alt=""
-        />
-      </div>
-      <div class="footer-txt">
-        <p>
-          ADDRESS : 서울 강남구 강남대로 324 역삼 디오슈페리움 2 층
-          모두의연구소.
-        </p>
-        <p>CONTACT : 010-0000-0000.</p>
-        <p>E-MAIL : ZERO-MILEAGE@gmail.com.</p>
-      </div>
-
+        <div class="footer-follow">
+          <p>
+            FOLLOW <br />
+            SPACE_VAR
+          </p>
+          <a href="http://naver.com">
+            <img
+              class="footer-facebook"
+              src="../assets/images/footer_facebook.svg"
+              alt="facebook"
+            />
+          </a>
+          <a href="http://naver.com">
+            <img
+              class="footer-insta"
+              src="../assets/images/footer_instagram.svg"
+              alt="insta"
+            />
+          </a>
+        </div>
+      </footer>
       <div class="footer-follow">
         <p>
           FOLLOW <br />
@@ -120,32 +140,12 @@
           />
         </a>
       </div>
+      <div class="container">
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+      </div>
     </footer>
-    <div class="footer-follow">
-      <p>
-        FOLLOW <br />
-        SPACE_VAR
-      </p>
-      <a href="http://naver.com">
-        <img
-          class="footer-facebook"
-          src="../assets/images/footer_facebook.svg"
-          alt="facebook"
-        />
-      </a>
-      <a href="http://naver.com">
-        <img
-          class="footer-insta"
-          src="../assets/images/footer_instagram.svg"
-          alt="insta"
-        />
-      </a>
-    </div>
-    <div class="container">
-      <div class="ring"></div>
-      <div class="ring"></div>
-      <div class="ring"></div>
-    </div>
     <script src="../js/start.js"></script>
   </body>
 </html>
