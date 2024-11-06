@@ -329,6 +329,15 @@ function submitBtnStyleToggle() {
 }
 
 //3. after submit
+function showTicket() {
+  const ticketSection = document.querySelector(".ticket-section");
+
+  ticketSection.classList.add("ticket-show");
+}
+
+function goMainPage() {
+  window.location.href = "../pages/start.html";
+}
 
 //4. handle
 const inputs = bookForm.querySelectorAll(".input");
@@ -354,7 +363,7 @@ function handleCheckboxClick(event) {
 
 function handleSubmitBtnClick() {
   if (isFormValid) {
-    window.location.href = "../pages/start.html";
+    showTicket();
   }
 }
 

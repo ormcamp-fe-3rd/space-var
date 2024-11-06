@@ -329,12 +329,15 @@ body {
 /* ticket */
 .ticket-section {
   display: none;
-  display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   position: fixed;
   z-index: 10;
+}
+
+.ticket-show {
+  display: flex;
 }
 
 .background {
@@ -432,8 +435,4 @@ body {
   left: -20px;
   opacity: 0.5;
   transform: rotate(-30deg);
-}
-
-.flex {
-  display: flex;
 }
