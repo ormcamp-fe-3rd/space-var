@@ -61,7 +61,6 @@ carousel_Button.forEach((selected_Button, index) => {
       });
     });
   });
-});
 
 // book-form
 const bookForm = document.querySelector(".book-form");
