@@ -37,19 +37,19 @@ const planet_Imfr = [
     image: `/assets/images/book/planet/planet_Surface/Pluto.svg`,
   },
   {
-    name: "Saturn",
+    name: "Uranus",
     price: "600",
-    image: `/assets/images/book/planet/planet_Surface/Saturn.svg`,
+    image: `/assets/images/book/planet/planet_Surface/Uranus.svg`,
   },
   {
     name: "Uranus",
     price: "700",
-    image: `/assets/images/book/planet/planet_Surface/Uranus.svg`,
+    image: `/assets/images/book/planet/planet_Surface/Neptune.svg`,
   },
   {
-    name: "Neptune",
+    name: "Saturn",
     price: "800",
-    image: `/assets/images/book/planet/planet_Surface/Neptune.svg`,
+    image: `/assets/images/book/planet/planet_Surface/Saturn.svg`,
   },
 ];
 prevButton.addEventListener("click", () => {
