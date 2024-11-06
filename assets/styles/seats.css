@@ -11,7 +11,7 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin: 0 8.5%;
+  margin: 0 8%;
   padding: 20px;
 }
 
@@ -21,9 +21,14 @@ header {
   margin: 0 8.5%;
 }
 
-.header-button {
-  background-color: #000;
-  color: white;
+/* 왼쪽 버튼 (CONTACT) */
+.header-button-left {
+  background: linear-gradient(
+    to right,
+    #2180e1,
+    #5060f1
+  ); /* 왼쪽에서 오른쪽으로 그라디언트 */
+  color: #ffffff; /* 텍스트 색상 흰색 */
   padding: 10px 20px;
   text-decoration: none;
   border-radius: 5px;
@@ -31,8 +36,35 @@ header {
   margin-left: 10px;
 }
 
-.header-button:hover {
-  background-color: #555; /* 호버 시 색상 변경 */
+.header-button-left:hover {
+  background: linear-gradient(
+    to right,
+    #2180e1,
+    #2180e1
+  ); /* 호버 시 그라디언트 색상 변경 */
+}
+
+/* 오른쪽 버튼 (BOOK NOW) */
+.header-button-right {
+  background: linear-gradient(
+    to right,
+    #925cee,
+    #6b4bd6
+  ); /* 다른 그라디언트 색상 설정 */
+  color: #ffffff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.header-button-right:hover {
+  background: linear-gradient(
+    to right,
+    #925cee,
+    #925cee
+  ); /* 오른쪽 버튼 호버 시 다른 색상 */
 }
 
 /* 푸터 */
@@ -57,14 +89,13 @@ header {
   position: relative;
   bottom: 0;
   width: 100%;
-
   padding: 20px;
 }
 
 .footer-txt {
   font-size: 10px;
   line-height: 1.5;
-  margin-right: 40%; /* 주석 닫힘 누락 수정 */
+  margin-right: 40%;
 }
 
 .footer-follow {
@@ -72,4 +103,11 @@ header {
   flex-direction: column;
   align-items: center;
   margin-left: 20px;
+}
+
+.footer-snslogo {
+  display: flex;
+  gap: 5px;
+  position: relative;
+  left: -16px;
 }
