@@ -13,56 +13,58 @@
       rel="stylesheet"
     />
   </head>
-  <header>
-    <div class="button-container" id="buttonContainer">
-      <a href="./company.html">
-        <button class="glowing-btn">
-          <span class="glowing-txt">
-            Con<span class="faulty-letter">Ta</span>cT
-          </span>
-        </button>
-      </a>
-      <a href="./book.html">
-        <button class="glowing-btn">
-          <span class="glowing-txt">
-            Bo<span class="faulty-letter">oK</span>NoW
-          </span>
-        </button>
-      </a>
-    </div>
-  </header>
   <body>
-    <div class="video-container">
-      <video
-        id="video1"
-        class="video active"
-        src="../video/빛나는지구.mp4"
-        autoplay
-        muted
-        loop
-      ></video>
-      <video
-        id="video2"
-        class="video"
-        src="../video/우주선이륙.mp4"
-        autoplay
-        muted
-        loop
-      ></video>
-      <video
-        id="video3"
-        class="video"
-        src="../video/end.mp4"
-        autoplay
-        muted
-        loop
-      ></video>
+    <header>
+      <div class="button-container" id="buttonContainer">
+        <a href="./company.html">
+          <button class="glowing-btn">
+            <span class="glowing-txt">
+              Con<span class="faulty-letter">Ta</span>cT
+            </span>
+          </button>
+        </a>
+        <a href="./book.html">
+          <button class="glowing-btn">
+            <span class="glowing-txt">
+              Bo<span class="faulty-letter">oK</span>NoW
+            </span>
+          </button>
+        </a>
+      </div>
+    </header>
 
-      <main>
+    <main>
+      <section class="video-container">
+        <video
+          id="video1"
+          class="video active"
+          src="../video/빛나는지구.mp4"
+          autoplay
+          muted
+          loop
+        ></video>
+        <video
+          id="video2"
+          class="video"
+          src="../video/우주선이륙.mp4"
+          autoplay
+          muted
+          loop
+        ></video>
+        <video
+          id="video3"
+          class="video"
+          src="../video/end.mp4"
+          autoplay
+          muted
+          loop
+        ></video>
+
         <div class="indicator" id="videoIndicator">1</div>
         <div class="scroll-progress">
           <div class="scroll-fill" id="scrollFill"></div>
         </div>
+
         <div class="video-text" id="text1">
           Have you ever thought about leaving the Earth?
         </div>
@@ -72,7 +74,7 @@
         <div class="video-text" id="text3">
           Take your opportunity, We will join you.
         </div>
-      </main>
+      </section>
 
       <img
         src="../assets/images/common/logo.png"
@@ -80,26 +82,27 @@
         class="top-left-img"
         id="topLeftImage"
       />
-    </div>
+    </main>
 
     <footer class="footer" id="footer">
-      <div class="footer-logo">
+      <section class="footer-logo">
         <img
           id="footer-mainlogo"
           src="../assets/images/common/logo.png"
-          alt=""
+          alt="Logo"
         />
-      </div>
-      <div class="footer-txt">
+      </section>
+
+      <section class="footer-txt">
         <p>
           ADDRESS : 서울 강남구 강남대로 324 역삼 디오슈페리움 2 층
           모두의연구소.
         </p>
         <p>CONTACT : 010-0000-0000.</p>
         <p>E-MAIL : ZERO-MILEAGE@gmail.com.</p>
-      </div>
+      </section>
 
-      <div class="footer-follow">
+      <section class="footer-follow">
         <p>
           FOLLOW <br />
           SPACE_VAR
@@ -115,10 +118,10 @@
           <img
             class="footer-insta"
             src="../assets/images/footer_instagram.svg"
-            alt="insta"
+            alt="Instagram"
           />
         </a>
-      </div>
+      </section>
     </footer>
 
     <script src="../js/start.js"></script>
