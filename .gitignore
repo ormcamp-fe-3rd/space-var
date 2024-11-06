@@ -27,3 +27,6 @@ dist-ssr
 0_ignore/
 img/
 
+# 원본 폴더
+0_original/
+
