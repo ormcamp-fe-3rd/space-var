@@ -48,14 +48,15 @@ body {
   height: 1696px;
 }
 .book-price h3 {
-  margin: 11px 0px 38px 29px;
-  font-family: Pretendard;
+  width: 1219px;
+  height: 58px;
+  margin: 11px 0px 0px 0px; 
 }
 .carousel {
   display: flex;
   background-color: black;
-
   height: 160px;
+  margin: 0px 0px 35px 0px;
 }
 .carouel-prevbtn {
   margin: 0px 0px 0px 40px;
