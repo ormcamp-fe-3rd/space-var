@@ -9,18 +9,18 @@ li {
 h1 {
   font-family: Pretendard;
   font-size: 32px;
+  font-weight: 700;
 }
-h2,
-h3,
-h4 {
+h2, h3, h4 {
   font-family: Pretendard;
 }
 h2 {
   font-size: 32px;
-  font-family: Pretendard;
+  font-weight: 700;
 }
 h3 {
   font-size: 20px;
+  font-weight: 600;
 }
 body {
   width: 100%;
@@ -41,21 +41,29 @@ body {
 .side img {
   margin: 34px 0px 0px 27px;
 }
+.side-bar {
+  position: fixed;
+  z-index: 6;
+}
 
 .content {
   margin: 0px 35px 0px 65px;
   width: 1248px;
   height: 1696px;
 }
-.book-price h3 {
-  margin: 11px 0px 38px 29px;
-  font-family: Pretendard;
+.price {
+  display: flex;
+  justify-content: space-between;
+}
+.book-price  h3{
+  height: 58px;
+  margin: 11px 0px 0px 0px; 
 }
 .carousel {
   display: flex;
   background-color: black;
-
   height: 160px;
+  margin: 0px 0px 35px 0px;
 }
 .carouel-prevbtn {
   margin: 0px 0px 0px 40px;
