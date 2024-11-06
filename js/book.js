@@ -333,6 +333,7 @@ function showTicket() {
   const ticketSection = document.querySelector(".ticket-section");
 
   ticketSection.classList.add("ticket-show");
+  submitFormBtn.textContent = "DONE";
 }
 
 function goMainPage() {
@@ -344,6 +345,8 @@ const inputs = bookForm.querySelectorAll(".input");
 const certificationBtns = bookForm.querySelectorAll(".certification-btn");
 const checkboxes = bookForm.querySelectorAll(".checkbox-hidden");
 const submitFormBtn = bookForm.querySelector(".submit-btn");
+const exitBtn = document.querySelector(".exit");
+let submitTimer;
 
 function handleFormInput(event) {
   checkFormValidation(event);
@@ -362,9 +365,19 @@ function handleCheckboxClick(event) {
 }
 
 function handleSubmitBtnClick() {
+  clearTimeout(submitTimer);
+
   if (isFormValid) {
-    showTicket();
+    submitFormBtn.textContent = "Waiting...";
+
+    setTimeout(() => {
+      showTicket();
+    }, 1000);
   }
+}
+
+function handleExitBtnClick() {
+  goMainPage();
 }
 
 inputs.forEach((input) => {
@@ -380,3 +393,5 @@ checkboxes.forEach((checkbox) => {
 });
 
 submitFormBtn.addEventListener("click", handleSubmitBtnClick);
+
+exitBtn.addEventListener("click", handleExitBtnClick);
