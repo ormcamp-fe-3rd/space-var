@@ -270,7 +270,6 @@ function checkFormValidation(event) {
   checkCheckboxVaildation(event);
 
   isFormValid = isInputsValid && isCheckValid && phoneVerified && emailVerfied;
-  console.log(phoneVerified, emailVerfied, isFormValid);
 
   return isFormValid;
 }
