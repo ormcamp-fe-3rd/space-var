@@ -198,7 +198,8 @@ function checkInputValidation(event) {
     case "security-code":
       isSecurityValid = checkSecurityRegex(event).length === 4;
   }
-  if (
+
+  isInputsValid =
     isNameValid &&
     isBirthValid &&
     isPhoneValid &&
@@ -206,9 +207,8 @@ function checkInputValidation(event) {
     isCardNumberValid &&
     isExpirationValid &&
     isSecurityValid
-  ) {
-    isInputsValid = true;
-  }
+      ? true
+      : false;
 }
 
 // checkbox
@@ -234,9 +234,10 @@ function checkCheckboxVaildation(event) {
       break;
   }
 
-  if (isAccidentRulesChecked && isPersonalInfoChecked && isAllConfirmed) {
-    isCheckValid = true;
-  }
+  isCheckValid =
+    isAccidentRulesChecked && isPersonalInfoChecked && isAllConfirmed
+      ? true
+      : false;
 }
 
 // form
@@ -246,9 +247,8 @@ function checkFormValidation(event) {
   checkInputValidation(event);
   checkCheckboxVaildation(event);
 
-  if (isInputsValid && isCheckValid) {
-    isFormValid = true;
-  }
+  isFormValid = isInputsValid && isCheckValid ? true : false;
+
   return isFormValid;
 }
 
