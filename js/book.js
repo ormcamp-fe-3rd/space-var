@@ -48,7 +48,7 @@ carousel_Button.forEach((selected_Button, index) => {
         const selected_Img = selected_Button.querySelector("img");
         selected_Img.classList.add("sizeup-animation");
 
-        planet_Price.innerHTML = `<strong>${planet_Imfr[index].name}</strong><br>$${planet_Imfr[index].price}(price) + $${planet_Imfr[index].price}(deposit)`;
+        planet_Price.innerHTML = `${planet_Imfr[index].name}<br>$${planet_Imfr[index].price}(price) + $${planet_Imfr[index].price}(deposit)`;
         side_Img.style.backgroundImage = `url("${localhostUrl}${planet_Imfr[index].image}")`
         total_Price.textContent = `Total $ ${planet_Imfr[index].price * 2}`
 
