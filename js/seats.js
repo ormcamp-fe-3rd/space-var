@@ -8,7 +8,7 @@ const primaryBtn = document.querySelector(".total-wrap .btn-primary");
 for (let i = 0; i < seatsBtn.length; i++) {
   seatsBtn[i].addEventListener("click", function () {
     totalPage.classList.add("open");
-    if (!totalHeight) {
+    if (!totalPage.style.maxHeight) {
       totalPage.style.maxHeight = totalPage.scrollHeight + "px";
     }
 
