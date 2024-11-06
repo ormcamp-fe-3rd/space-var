@@ -264,31 +264,24 @@ function submitBtnStyleToggle() {
 }
 
 //2. certification
+let timer;
+
 function checkCertication(event) {
-  let id = event.target.id;
-  let isValid = false;
-  let waitingTimer, resultTimer;
+  const id = event.target.id;
+  const btn = event.target;
+  const isValid = id === "certification-phone" ? isPhoneValid : isEmailValid;
 
-  clearTimeout(waitingTimer);
-  clearTimeout(resultTimer);
+  clearTimeout(timer);
 
-  waitingTimer = setTimeout(() => {
-    event.target.textContent = "Waiting...";
-  }, 0);
+  btn.textContent = "Waiting...";
 
-  isValid = id ? "phone" : isPhoneValid ? "email" : isEmailValid;
-
-  resultTimer = setTimeout(() => {
+  timer = setTimeout(() => {
     if (isValid) {
-      event.target.classList.remove("not-verified");
-      event.target.classList.remove("rejected");
-      event.target.classList.add("verified");
-      event.target.textContent = "VERIFIED";
+      btn.className = "certification-btn verified";
+      btn.textContent = "VERIFIED";
     } else {
-      event.target.classList.remove("not-verified");
-      event.target.classList.remove("verified");
-      event.target.classList.add("rejected");
-      event.target.textContent = "FAILED";
+      btn.className = "certification-btn rejected";
+      btn.textContent = "FAILED";
     }
   }, 1000);
 }
