@@ -45,30 +45,10 @@ carousel_Button.forEach((selected_Button, index) => {
 // book-form
 const bookForm = document.querySelector(".book-form");
 
-// customer
-const inputs = bookForm.querySelectorAll(".input");
+// form validation
+// input
+let isInputsValid = false;
 
-const certificationBtns = bookForm.querySelectorAll(".certification-btn");
-
-const accidentRulesCheckbox = bookForm.querySelector("#accident-rules");
-const personalInfoCheckbox = bookForm.querySelector("#personal-info");
-
-const lastCheckbox = bookForm.querySelector("#check-all");
-
-const submitFormBtn = bookForm.querySelector(".submit-btn");
-
-// 정규표현식
-const message = [
-  "이름 입력란을 확인해주세요",
-  "생일 입력란을 확인해주세요",
-  "전화번호 입력란을 확인해주세요",
-  "이메일 입력란을 확인해주세요",
-  "카드번호 입력란을 확인해주세요",
-  "카드 유효기간 입력란을 확인해주세요",
-  "보안코드 입력란을 확인해주세요",
-];
-
-let isFormValid = false;
 let isNameValid = false;
 let isBirthValid = false;
 let isPhoneValid = false;
@@ -139,7 +119,7 @@ function checkSecurityRegex(event) {
   return event.target.value;
 }
 
-function checkFormValidation(event) {
+function checkInputValidation(event) {
   let id = event.target.id;
   switch (id) {
     case "name":
@@ -168,7 +148,6 @@ function checkFormValidation(event) {
     case "security-code":
       isSecurityValid = checkSecurityRegex(event).length === 4;
   }
-
   if (
     isNameValid &&
     isBirthValid &&
@@ -178,9 +157,48 @@ function checkFormValidation(event) {
     isExpirationValid &&
     isSecurityValid
   ) {
-    isFormValid = true;
+    isInputsValid = true;
+  }
+}
+
+// checkbox
+let isCheckValid = false;
+
+let isAccidentRulesChecked = false;
+let isPersonalInfoChecked = false;
+let isAllConfirmed = false;
+
+function checkCheckboxVaildation(event) {
+  let id = event.target.id;
+  switch (id) {
+    case "accident-rules":
+      isAccidentRulesChecked = event.target.checked;
+      break;
+
+    case "personal-info":
+      isPersonalInfoChecked = event.target.checked;
+      break;
+
+    case "check-all":
+      isAllConfirmed = event.target.checked;
+      break;
   }
 
+  if (isAccidentRulesChecked && isPersonalInfoChecked && isAllConfirmed) {
+    isCheckValid = true;
+  }
+}
+
+// form
+let isFormValid = false;
+
+function checkFormValidation(event) {
+  checkInputValidation(event);
+  checkCheckboxVaildation(event);
+
+  if (isInputsValid && isCheckValid) {
+    isFormValid = true;
+  }
   return isFormValid;
 }
 
@@ -194,7 +212,22 @@ function submitBtnStyleToggle() {
   }
 }
 
+// apply
+const inputs = bookForm.querySelectorAll(".input");
+const checkboxes = bookForm.querySelectorAll(".checkbox-hidden");
+const submitFormBtn = bookForm.querySelector(".submit-btn");
+
 function handleFormInput(event) {
+  checkFormValidation(event);
+  submitBtnStyleToggle();
+}
+
+function handleCheckboxClick(event) {
+  checkFormValidation(event);
+  submitBtnStyleToggle();
+}
+
+function handleSubmitBtnClick(event) {
   checkFormValidation(event);
   submitBtnStyleToggle();
 }
@@ -203,9 +236,8 @@ inputs.forEach((input) => {
   input.addEventListener("input", handleFormInput);
 });
 
-function handleSubmitBtnClick(event) {
-  checkFormValidation(event);
-  submitBtnStyleToggle();
-}
+checkboxes.forEach((checkbox) => {
+  checkbox.addEventListener("click", handleCheckboxClick);
+});
 
-submitFormBtn.addEventListener("click", (event) => handleSubmitBtnClick(event));
+submitFormBtn.addEventListener("click", handleSubmitBtnClick);
