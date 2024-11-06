@@ -1,14 +1,14 @@
 @import "./reset.css";
 @import "./common.css";
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+@import url('https://fonts.cdnfonts.com/css/zen-dots');
 
 /* book-planet */
-ul,
-li {
-  list-style-type: none;
-}
 h1 {
-  font-family: Pretendard;
+  font-family: 'Zen Dots', sans-serif;
   font-size: 32px;
+  font-weight: 700;
+  color: white;
 }
 h2,
 h3,
@@ -17,10 +17,11 @@ h4 {
 }
 h2 {
   font-size: 32px;
-  font-family: Pretendard;
+  font-weight: 700;
 }
 h3 {
   font-size: 20px;
+  font-weight: 600;
 }
 body {
   width: 100%;
@@ -30,32 +31,39 @@ body {
 }
 .side {
   width: 572px;
-  height: 1856px;
+  padding: 0 40px;
   background-image: url(../images/book/side-temp.jpg);
 }
 .side h1 {
-  background-color: white;
   width: 358px;
   height: 214px;
 }
 .side img {
-  margin: 34px 0px 0px 27px;
+  margin: 20px 0 0 0;
+}
+.side-bar {
+  position: fixed;
+  z-index: 6;
 }
 
 .content {
   margin: 0px 35px 0px 65px;
   width: 1248px;
-  height: 1696px;
+  padding: 40px 30px;
+}
+.price {
+  display: flex;
+  justify-content: space-between;
 }
 .book-price h3 {
-  margin: 11px 0px 38px 29px;
-  font-family: Pretendard;
+  height: 58px;
+  margin: 11px 0px 0px 0px;
 }
 .carousel {
   display: flex;
   background-color: black;
-
   height: 160px;
+  margin: 0px 0px 35px 0px;
 }
 .carouel-prevbtn {
   margin: 0px 0px 0px 40px;
@@ -144,7 +152,7 @@ body {
 .customer .title {
   font-size: 24px;
   font-weight: 700;
-  margin: 0 50px 10px 0;
+  margin: 50px 50px 10px 0;
 }
 
 .customer .info1 {
@@ -214,7 +222,7 @@ body {
   width: 5px;
   height: 10px;
   border: solid white;
-  border-width: 0 1.5px 1.5px 0;
+  border-width: 0 2px 2px 0;
   transform: rotate(40deg);
 }
 
@@ -248,6 +256,10 @@ body {
   margin: 0 0 20px 0;
 }
 
+.payment .info-container input {
+  width: 100%;
+}
+
 .book-form .submit-btn-container {
   width: 100%;
   display: flex;
@@ -264,6 +276,13 @@ body {
   font-weight: 600;
   color: #fff;
   text-decoration: none;
+  border-radius: 5px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border: none;
+  box-shadow: 0 4px 4px #6b6b6b;
+}
+
+.book-form .activated {
   background: -moz-linear-gradient(
     90deg,
     rgba(33, 128, 225, 1) 0%,
@@ -279,12 +298,10 @@ body {
     rgba(33, 128, 225, 1) 0%,
     rgba(80, 96, 241, 1) 100%
   );
-  border-radius: 5px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  border: none;
-  box-shadow: 0 4px 4px #6b6b6b;
+  cursor: pointer;
 }
 
-.book-form .submit-btn:hover {
-  cursor: pointer;
+.book-form .disabled {
+  background-color: #9c9c9c;
+  cursor: not-allowed;
 }
