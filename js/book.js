@@ -55,7 +55,7 @@ const planetArray = [
 
 let reservationInfo = {};
 
-prevButton.addEventListener("click", () => {
+function handlePrevBtnClick() {
   if (carouselIndex === 0) return;
   carouselIndex -= 1;
   nextButton.style.opacity = `100%`;
@@ -66,8 +66,9 @@ prevButton.addEventListener("click", () => {
   } else {
     carousel.style.transform = `translateX(-${150 * carouselIndex}px)`;
   }
-});
-nextButton.addEventListener("click", () => {
+}
+
+function handleNextBtnClick() {
   if (carouselIndex === hiddentCount) return;
   carouselIndex += 1;
   prevButton.style.opacity = `100%`;
@@ -78,7 +79,12 @@ nextButton.addEventListener("click", () => {
   } else {
     carousel.style.transform = `translateX(-${150 * carouselIndex}px)`;
   }
-});
+}
+
+function handlePlanetBtnClick() {}
+
+prevButton.addEventListener("click", handlePrevBtnClick);
+nextButton.addEventListener("click", handleNextBtnClick);
 
 carouselButton.forEach((selectedButton, index) => {
   selectedButton.addEventListener("click", () => {
