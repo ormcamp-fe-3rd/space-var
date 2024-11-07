@@ -52,6 +52,10 @@ const planetImfr = [
     image: `/assets/images/book/planet/planet_Surface/Saturn.svg`,
   },
 ];
+
+// 나중에 쓰게 추가 좀 할게요...
+let reservationInfo = {};
+
 prevButton.addEventListener("click", () => {
   if (carouselIndex === 0) return;
   carouselIndex -= 1;
@@ -88,6 +92,12 @@ carousel_Button.forEach((selected_Button, index) => {
     sideImg.style.backgroundImage = `url("${localhostUrl}${planetImfr[index].image}")`;
     totalPrice.textContent = `Total $ ${planetImfr[index].price * 2}`;
 
+    // 추가
+    reservationInfo.planet = {
+      name: planet_Imfr[index].name,
+      price: planet_Imfr[index].price * 2,
+    };
+
     carousel_Button.forEach((other_Button, otherIndex) => {
       const other_Img = other_Button.querySelector("img");
       if (otherIndex !== index) {
@@ -100,8 +110,22 @@ carousel_Button.forEach((selected_Button, index) => {
 // book-form
 const bookForm = document.querySelector(".book-form");
 
-// form validation
-// input
+// 1. form validation
+// 1) planet
+let isPlanetSelected = false;
+
+function checkPlanetSeleceted() {
+  const planetInfoElement = document.querySelector(".planet-price");
+  const planetInfoElementContent = planetInfoElement.textContent;
+
+  if (planetInfoElementContent === "Select your journey") {
+    isPlanetSelected = false;
+  } else {
+    isPlanetSelected = true;
+  }
+}
+
+// 2-1) input
 let isInputsValid = false;
 
 let isNameValid = false;
@@ -113,9 +137,10 @@ let isExpirationValid = false;
 let isSecurityValid = false;
 
 function checkNameRegex(event) {
-  event.target.value = event.target.value
-    .replace(/[^ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z\s]/g, "")
-    .trim();
+  event.target.value = event.target.value.replace(
+    /[^ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z ]/g,
+    ""
+  );
 
   return event.target.value;
 }
@@ -174,49 +199,96 @@ function checkSecurityRegex(event) {
   return event.target.value;
 }
 
+function updateInputBorder(event, valid) {
+  const input = event.target;
+  const inputContainer = input.closest(".info-container");
+
+  if (!valid) {
+    inputContainer.classList.remove("border");
+    inputContainer.classList.add("required");
+  } else {
+    inputContainer.classList.remove("required");
+    inputContainer.classList.add("border");
+  }
+}
+
 function checkInputValidation(event) {
   let id = event.target.id;
   switch (id) {
     case "name":
       isNameValid = checkNameRegex(event).length > 0;
+      updateInputBorder(event, isNameValid);
       break;
 
     case "birth":
-      isBirthValid = checkBirthRegex(event);
+      isBirthValid = checkBirthRegex(event).length === 10;
+      updateInputBorder(event, isBirthValid);
       break;
 
     case "phone":
       isPhoneValid = checkPhoneRegex(event).length === 13;
+      updateInputBorder(event, isPhoneValid);
       break;
 
     case "email":
       isEmailValid = checkEmailRegex(event);
+      updateInputBorder(event, isEmailValid);
       break;
 
     case "card-number":
       isCardNumberValid = checkCardNumberRegex(event).length === 19;
+      updateInputBorder(event, isCardNumberValid);
       break;
     case "expiration":
       isExpirationValid = checkExpirationRegex(event).length === 5;
+      updateInputBorder(event, isExpirationValid);
       break;
 
     case "security-code":
       isSecurityValid = checkSecurityRegex(event).length === 4;
+      updateInputBorder(event, isSecurityValid);
+      break;
   }
-  if (
+
+  isInputsValid =
     isNameValid &&
     isBirthValid &&
     isPhoneValid &&
     isEmailValid &&
     isCardNumberValid &&
     isExpirationValid &&
-    isSecurityValid
-  ) {
-    isInputsValid = true;
-  }
+    isSecurityValid;
 }
 
-// checkbox
+// 2-2) certification
+let timer;
+let phoneVerified = false;
+let emailVerfied = false;
+
+function checkCertication(event) {
+  const id = event.target.id;
+  const btn = event.target;
+  const isValid = id === "certification-phone" ? isPhoneValid : isEmailValid;
+
+  phoneVerified = id === "certification-phone" ? isValid : phoneVerified;
+  emailVerfied = id === "certification-email" ? isValid : emailVerfied;
+
+  clearTimeout(timer);
+
+  btn.textContent = "Waiting...";
+
+  timer = setTimeout(() => {
+    if (isValid) {
+      btn.className = "certification-btn verified";
+      btn.textContent = "VERIFIED";
+    } else {
+      btn.className = "certification-btn rejected";
+      btn.textContent = "FAILED";
+    }
+  }, 1000);
+}
+
+// 3) checkbox
 let isCheckValid = false;
 
 let isAccidentRulesChecked = false;
@@ -239,21 +311,25 @@ function checkCheckboxVaildation(event) {
       break;
   }
 
-  if (isAccidentRulesChecked && isPersonalInfoChecked && isAllConfirmed) {
-    isCheckValid = true;
-  }
+  isCheckValid =
+    isAccidentRulesChecked && isPersonalInfoChecked && isAllConfirmed;
 }
 
-// form
+// 4) form
 let isFormValid = false;
 
 function checkFormValidation(event) {
+  checkPlanetSeleceted();
   checkInputValidation(event);
   checkCheckboxVaildation(event);
 
-  if (isInputsValid && isCheckValid) {
-    isFormValid = true;
-  }
+  isFormValid =
+    isPlanetSelected &&
+    isInputsValid &&
+    isCheckValid &&
+    phoneVerified &&
+    emailVerfied;
+
   return isFormValid;
 }
 
@@ -267,12 +343,79 @@ function submitBtnStyleToggle() {
   }
 }
 
-// apply
+//3. after submit
+function saveReservationInfo() {
+  inputs.forEach((input, i) => {
+    switch (i) {
+      case 0:
+        reservationInfo.name = input.value;
+        break;
+      case 1:
+        reservationInfo.birth = input.value;
+        break;
+      case 2:
+        reservationInfo.phone = input.value;
+        break;
+      case 3:
+        reservationInfo.email = input.value;
+        break;
+    }
+  });
+}
+
+function showTicket() {
+  const ticketSection = document.querySelector(".ticket-section");
+  const ticketValues = document.querySelectorAll(".value");
+
+  ticketValues.forEach((value, i) => {
+    switch (i) {
+      case 0:
+        value.textContent = reservationInfo.planet.name;
+        break;
+      case 1:
+        value.textContent = reservationInfo.seat;
+        break;
+      case 2:
+        value.textContent = reservationInfo.name;
+        break;
+      case 3:
+        value.textContent = reservationInfo.birth;
+        break;
+      case 4:
+        value.textContent = reservationInfo.phone;
+        break;
+      case 5:
+        value.textContent = reservationInfo.email;
+        break;
+      case 6:
+        value.textContent = reservationInfo.planet.price;
+        break;
+    }
+  });
+
+  ticketSection.classList.add("ticket-show");
+  submitFormBtn.textContent = "DONE";
+}
+
+function goMainPage() {
+  window.location.href = "../pages/start.html";
+}
+
+//4. handle
 const inputs = bookForm.querySelectorAll(".input");
+const certificationBtns = bookForm.querySelectorAll(".certification-btn");
 const checkboxes = bookForm.querySelectorAll(".checkbox-hidden");
 const submitFormBtn = bookForm.querySelector(".submit-btn");
+const exitBtn = document.querySelector(".exit");
+let submitTimer;
 
 function handleFormInput(event) {
+  checkFormValidation(event);
+  submitBtnStyleToggle();
+}
+
+function handleCertificationBtnCilick(event) {
+  checkCertication(event);
   checkFormValidation(event);
   submitBtnStyleToggle();
 }
@@ -282,13 +425,30 @@ function handleCheckboxClick(event) {
   submitBtnStyleToggle();
 }
 
-function handleSubmitBtnClick(event) {
-  checkFormValidation(event);
-  submitBtnStyleToggle();
+function handleSubmitBtnClick() {
+  saveReservationInfo();
+
+  clearTimeout(submitTimer);
+
+  if (isFormValid) {
+    submitFormBtn.textContent = "Waiting...";
+
+    setTimeout(() => {
+      showTicket();
+    }, 1000);
+  }
+}
+
+function handleExitBtnClick() {
+  goMainPage();
 }
 
 inputs.forEach((input) => {
   input.addEventListener("input", handleFormInput);
+});
+
+certificationBtns.forEach((certificationBtn) => {
+  certificationBtn.addEventListener("click", handleCertificationBtnCilick);
 });
 
 checkboxes.forEach((checkbox) => {
@@ -296,3 +456,5 @@ checkboxes.forEach((checkbox) => {
 });
 
 submitFormBtn.addEventListener("click", handleSubmitBtnClick);
+
+exitBtn.addEventListener("click", handleExitBtnClick);
