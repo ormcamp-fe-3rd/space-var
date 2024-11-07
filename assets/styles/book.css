@@ -89,10 +89,6 @@ body {
   background-color: black;
   border: none;
 }
-
-.carousel button:hover {
-  cursor: pointer;
-}
 .animation {
   align-content: center;
   overflow: hidden;
@@ -107,6 +103,9 @@ body {
 }
 .carouel-animation button:nth-child(7) {
   padding: 0px 40px 0px 0px;
+}
+.carouel-animation button:hover{
+  cursor: pointer;
 }
 
 @keyframes sizeup {
