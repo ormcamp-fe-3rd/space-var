@@ -1,0 +1,103 @@
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+* {
+    box-sizing: inherit;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/space15.png');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* 페이지 로드 시 투명도 0 */
+    transition: opacity 1s ease; /* 투명도 변경 애니메이션 */
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 20px;
+    padding: 15px 30px; /* 버튼 크기 조정 */
+    border: 0 none;
+    background: none;
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+    font-family: 'futura-pt';
+    font-size: 16px; /* 글자 크기 조정 */
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    z-index: 1;
+    overflow: hidden; /* 버튼 내부 내용이 넘치지 않도록 설정 */
+    opacity: 0; /* 버튼 초기 상태 투명 */
+    transition: opacity 1s ease 0.5s; /* 버튼 애니메이션 지연 추가 */
+}
+
+button.visible {
+    opacity: 1; /* visible 클래스가 추가되면 버튼이 나타남 */
+}
+
+svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* 버튼 텍스트보다 뒤에 배치 */
+}
+
+.background {
+    transition: fill 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.light {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    transition: stroke-dashoffset 1.5s ease-in-out; /* 애니메이션 속도 조정 (1.5초) */
+}
+
+.blue .background {
+    fill: rgba(0, 32, 64, 0.4);
+}
+
+.blue:hover .background {
+    fill: rgba(0, 32, 64, 1);
+}
+
+.pink .background {
+    fill: rgba(46, 6, 35, 0.4);
+}
+
+.pink:hover .background {
+    fill: rgba(46, 6, 35, 1);
+}
+
+.logo {
+    position: absolute; /* 절대 위치 설정 */
+    top: 20px; /* 상단에서 20px 떨어진 위치 */
+    left: 20px; /* 좌측에서 20px 떨어진 위치 */
+}
+
+
+
+
+
+
+  
+  
+
+  
