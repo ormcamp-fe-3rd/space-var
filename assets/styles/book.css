@@ -89,6 +89,10 @@ body {
   background-color: black;
   border: none;
 }
+
+.carousel button:hover {
+  cursor: pointer;
+}
 .animation {
   align-content: center;
   overflow: hidden;

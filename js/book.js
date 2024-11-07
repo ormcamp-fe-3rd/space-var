@@ -42,7 +42,7 @@ const planetArray = [
     image: `/assets/images/book/planet/surface/Uranus.svg`,
   },
   {
-    name: "Uranus",
+    name: "Neptune",
     price: "700",
     image: `/assets/images/book/planet/surface/Neptune.svg`,
   },
