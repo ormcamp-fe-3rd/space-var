@@ -21,16 +21,7 @@ dist-ssr
 *.ntvs*
 *.njsproj
 *.sln
-<<<<<<< HEAD
-*.sw?
-=======
+
 *.sw?
 
-# ignore 폴더
-0_ignore/
-img/
 
-# 원본 폴더
-0_original/
-
->>>>>>> 67fcb336faa9f6658a74143a27f512c5fd844b47

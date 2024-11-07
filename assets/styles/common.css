@@ -25,8 +25,33 @@
 }
 
 @font-face {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 3d76b49e52bff2841f2e3ea79ff123137cd1967e
+  font-family: "Pretendard Medium";
+  src: url(../fonts/Pretendard-Medium.otf) format("otf");
+}
+
+@font-face {
+  font-family: "Pretendard SemiBold";
+  src: url(../fonts/Pretendard-SemiBold.otf) format("otf");
+}
+
+@font-face {
+  font-family: "Zen Dots";
+  src: url("../fonts/ZenDots-Regular.ttf") format("ttf");
+  font-weight: 400;
+  font-style: normal;
+<<<<<<< HEAD
+=======
+>>>>>>> ba9d69b5063f2c61f041e0942fec984349b7cff1
+=======
   font-family: "Zen Dots";
   src: url(../fonts/ZenDots-Regular.ttf) format("ttf");
+>>>>>>> 84a5373c12a8bc0ec0cca85771c0cf1a15211e65
+>>>>>>> 3d76b49e52bff2841f2e3ea79ff123137cd1967e
 }
 
 * {
