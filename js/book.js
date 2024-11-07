@@ -52,6 +52,10 @@ const planet_Imfr = [
     image: `/assets/images/book/planet/planet_Surface/Neptune.svg`,
   },
 ];
+
+// 나중에 쓰게 추가 좀 할게요...
+let reservationInfo = {};
+
 prevButton.addEventListener("click", () => {
   if (carouselIndex === 0) return;
   carouselIndex -= 1;
@@ -74,9 +78,6 @@ nextButton.addEventListener("click", () => {
   }
 });
 
-// 나중에 쓰게 추가 좀 할게요...
-let selectedPlanet;
-
 carousel_Button.forEach((selected_Button, index) => {
   selected_Button.addEventListener("click", () => {
     const selected_Img = selected_Button.querySelector("img");
@@ -87,7 +88,7 @@ carousel_Button.forEach((selected_Button, index) => {
     total_Price.textContent = `Total $ ${planet_Imfr[index].price * 2}`;
 
     // 추가
-    selectedPlanet = {
+    reservationInfo.planet = {
       name: planet_Imfr[index].name,
       price: planet_Imfr[index].price * 2,
     };
@@ -342,21 +343,18 @@ function saveReservationInfo() {
   inputs.forEach((input, i) => {
     switch (i) {
       case 0:
-        window.localStorage.setItem("name", input.value);
+        reservationInfo.name = input.value;
         break;
       case 1:
-        window.localStorage.setItem("birth", input.value);
+        reservationInfo.birth = input.value;
         break;
       case 2:
-        window.localStorage.setItem("phone", input.value);
+        reservationInfo.phone = input.value;
         break;
       case 3:
-        window.localStorage.setItem("email", input.value);
+        reservationInfo.email = input.value;
         break;
     }
-
-    window.localStorage.setItem("planet", selectedPlanet.name);
-    window.localStorage.setItem("price", selectedPlanet.price);
   });
 }
 
@@ -367,25 +365,25 @@ function showTicket() {
   ticketValues.forEach((value, i) => {
     switch (i) {
       case 0:
-        value.textContent = window.localStorage.getItem("planet");
+        value.textContent = reservationInfo.planet.name;
         break;
       case 1:
-        value.textContent = window.localStorage.getItem("seat");
+        value.textContent = reservationInfo.seat;
         break;
       case 2:
-        value.textContent = window.localStorage.getItem("name");
+        value.textContent = reservationInfo.name;
         break;
       case 3:
-        value.textContent = window.localStorage.getItem("birth");
+        value.textContent = reservationInfo.birth;
         break;
       case 4:
-        value.textContent = window.localStorage.getItem("phone");
+        value.textContent = reservationInfo.phone;
         break;
       case 5:
-        value.textContent = window.localStorage.getItem("email");
+        value.textContent = reservationInfo.email;
         break;
       case 6:
-        value.textContent = window.localStorage.getItem("price");
+        value.textContent = reservationInfo.planet.price;
         break;
     }
   });
