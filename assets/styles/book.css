@@ -29,7 +29,7 @@ body {
   z-index: 1; /*absolute 적용 */
 }
 .side {
-  width: 372px; /*absolute 적용 후 넓어져서 바꿈*/
+  min-width: 20%; /*absolute 적용 후 넓어져서 바꿈*/
   padding: 0 40px;
   background-image: url(../images/book/side-temp.jpg);
   background-size: cover;
@@ -55,7 +55,7 @@ body {
 }
 
 .content {
-  max-width: 90%;
+  max-width: 75%;
   padding: 50px 35px 0px 65px;
   margin: 0 0 50px 0;
 }
