@@ -14,7 +14,7 @@ for (let i = 0; i < seatsBtn.length; i++) {
 
     console.log(totalPage.scrollHeight);
 
-    selectTxt.innerHTML = "좌석 선택 : <span>" + seatsBtn[i].innerText + "</span>";
+    selectTxt.innerHTML = "Selected seat : <span>" + seatsBtn[i].innerText + "</span>";
 
     for (let j = 0; j < seatsBtn.length; j++) {
       seatsBtn[j].classList.remove("on");
@@ -24,13 +24,13 @@ for (let i = 0; i < seatsBtn.length; i++) {
 
   resetBtn.addEventListener("click", function (e) {
     seatsBtn[i].classList.remove("on");
-    selectTxt.innerText = "좌석을 선택해 주세요.";
+    selectTxt.innerText = "Please select a seat.";
   });
 }
 
 primaryBtn.addEventListener("click", function (e) {
   if (!Array.from(seatsBtn).some((btn) => btn.classList.contains("on"))) {
     e.preventDefault();
-    alert("좌석을 선택해주세요");
+    alert("Please select a seat.");
   }
 });
