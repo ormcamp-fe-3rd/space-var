@@ -33,17 +33,21 @@ body {
   width: 572px;
   padding: 0 40px;
   background-image: url(../images/book/side-temp.jpg);
+  background-size: cover;
+  z-index: 0;
 }
 .side h1 {
   width: 358px;
   height: 214px;
+  z-index: 0;
+  
 }
 .side img {
   margin: 20px 0 0 0;
 }
 .side-bar {
   position: fixed;
-  z-index: 6;
+  z-index: 0;
 }
 
 .content {
@@ -64,6 +68,7 @@ body {
   background-color: black;
   height: 160px;
   margin: 0px 0px 35px 0px;
+  z-index: 6;
 }
 .carouel-prevbtn {
   margin: 0px 0px 0px 40px;
