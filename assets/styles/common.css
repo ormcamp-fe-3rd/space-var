@@ -25,11 +25,8 @@
 }
 
 @font-face {
-  
   font-family: "Zen Dots";
-  src: url("../fonts/ZenDots-Regular.ttf") format("ttf");
-  font-weight: 400;
-  font-style: normal;
+  src: url(../fonts/ZenDots-Regular.ttf) format("ttf");
 }
 
 * {
@@ -42,6 +39,7 @@
   position: relative;
   margin: 0 auto;
   width: 1400px;
+  height: inherit;
 }
 
 @media all and (max-width: 1440px) {
