@@ -52,11 +52,7 @@ header {
 
 /* 왼쪽 버튼 (CONTACT) */
 .header-button-left {
-  background: linear-gradient(
-    to right,
-    #2180e1,
-    #5060f1
-  ); /* 왼쪽에서 오른쪽으로 그라디언트 */
+  background: linear-gradient(to right, #2180e1, #5060f1); /* 왼쪽에서 오른쪽으로 그라디언트 */
   color: #ffffff; /* 텍스트 색상 흰색 */
   padding: 10px 20px;
   text-decoration: none;
@@ -66,20 +62,12 @@ header {
 }
 
 .header-button-left:hover {
-  background: linear-gradient(
-    to right,
-    #2180e1,
-    #2180e1
-  ); /* 호버 시 그라디언트 색상 변경 */
+  background: linear-gradient(to right, #2180e1, #2180e1); /* 호버 시 그라디언트 색상 변경 */
 }
 
 /* 오른쪽 버튼 (BOOK NOW) */
 .header-button-right {
-  background: linear-gradient(
-    to right,
-    #925cee,
-    #6b4bd6
-  ); /* 다른 그라디언트 색상 설정 */
+  background: linear-gradient(to right, #925cee, #6b4bd6); /* 다른 그라디언트 색상 설정 */
   color: #ffffff;
   padding: 10px 20px;
   text-decoration: none;
@@ -89,18 +77,13 @@ header {
 }
 
 .header-button-right:hover {
-  background: linear-gradient(
-    to right,
-    #925cee,
-    #925cee
-  ); /* 오른쪽 버튼 호버 시 다른 색상 */
+  background: linear-gradient(to right, #925cee, #925cee); /* 오른쪽 버튼 호버 시 다른 색상 */
 }
 
 /* 소개섹션 */
 
 .introduction {
   margin: 200px 0 0 400px;
-
 }
 .intro-title {
   width: 100%;
@@ -120,26 +103,28 @@ header {
 
 /* 전체 섹션의 스타일 */
 .target {
-    width: 1440px;
-    height: 100vh; /* 화면 전체 높이 */
-    margin: 50px;
-  }
-  
+  width: 1440px;
+  height: 740px; /* 화면 전체 높이 */
+  margin: 50px auto 0;
+}
+
 /* 타이틀의 스타일 */
 .tar-title {
   text-align: center;
   margin: 100px 0 0 0; /* 타이틀 위쪽 여백 */
   font-size: 32px;
-  font-family: 'Pretendard'; /* 폰트 설정 */
+  font-family: "Pretendard"; /* 폰트 설정 */
   font-weight: 700; /* 폰트 두께 설정 */
 }
-  
+
 /* 타겟 컨테이너의 스타일 */
 .tar-container {
   position: absolute;
+  left: 50%;
   width: 300px;
   height: 300px;
-  margin: 150px 650px 0 575px; /* 화면 중앙에 배치 */
+  margin: 200px 0; /* 화면 중앙에 배치 */
+  transform: translateX(-50%);
 }
 
 /* 타겟 컨테이너의 애니메이션 */
@@ -224,7 +209,8 @@ header {
   }
 }
 
-.sun, .trajectory {
+.sun,
+.trajectory {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -331,7 +317,7 @@ header {
 
 /* 타겟 플래닛 이름*/
 .planet-name {
-  margin: 150px 0 0 220px ;
+  margin: 150px 0 0 220px;
   line-height: 1.7;
   color: white;
   font-family: "Zen Dots";
@@ -362,7 +348,7 @@ header {
 .planet-name9 {
   margin-left: 90px;
 }
-  
+
 /* 크루 */
 h2 {
   margin: 50px;
