@@ -45,8 +45,10 @@ body {
   z-index: 0;
   
 }
-.side img {
+.side-bar img {
   margin: 20px 0 0 0;
+  width: 135px;
+  height: 111px;
 }
 .side-bar {
   position: fixed;
