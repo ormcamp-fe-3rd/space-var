@@ -53,7 +53,6 @@ const planetImfr = [
   },
 ];
 
-// 나중에 쓰게 추가 좀 할게요...
 let reservationInfo = {};
 
 prevButton.addEventListener("click", () => {
@@ -90,7 +89,6 @@ carousel_Button.forEach((selected_Button, index) => {
     sideImg.style.backgroundImage = `url("${localhostUrl}${planetImfr[index].image}")`;
     totalPrice.textContent = `Total $ ${planetImfr[index].price * 2}`;
 
-    // 추가
     reservationInfo.planet = {
       name: planetImfr[index].name,
       price: planetImfr[index].price * 2,
