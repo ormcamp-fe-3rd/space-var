@@ -14,7 +14,8 @@ for (let i = 0; i < seatsBtn.length; i++) {
 
     console.log(totalPage.scrollHeight);
 
-    selectTxt.innerHTML = "Selected seat : <span>" + seatsBtn[i].innerText + "</span>";
+    selectTxt.innerHTML =
+      "Selected seat : <span>" + seatsBtn[i].innerText + "</span>";
 
     for (let j = 0; j < seatsBtn.length; j++) {
       seatsBtn[j].classList.remove("on");

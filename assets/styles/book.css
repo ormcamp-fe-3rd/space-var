@@ -50,10 +50,14 @@ body {
   z-index: 0;
 }
 
+.content-wrapper {
+  height: 100%;
+}
+
 .content {
-  margin: 0px 35px 0px 65px;
-  width: 1248px;
-  padding: 40px 30px;
+  max-width: 90%;
+  padding: 50px 35px 0px 65px;
+  margin: 0 0 50px 0;
 }
 .price {
   display: flex;
@@ -99,7 +103,7 @@ body {
 .carouel-animation button:nth-child(7) {
   padding: 0px 40px 0px 0px;
 }
-.carouel-animation button:hover{
+.carouel-animation button:hover {
   cursor: pointer;
 }
 
@@ -222,7 +226,6 @@ body {
 }
 
 .book-form .check .checkbox {
-  position: relative;
   position: relative;
   padding-left: 35px;
   padding-top: 4px;
@@ -441,4 +444,27 @@ body {
   left: -20px;
   opacity: 0.5;
   transform: rotate(-30deg);
+}
+
+/* 푸터 스타일 */
+.footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #494949;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 30px;
+}
+
+.footer-txt {
+  width: 100%;
+}
+
+.footer-logo {
+  width: 135px;
+  height: 111px;
+  margin: 0 20px 0 0;
 }
