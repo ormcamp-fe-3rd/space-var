@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Space_Var</title>
+    <meta name="description" content="Take your opportunity, we will join you"/>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="laser.css"/>
+    <script defer src="laser.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <h1 class="logo">
+                <a href=""><img src="../img/small_logo.png"></a>
+            </h1>
+
+    <svg style="width: 0; height: 0; overflow: hidden;">
+        <defs>
+          <linearGradient id="border-blue" x1="0" y1="0" x2="0" y2="1" spreadMethod="pad">
+            <stop offset="0%" stop-color="#47aeea"/>
+            <stop offset="100%" stop-color="#20588a"/>
+          </linearGradient>
+          <linearGradient id="border-pink" x1="0" y1="0" x2="0" y2="1" spreadMethod="pad">
+            <stop offset="0%" stop-color="#e86fff"/>
+            <stop offset="100%" stop-color="#eea2fd"/>
+          </linearGradient>
+          <filter id="glow-blue" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+            <feMerge>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+          <filter id="glow-pink" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+            <feMerge>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+    </svg>
+    
+    <div class="center">
+        <button class="blue">
+            <svg>
+                <rect class="background" width="100%" height="100%" rx="10" ry="10" />
+                <g filter="url(#glow-blue)">
+                    <rect class="border" width="100%" height="100%" rx="10" ry="10" fill="transparent" stroke="url(#border-blue)" stroke-width="1" />
+                    <rect class="light" width="100%" height="100%" fill="transparent" stroke="url(#border-blue)" stroke-width="2" />
+                </g>
+            </svg>
+            contact
+        </button>
+
+        <button class="pink">
+            <svg>
+                <rect class="background" width="100%" height="100%" rx="10" ry="10" />
+                <g filter="url(#glow-pink)">
+                    <rect class="border" width="100%" height="100%" rx="10" ry="10" fill="transparent" stroke="url(#border-pink)" stroke-width="1" />
+                    <rect class="light" width="100%" height="100%" fill="transparent" stroke="url(#border-pink)" stroke-width="2" />
+                </g>
+            </svg>
+            book now
+        </button>
+    </div>
+</body>
+</html>
+
+
