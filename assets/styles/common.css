@@ -1,9 +1,35 @@
+/* Pretendard */
 @font-face {
   font-family: "Pretendard";
-  src: url(../fonts/Pretendard-Black.otf) format("otf");
+  src: url("../fonts/Pretendard-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Pretendard";
+  src: url("../fonts/Pretendard-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Pretendard";
+  src: url("../fonts/Pretendard-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Pretendard";
+  src: url("../fonts/Pretendard-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
 }
 
 @font-face {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 3d76b49e52bff2841f2e3ea79ff123137cd1967e
   font-family: "Pretendard Medium";
   src: url(../fonts/Pretendard-Medium.otf) format("otf");
 }
@@ -14,10 +40,36 @@
 }
 
 @font-face {
-  font-family: "ZenDots";
+  font-family: "Zen Dots";
+  src: url("../fonts/ZenDots-Regular.ttf") format("ttf");
+  font-weight: 400;
+  font-style: normal;
+<<<<<<< HEAD
+=======
+>>>>>>> ba9d69b5063f2c61f041e0942fec984349b7cff1
+=======
+  font-family: "Zen Dots";
   src: url(../fonts/ZenDots-Regular.ttf) format("ttf");
+>>>>>>> 84a5373c12a8bc0ec0cca85771c0cf1a15211e65
+>>>>>>> 3d76b49e52bff2841f2e3ea79ff123137cd1967e
 }
 
 * {
   box-sizing: border-box;
+  font-family: "Pretendard";
+  font-weight: 400;
+}
+
+.inner {
+  position: relative;
+  margin: 0 auto;
+  width: 1400px;
+  height: inherit;
+}
+
+@media all and (max-width: 1440px) {
+  .inner {
+    padding: 0 15px;
+    width: 100%;
+  }
 }

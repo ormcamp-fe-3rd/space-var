@@ -1,2 +1,307 @@
 @import "./reset.css";
 @import "./common.css";
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+@import url('https://fonts.cdnfonts.com/css/zen-dots');
+
+/* book-planet */
+h1 {
+  font-family: 'Zen Dots', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: white;
+}
+h2,
+h3,
+h4 {
+  font-family: Pretendard;
+}
+h2 {
+  font-size: 32px;
+  font-weight: 700;
+}
+h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+body {
+  width: 100%;
+}
+.book-planet {
+  display: flex;
+}
+.side {
+  width: 572px;
+  padding: 0 40px;
+  background-image: url(../images/book/side-temp.jpg);
+}
+.side h1 {
+  width: 358px;
+  height: 214px;
+}
+.side img {
+  margin: 20px 0 0 0;
+}
+.side-bar {
+  position: fixed;
+  z-index: 6;
+}
+
+.content {
+  margin: 0px 35px 0px 65px;
+  width: 1248px;
+  padding: 40px 30px;
+}
+.price {
+  display: flex;
+  justify-content: space-between;
+}
+.book-price h3 {
+  height: 58px;
+  margin: 11px 0px 0px 0px;
+}
+.carousel {
+  display: flex;
+  background-color: black;
+  height: 160px;
+  margin: 0px 0px 35px 0px;
+}
+.carouel-prevbtn {
+  margin: 0px 0px 0px 40px;
+}
+.carouel-nextbtn {
+  margin: 0px 40px 0px 0px;
+}
+.saturn-img {
+  min-width: 198px;
+}
+
+.carousel button {
+  background-color: black;
+  border: none;
+}
+.animation {
+  align-content: center;
+  overflow: hidden;
+}
+.carouel-animation {
+  display: flex;
+  margin: 0px 20px 0px 20px;
+  transition: transform 0.8s;
+}
+.carouel-animation button {
+  padding: 0px 50px 0px 0px;
+}
+.carouel-animation button:nth-child(7) {
+  padding: 0px 40px 0px 0px;
+}
+
+@keyframes sizeup {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.2);
+  }
+}
+.sizeup-animation {
+  animation: sizeup 0.3s forwards;
+}
+
+/* book-form */
+.book-form {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.book-form .border {
+  border: 1px solid #bcbcbc;
+  border-radius: 5px;
+}
+
+.book-form .info-container label {
+  display: inline;
+  text-wrap: nowrap;
+  margin: 0 10px 0 0;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.book-form .input {
+  border: none;
+  outline: none;
+  font-size: 20px;
+}
+
+.book-form .policy {
+  width: 100%;
+  max-height: 301px;
+  display: flex;
+  font-size: 20px;
+  padding: 13px;
+  margin: 10px 0;
+  overflow-y: scroll;
+}
+
+.customer {
+  width: 100%;
+}
+
+.customer .title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 50px 50px 10px 0;
+}
+
+.customer .info1 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.customer .info-container {
+  min-width: 48%;
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 13px 12px;
+  margin: 0 0 40px 0;
+}
+
+.customer .info-container input {
+  width: 100%;
+}
+
+.customer .certification-btn {
+  min-width: 140px;
+  height: 32px;
+  background-color: #5b5b5b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin: 0 0 0 20px;
+}
+
+.customer .certification-btn:hover {
+  cursor: pointer;
+}
+
+.book-form .check {
+  margin: 0 0 40px 0;
+}
+
+.book-form .check input[type="checkbox"] {
+  display: none;
+}
+
+.book-form .check .checkbox {
+  position: relative;
+  position: relative;
+  padding-left: 35px;
+  padding-top: 4px;
+  cursor: pointer;
+}
+
+.book-form .check .checkbox::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 5px;
+  background-color: #232323;
+}
+
+.book-form .check input[type="checkbox"]:checked + .checkbox::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(40deg);
+}
+
+.payment {
+  width: 100%;
+}
+
+.payment .title-container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin: 0 0 10px 0;
+}
+
+.payment .title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 50px 0 0;
+}
+.payment .info2 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.payment .info-container {
+  min-width: 48%;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 13px 12px;
+  margin: 0 0 20px 0;
+}
+
+.payment .info-container input {
+  width: 100%;
+}
+
+.book-form .submit-btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.book-form .submit-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 302px;
+  height: 62px;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border: none;
+  box-shadow: 0 4px 4px #6b6b6b;
+}
+
+.book-form .activated {
+  background: -moz-linear-gradient(
+    90deg,
+    rgba(33, 128, 225, 1) 0%,
+    rgba(80, 96, 241, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    90deg,
+    rgba(33, 128, 225, 1) 0%,
+    rgba(80, 96, 241, 1) 100%
+  );
+  background: linear-gradient(
+    90deg,
+    rgba(33, 128, 225, 1) 0%,
+    rgba(80, 96, 241, 1) 100%
+  );
+  cursor: pointer;
+}
+
+.book-form .disabled {
+  background-color: #9c9c9c;
+  cursor: not-allowed;
+}

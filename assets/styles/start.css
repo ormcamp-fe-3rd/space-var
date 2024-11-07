@@ -1,108 +1,140 @@
+/* Google Fonts에서 Raleway 글꼴을 가져옵니다. */
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+
+/* CSS 변수 선언 - 빛나는 효과에 사용되는 색상 */
+:root {
+  --glow-color: hsl(186 100% 69%); /* 광채 색상 정의 */
+}
+
+/* 모든 요소와 그 자식 및 가상 요소의 box-sizing을 border-box로 설정 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* padding과 border가 요소의 크기에 영향을 미치지 않도록 설정 */
+}
+
+/* 리셋 스타일시트와 공통 스타일시트를 가져옵니다. */
 @import "./reset.css";
 @import "./common.css";
+
+/* body 스타일 설정 */
 body {
-  margin: 0;
-  overflow-y: hidden;
-  height: 100vh;
-  color: white;
-  font-family: Arial, sans-serif;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  margin: 0; /* 기본 margin 제거 */
+  overflow-y: hidden; /* 세로 스크롤 숨김 */
+  height: 100vh; /* 화면의 100% 높이 */
+  color: white; /* 글자 색상 흰색 */
+  font-family: Arial, sans-serif; /* 기본 폰트 설정 */
+  scrollbar-width: none; /* 스크롤바 숨김 (Firefox) */
+  -ms-overflow-style: none; /* 스크롤바 숨김 (Internet Explorer) */
 }
 
+/* 웹킷 브라우저에서 스크롤바 숨김 */
 body::-webkit-scrollbar {
-  display: none;
+  display: none; /* 웹킷 기반 브라우저에서 스크롤바 숨김 */
 }
 
+/* 비디오 컨테이너 스타일 - 화면 높이의 3배로 설정 */
 .video-container {
   position: relative;
   width: 100%;
-  height: 300vh;
+  height: 300vh; /* 세로로 길이를 3배로 설정 */
 }
 
+/* 비디오 스타일 - 화면에 꽉 차게 설정 */
 .video {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
+  height: 100vh; /* 비디오가 화면을 가득 채우도록 설정 */
+  object-fit: cover; /* 비디오가 비율을 유지하면서 화면을 채우게 설정 */
+  opacity: 0; /* 초기 상태에서 비디오 보이지 않음 */
+  transition: opacity 1s ease-in-out; /* 부드럽게 나타나도록 애니메이션 설정 */
 }
 
+/* 활성화된 비디오의 opacity를 1로 변경 */
 .video.active {
   opacity: 1;
 }
 
+/* 화면 우측 상단에 표시되는 비디오 인디케이터 스타일 */
 .indicator {
   position: fixed;
   top: 20px;
   right: 20px;
-  background: rgba(0, 0, 0, 0.5);
   padding: 10px;
-  border-radius: 5px;
-  font-size: 24px;
+  font-size: 10px; /* 인디케이터 폰트 크기 설정 */
 }
 
+/* 스크롤 진행 상태를 나타내는 진행 표시 스타일 */
 .scroll-progress {
   position: fixed;
   top: 50%;
   right: 20px;
-  width: 30px;
-  height: 200px;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 5px;
-  transform: translateY(-50%);
+  width: 15px;
+  height: 700px; /* 스크롤 바 길이 */
+  background: rgba(0, 0, 0, 0.2); /* 반투명한 배경 */
+  border-radius: 50px; /* 둥근 형태로 만들기 */
+  transform: translateY(-50%); /* 스크롤 바가 화면 중앙에 오도록 설정 */
   z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 
+/* 스크롤 진행 상태를 나타내는 필 스타일 */
 .scroll-fill {
+  border-radius: 50px;
   width: 100%;
-  height: 0%;
-  background: rgb(42, 62, 126);
-  transition: height 1s ease;
+  height: 100%; /* 처음에는 100% 높이로 시작 */
+  background: transparent; /* 투명한 배경 */
+  border: 4px solid rgba(255, 255, 255, 0.5); /* 흰색 테두리 */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* 부드러운 빛 효과 */
+  transition: height 1s ease; /* 높이가 부드럽게 변화하도록 설정 */
 }
 
+/* 비디오 텍스트 스타일 */
 .video-text {
-  font-family: "Zen Dots", sans-serif;
-  font-weight: 400;
+  font-family: "Zen Dots", sans-serif; /* Zen Dots 폰트 사용 */
+  font-weight: 400; /* 기본 글자 두께 */
   position: absolute;
-  font-size: 20px; /* 폰트 크기 조정 */
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  font-size: 20px; /* 기본 폰트 크기 */
+  color: white; /* 텍스트 색상 흰색 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* 텍스트 그림자 효과 */
   z-index: 10;
-  opacity: 0;
-  transform: translateX(-100%);
-  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  opacity: 0; /* 초기 상태에서 텍스트 보이지 않음 */
+  transform: translateX(-100%); /* 텍스트가 화면 밖에 있도록 설정 */
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out; /* 부드럽게 나타나도록 설정 */
 }
 
+/* 활성화된 텍스트에 대한 스타일 */
 .video-text.active {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateX(0); /* 텍스트가 화면에 나타나도록 설정 */
 }
 
 /* 개별 텍스트 위치 설정 */
 #text1 {
   top: 5%;
   left: 5%;
+  font-size: 40px;
 }
-
 #text2 {
   top: 15%;
   left: 5%;
+  font-size: 40px;
 }
-
 #text3 {
   top: 25%;
   left: 5%;
+  font-size: 40px;
 }
 
+/* 화면이 600px 이상일 때 텍스트 위치 및 폰트 크기 변경 */
 @media (min-width: 600px) {
   .video-text {
-    font-size: 30px; /* 웹에서의 폰트 크기 */
+    font-size: 30px;
   }
-
   #text1 {
     left: 10%;
   }
@@ -110,6 +142,283 @@ body::-webkit-scrollbar {
     left: 30%;
   }
   #text3 {
-    left: 50%;
+    left: 40%;
   }
+}
+
+/* 푸터 스타일 */
+.footer {
+  height: 10%;
+  background-color: rgba(49, 49, 49, 0.8); /* 반투명 배경 */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  opacity: 0; /* 기본적으로 숨김 */
+  transition: opacity 2s ease-in-out; /* 부드럽게 나타나는 애니메이션 */
+  pointer-events: none; /* 마우스 이벤트를 차단 */
+  font-size: 10px;
+  font-family: "Zen Dots", sans-serif; /* 폰트 설정 */
+  font-weight: 400;
+}
+
+/* 활성화된 푸터의 스타일 */
+.footer.active {
+  opacity: 1;
+  pointer-events: auto; /* 푸터 활성화 시 클릭 가능하게 설정 */
+}
+
+/* 푸터의 텍스트 스타일 */
+.footer-txt {
+  line-height: 5px;
+  margin: 0 50% 0 0; /* 텍스트 중앙 정렬 */
+}
+
+/* 우측 상단 버튼 스타일 */
+.button-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  gap: 30px;
+  display: none; /* 기본적으로 숨김 */
+}
+
+/* 첫 번째 비디오에서만 버튼 표시 */
+.button-container.show {
+  display: flex;
+  margin: 28px 260px;
+}
+
+/* 버튼 내 링크 스타일 */
+.button-container a {
+  text-decoration: none; /* 링크의 밑줄 제거 */
+}
+
+/* 버튼의 glowing 효과 스타일 */
+.glowing-btn {
+  position: relative;
+  color: var(--glow-color); /* 변수로 지정된 빛나는 색상 사용 */
+  cursor: pointer;
+  padding: 0.35em 1em;
+  border: 0.15em solid var(--glow-color);
+  border-radius: 0.45em;
+  background: none;
+  perspective: 2em;
+  font-family: "Raleway", sans-serif;
+  font-size: 1em;
+  font-weight: 1000;
+  letter-spacing: 0.5em;
+  box-shadow: inset 0px 0px 0.5em 0px var(--glow-color),
+    0px 0px 0.5em 0px var(--glow-color);
+  animation: border-flicker 2s linear infinite; /* 버튼의 테두리 깜박이는 애니메이션 */
+}
+
+/* 버튼 내 텍스트의 glowing 효과 */
+.glowing-txt {
+  font-family: "Zen Dots", sans-serif;
+  float: left;
+  margin: 0 -0.8em 0 0;
+  text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color); /* 텍스트 그림자 효과 */
+  animation: text-flicker 3s linear infinite; /* 텍스트 깜박이는 애니메이션 */
+}
+
+/* 버튼의 'faulty' 효과 - 불규칙한 깜박임 */
+.faulty-letter {
+  opacity: 0.5;
+  animation: faulty-flicker 2s linear infinite; /* 불규칙한 깜박임 애니메이션 */
+}
+
+/* 버튼에 배경 효과 추가 */
+.glowing-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0.7;
+  filter: blur(3em); /* 흐림 효과 */
+  transform: translateY(120%) rotateX(95deg) scale(1, 0.35);
+  background: var(--glow-color); /* 배경에 빛나는 색상 */
+  pointer-events: none; /* 클릭 이벤트 차단 */
+}
+
+/* 버튼의 후광 효과 */
+.glowing-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0; /* 기본적으로 숨김 */
+  z-index: -1; /* 뒤에 배치 */
+  background-color: var(--glow-color); /* 후광 효과 */
+  box-shadow: 0 0 2em 0.2em var(--glow-color);
+  transition: opacity 100ms linear;
+}
+
+/* 버튼 호버 시 스타일 변화 */
+.glowing-btn:hover {
+  color: rgba(0, 0, 0, 0.8); /* 색상 변화 */
+  text-shadow: none; /* 텍스트 그림자 제거 */
+  animation: none; /* 애니메이션 멈춤 */
+}
+
+/* 호버 상태에서 텍스트와 불규칙한 효과 멈춤 */
+.glowing-btn:hover .glowing-txt {
+  animation: none;
+}
+
+.glowing-btn:hover .faulty-letter {
+  animation: none;
+  text-shadow: none;
+  opacity: 1;
+}
+
+/* 호버 상태에서 before 요소 변화 */
+.glowing-btn:hover:before {
+  filter: blur(1em);
+  opacity: 1;
+}
+
+/* 호버 상태에서 after 요소 변화 */
+.glowing-btn:hover:after {
+  opacity: 1;
+}
+
+/* 불규칙한 깜박임 애니메이션 */
+@keyframes faulty-flicker {
+  0% {
+    opacity: 0.1;
+  }
+  2% {
+    opacity: 0.1;
+  }
+  4% {
+    opacity: 0.5;
+  }
+  19% {
+    opacity: 0.5;
+  }
+  21% {
+    opacity: 0.1;
+  }
+  23% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.5;
+  }
+  83% {
+    opacity: 0.4;
+  }
+  87% {
+    opacity: 1;
+  }
+}
+
+/* 텍스트 깜박임 애니메이션 */
+@keyframes text-flicker {
+  0% {
+    opacity: 0.1;
+  }
+  2% {
+    opacity: 1;
+  }
+  8% {
+    opacity: 0.1;
+  }
+  9% {
+    opacity: 1;
+  }
+  12% {
+    opacity: 0.1;
+  }
+  20% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0.3;
+  }
+  30% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.7;
+  }
+  72% {
+    opacity: 0.2;
+  }
+  77% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0.9;
+  }
+}
+
+/* 테두리 깜박임 애니메이션 */
+@keyframes border-flicker {
+  0% {
+    opacity: 0.1;
+  }
+  2% {
+    opacity: 1;
+  }
+  4% {
+    opacity: 0.1;
+  }
+  8% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* 화면 크기가 600px 이하일 때 버튼 크기 조정 */
+@media only screen and (max-width: 600px) {
+  .glowing-btn {
+    font-size: 1em;
+  }
+}
+
+/* 좌측 상단 이미지 스타일 */
+.top-left-img {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 100px; /* 이미지 크기 */
+  height: auto;
+  z-index: 1000;
+  display: none; /* 기본적으로 숨김 */
+  margin: 15px 260px;
+}
+
+/* 첫 번째 비디오에서만 이미지 표시 */
+.top-left-img.show {
+  display: block;
+}
+
+/* 푸터에 있는 로고 스타일 */
+#footer-mainlogo {
+  height: auto;
+  width: 100px;
+  margin: 10px;
+}
+
+/* 푸터에 있는 Facebook 아이콘 스타일 */
+.footer-facebook,
+.footer-insta {
+  width: 20px; /* 가로 크기 */
+  height: auto; /* 세로 크기 자동 조정 */
 }
