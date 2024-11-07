@@ -64,8 +64,7 @@ prevButton.addEventListener("click", () => {
   if (carouselIndex === 0) {
     prevButton.style.opacity = `50%`;
     carousel.style.transform = `translateX(-${190 * carouselIndex}px)`;
-  }
-  else {
+  } else {
     carousel.style.transform = `translateX(-${150 * carouselIndex}px)`;
   }
 });
@@ -77,8 +76,7 @@ nextButton.addEventListener("click", () => {
   if (carouselIndex === hiddentCount) {
     carousel.style.transform = `translateX(-${190 * carouselIndex}px)`;
     nextButton.style.opacity = `50%`;
-  }
-  else {
+  } else {
     carousel.style.transform = `translateX(-${150 * carouselIndex}px)`;
   }
 });
@@ -94,8 +92,8 @@ carousel_Button.forEach((selected_Button, index) => {
 
     // 추가
     reservationInfo.planet = {
-      name: planet_Imfr[index].name,
-      price: planet_Imfr[index].price * 2,
+      name: planetImfr[index].name,
+      price: planetImfr[index].price * 2,
     };
 
     carousel_Button.forEach((other_Button, otherIndex) => {
