@@ -17,14 +17,91 @@ body {
 .bg {
   width: 100%;
   height: 100vh;
-  display: flex;
   justify-content: center;
   align-items: end;
-  background-image: url("../images/space12.jpg");
-  background-size: cover;
   box-shadow: 0 0 8px 8px black inset;
 }
 
+.bg::after {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.5;
+  content: "";
+  background-image: url(../images/space12.jpg);
+  background-size: cover;
+}
+
+/* header */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 8%;
+  padding: 20px;
+}
+
+.header-logo {
+  width: 100px;
+  height: auto;
+  margin: 0 8.5%;
+}
+
+/* 왼쪽 버튼 (CONTACT) */
+.header-button-left {
+  background: linear-gradient(
+    to right,
+    #2180e1,
+    #5060f1
+  ); /* 왼쪽에서 오른쪽으로 그라디언트 */
+  color: #ffffff; /* 텍스트 색상 흰색 */
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.header-button-left:hover {
+  background: linear-gradient(
+    to right,
+    #2180e1,
+    #2180e1
+  ); /* 호버 시 그라디언트 색상 변경 */
+}
+
+/* 오른쪽 버튼 (BOOK NOW) */
+.header-button-right {
+  background: linear-gradient(
+    to right,
+    #925cee,
+    #6b4bd6
+  ); /* 다른 그라디언트 색상 설정 */
+  color: #ffffff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.header-button-right:hover {
+  background: linear-gradient(
+    to right,
+    #925cee,
+    #925cee
+  ); /* 오른쪽 버튼 호버 시 다른 색상 */
+}
+
+/* 소개섹션 */
+
+.introduction {
+  margin: 200px 0 0 400px;
+
+}
 .intro-title {
   width: 100%;
   margin: 0 0 20px 0;
@@ -39,66 +116,256 @@ body {
   font-family: "Pretendard";
 }
 
-.venus {
-  width: 100px;
-  height: 100px;
-}
+/* Target Planet */
 
-.carousel {
-  width: 100%;
-  height: 100vh;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.car-title {
-  width: 100%;
+/* 전체 섹션의 스타일 */
+.target {
+    width: 1440px;
+    height: 100vh; /* 화면 전체 높이 */
+    margin: 50px;
+  }
+  
+/* 타이틀의 스타일 */
+.tar-title {
   text-align: center;
-  margin: 20px 0 0 0;
+  margin: 100px 0 0 0; /* 타이틀 위쪽 여백 */
   font-size: 32px;
-  font-family: "Pretendard";
+  font-family: 'Pretendard'; /* 폰트 설정 */
+  font-weight: 700; /* 폰트 두께 설정 */
+}
+  
+/* 타겟 컨테이너의 스타일 */
+.tar-container {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  margin: 150px 650px 0 575px; /* 화면 중앙에 배치 */
 }
 
-.car-container {
-  width: 70vw;
-  max-width: 218px;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  top: 30%;
+/* 타겟 컨테이너의 애니메이션 */
+@keyframes mercury-revolve {
+  from {
+    transform: translate(-50%, -50%);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(1turn);
+  }
+}
+
+@keyframes venus-revolve {
+  from {
+    transform: translate(-50%, -50%) rotate(159deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(519deg);
+  }
+}
+
+@keyframes earth-revolve {
+  from {
+    transform: translate(-50%, -50%) rotate(79deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(439deg);
+  }
+}
+
+@keyframes mars-revolve {
+  from {
+    transform: translate(-50%, -50%) rotate(33deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(393deg);
+  }
+}
+
+@keyframes saturn-revolve {
+  from {
+    transform: translate(-50%, -50%) rotate(33deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(393deg);
+  }
+}
+
+@keyframes jupiter-revolve {
+  from {
+    transform: translate(-50%, -50%) rotate(33deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(393deg);
+  }
+}
+
+@keyframes uranus-revolve {
+  from {
+    transform: translate(-50%, -50%) rotate(33deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(393deg);
+  }
+}
+
+@keyframes neptune-revolve {
+  from {
+    transform: translate(-50%, -50%) rotate(33deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(393deg);
+  }
+}
+
+@keyframes pluto-revolve {
+  from {
+    transform: translate(-50%, -50%) rotate(33deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(393deg);
+  }
+}
+
+.sun, .trajectory {
+  position: absolute;
   left: 50%;
-  position: relative;
-  perspective: 1000px;
-  transform: translate3d(-50%, -50%, 600px);
-  transform-style: preserve-3d;
+  top: 50%;
 }
 
-img {
-  max-width: 100%;
-  max-height: 100%;
-  cursor: pointer;
+.sun {
+  background-color: white;
+  opacity: 0.2;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
 }
 
-h3 {
-  font-family: "Zen Dots";
-  letter-spacing: 2px;
+.trajectory {
+  border-radius: 50%;
+  border: 1px dashed white;
 }
 
 .planet {
-  width: 100%;
-  margin: auto;
-  position: absolute;
-  cursor: pointer;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgb(222, 163, 16);
+  position: relative;
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, 0);
 }
 
-body {
-  color: #fff;
-  background: #040404;
+.planet-earth {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgb(131, 166, 225);
+  position: relative;
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, 0);
 }
 
+.mercury {
+  height: 150px;
+  width: 150px;
+  animation: mercury-revolve 10s linear;
+  animation-iteration-count: infinite;
+}
+
+.venus {
+  height: 200px;
+  width: 200px;
+  animation: venus-revolve 15s linear;
+  animation-iteration-count: infinite;
+}
+
+.earth {
+  height: 250px;
+  width: 250px;
+  animation: earth-revolve 20s linear;
+  animation-iteration-count: infinite;
+}
+
+.mars {
+  height: 300px;
+  width: 300px;
+  animation: mars-revolve 30s linear;
+  animation-iteration-count: infinite;
+}
+
+.jupiter {
+  height: 350px;
+  width: 350px;
+  animation: mars-revolve 50s linear;
+  animation-iteration-count: infinite;
+}
+
+.saturn {
+  height: 400px;
+  width: 400px;
+  animation: saturn-revolve 70s linear;
+  animation-iteration-count: infinite;
+}
+
+.uranus {
+  height: 450px;
+  width: 450px;
+  animation: jupiter-revolve 90s linear;
+  animation-iteration-count: infinite;
+}
+
+.neptune {
+  height: 500px;
+  width: 500px;
+  animation: uranus-revolve 100s linear;
+  animation-iteration-count: infinite;
+}
+
+.pluto {
+  height: 550px;
+  width: 550px;
+  animation: neptune-revolve 110s linear;
+  animation-iteration-count: infinite;
+}
+
+/* 타겟 플래닛 이름*/
+.planet-name {
+  margin: 150px 0 0 220px ;
+  line-height: 1.7;
+  color: white;
+  font-family: "Zen Dots";
+}
+
+.planet-name2 {
+  margin-left: 20px;
+}
+.planet-name3 {
+  color: rgb(131, 166, 225);
+  margin-left: 30px;
+}
+.planet-name4 {
+  margin-left: 40px;
+}
+.planet-name5 {
+  margin-left: 50px;
+}
+.planet-name6 {
+  margin-left: 60px;
+}
+.planet-name7 {
+  margin-left: 70px;
+}
+.planet-name8 {
+  margin-left: 80px;
+}
+.planet-name9 {
+  margin-left: 90px;
+}
+  
+/* 크루 */
 h2 {
+  margin: 50px;
   font-size: 32px;
   font-weight: 700;
   text-align: center;
@@ -177,4 +444,68 @@ h2 {
   background: linear-gradient(90deg, rgba(33, 128, 225, 1) 0%, rgba(80, 96, 241, 1) 100%);
   border-radius: 5px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* footer */
+#footer-mainlogo {
+  height: auto;
+  width: 100px;
+  margin: 10px;
+}
+
+.footer-facebook,
+.footer-insta {
+  width: 20px;
+  height: auto;
+}
+
+.footer {
+  background-color: rgba(49, 49, 49, 0.8);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+}
+
+.footer-txt {
+  font-size: 10px;
+  line-height: 1.5;
+  margin-right: 40%;
+}
+
+.footer-follow {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-follow p {
+  margin: 10px 0;
+  font-size: 10px;
+}
+
+.footer-snslogo {
+  display: flex;
+  gap: 5px;
+  position: relative;
+}
+
+/* 텍스트 깜빡이기 */
+.tit {
+  animation: blinkText 2s infinite;
+}
+
+@keyframes blinkText {
+  0% {
+    opacity: 2;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 2;
+  }
 }
