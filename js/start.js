@@ -98,3 +98,4 @@ function updateVideosAndTexts() {
 texts[currentVideo].classList.add("active");
 // 초기 상태에서 인디케이터 업데이트
 updateIndicator();
+
