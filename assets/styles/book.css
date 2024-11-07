@@ -1,20 +1,16 @@
 @import "./reset.css";
 @import "./common.css";
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-@import url('https://fonts.cdnfonts.com/css/zen-dots');
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+@import url("https://fonts.cdnfonts.com/css/zen-dots");
 
 /* book-planet */
 h1 {
-  font-family: 'Zen Dots', sans-serif;
+  font-family: "Zen Dots", sans-serif;
   font-size: 32px;
   font-weight: 700;
   color: white;
 }
-h2,
-h3,
-h4 {
-  font-family: Pretendard;
-}
+
 h2 {
   font-size: 32px;
   font-weight: 700;
@@ -25,25 +21,33 @@ h3 {
 }
 body {
   width: 100%;
+  overflow-x: hidden;
 }
 .book-planet {
   display: flex;
+  position: absolute; /*absolute 적용*/
+  z-index: 1; /*absolute 적용 */
 }
 .side {
-  width: 572px;
+  width: 372px; /*absolute 적용 후 넓어져서 바꿈*/
   padding: 0 40px;
   background-image: url(../images/book/side-temp.jpg);
+  background-size: cover;
+  z-index: 0;
 }
 .side h1 {
   width: 358px;
   height: 214px;
+  z-index: 0;
 }
-.side img {
+.side-bar img {
   margin: 20px 0 0 0;
+  width: 135px;
+  height: 111px;
 }
 .side-bar {
   position: fixed;
-  z-index: 6;
+  z-index: 0;
 }
 
 .content {
@@ -64,6 +68,7 @@ body {
   background-color: black;
   height: 160px;
   margin: 0px 0px 35px 0px;
+  z-index: 6;
 }
 .carouel-prevbtn {
   margin: 0px 0px 0px 40px;
@@ -94,6 +99,9 @@ body {
 .carouel-animation button:nth-child(7) {
   padding: 0px 40px 0px 0px;
 }
+.carouel-animation button:hover{
+  cursor: pointer;
+}
 
 @keyframes sizeup {
   from {
@@ -118,6 +126,11 @@ body {
 
 .book-form .border {
   border: 1px solid #bcbcbc;
+  border-radius: 5px;
+}
+
+.required {
+  border: 1px solid rgb(240, 82, 82);
   border-radius: 5px;
 }
 
@@ -177,8 +190,6 @@ body {
 .customer .certification-btn {
   min-width: 140px;
   height: 32px;
-  background-color: #5b5b5b;
-  color: white;
   border: none;
   border-radius: 5px;
   margin: 0 0 0 20px;
@@ -186,6 +197,20 @@ body {
 
 .customer .certification-btn:hover {
   cursor: pointer;
+}
+
+.customer .certification-btn.not-verified {
+  background-color: #5b5b5b;
+  color: white;
+}
+.customer .certification-btn.verified {
+  background-color: #43b96b;
+  color: white;
+}
+
+.customer .certification-btn.rejected {
+  background-color: #b94343;
+  color: white;
 }
 
 .book-form .check {
@@ -273,11 +298,11 @@ body {
   align-items: center;
   width: 302px;
   height: 62px;
+  font-size: 20px;
   font-weight: 600;
   color: #fff;
   text-decoration: none;
   border-radius: 5px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   border: none;
   box-shadow: 0 4px 4px #6b6b6b;
 }
@@ -304,4 +329,116 @@ body {
 .book-form .disabled {
   background-color: #9c9c9c;
   cursor: not-allowed;
+}
+
+/* ticket */
+.ticket-section {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  position: fixed;
+  z-index: 10;
+}
+
+.ticket-show {
+  display: flex;
+}
+
+.background {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(20, 20, 20);
+  opacity: 0.5;
+}
+
+.ticket-wrapper {
+  position: absolute;
+  z-index: 2;
+}
+
+.ticket {
+  width: 950px;
+  min-width: 500px;
+  display: flex;
+  /* background-color: rgb(59, 19, 19); */
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 10px 10px #000000;
+  margin: 100px;
+  position: relative;
+}
+
+.done {
+  position: absolute;
+  top: -50px;
+  left: 0;
+  color: white;
+  font-size: 48px;
+  z-index: 3;
+  font-family: "Zen Dots", sans-serif;
+}
+
+.exit {
+  position: absolute;
+  top: -20px;
+  right: 0;
+  color: white;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.ticket-content {
+  flex-grow: 1;
+  padding: 10px 20px;
+}
+
+.ticket .title {
+  font-size: 32px;
+  font-family: "Zen Dots", sans-serif;
+}
+
+.ticket .info {
+  margin: 5px 50px 0 0;
+}
+
+.ticket .key {
+  font-size: 18px;
+  font-family: "Zen Dots", sans-serif;
+}
+
+.ticket .qr {
+  flex-grow: 1;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.ticket .qr img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.ticket .cutting-line {
+  border-right: 2px dashed rgb(100, 97, 97);
+}
+
+.ticket-cut {
+  flex-grow: 1;
+  position: relative;
+  padding: 30px;
+  background-color: #000000;
+  overflow: hidden;
+  border-radius: 0 5px 5px 0;
+}
+
+.ticket .logo {
+  width: 400px;
+  position: absolute;
+  top: 100px;
+  left: -20px;
+  opacity: 0.5;
+  transform: rotate(-30deg);
 }
