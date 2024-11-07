@@ -1,5 +1,5 @@
 const carousel = document.querySelector(".carouel-animation");
-const carousel_Button = document.querySelectorAll(".carouel-animation button");
+const carouselButton = document.querySelectorAll(".carouel-animation button");
 const prevButton = document.querySelector(".carouel-prevbtn");
 const nextButton = document.querySelector(".carouel-nextbtn");
 let carouselIndex = 0;
@@ -10,46 +10,46 @@ const localhostUrl = window.location.origin;
 
 const planetPrice = document.querySelector(".planet-price");
 const totalPrice = document.querySelector(".total-price");
-const planetImfr = [
+const planetArray = [
   {
     name: "Mercurius",
     price: "100",
-    image: `/assets/images/book/planet/planet_Surface/Mercurius.svg`,
+    image: `/assets/images/book/planet/surface/Mercurius.svg`,
   },
   {
     name: "Venus",
     price: "200",
-    image: `/assets/images/book/planet/planet_Surface/Venus.svg`,
+    image: `/assets/images/book/planet/surface/Venus.svg`,
   },
   {
     name: "Mars",
     price: "300",
-    image: `/assets/images/book/planet/planet_Surface/Mars.svg`,
+    image: `/assets/images/book/planet/surface/Mars.svg`,
   },
   {
     name: "Jupiter",
     price: "400",
-    image: `/assets/images/book/planet/planet_Surface/Jupiter.svg`,
+    image: `/assets/images/book/planet/surface/Jupiter.svg`,
   },
   {
     name: "Pluto",
     price: "500",
-    image: `/assets/images/book/planet/planet_Surface/Pluto.svg`,
+    image: `/assets/images/book/planet/surface/Pluto.svg`,
   },
   {
     name: "Uranus",
     price: "600",
-    image: `/assets/images/book/planet/planet_Surface/Uranus.svg`,
+    image: `/assets/images/book/planet/surface/Uranus.svg`,
   },
   {
-    name: "Uranus",
+    name: "Neptune",
     price: "700",
-    image: `/assets/images/book/planet/planet_Surface/Neptune.svg`,
+    image: `/assets/images/book/planet/surface/Neptune.svg`,
   },
   {
     name: "Saturn",
     price: "800",
-    image: `/assets/images/book/planet/planet_Surface/Saturn.svg`,
+    image: `/assets/images/book/planet/surface/Saturn.svg`,
   },
 ];
 
@@ -81,25 +81,25 @@ nextButton.addEventListener("click", () => {
   }
 });
 
-carousel_Button.forEach((selected_Button, index) => {
-  selected_Button.addEventListener("click", () => {
-    const selected_Img = selected_Button.querySelector("img");
-    selected_Img.classList.add("sizeup-animation");
+carouselButton.forEach((selectedButton, index) => {
+  selectedButton.addEventListener("click", () => {
+    const selectedImg = selectedButton.querySelector("img");
+    selectedImg.classList.add("sizeup-animation");
 
-    planetPrice.innerHTML = `${planetImfr[index].name}<br>$${planetImfr[index].price}(price) + $${planetImfr[index].price}(deposit)`;
-    sideImg.style.backgroundImage = `url("${localhostUrl}${planetImfr[index].image}")`;
-    totalPrice.textContent = `Total $ ${planetImfr[index].price * 2}`;
+    planetPrice.innerHTML = `${planetArray[index].name}<br>$${planetArray[index].price}(price) + $${planetArray[index].price}(deposit)`;
+    sideImg.style.backgroundImage = `url("${localhostUrl}${planetArray[index].image}")`;
+    totalPrice.textContent = `Total $ ${planetArray[index].price * 2}`;
 
     // 추가
     reservationInfo.planet = {
-      name: planetImfr[index].name,
-      price: planetImfr[index].price * 2,
+      name: planetArray[index].name,
+      price: planetArray[index].price * 2,
     };
 
-    carousel_Button.forEach((other_Button, otherIndex) => {
-      const other_Img = other_Button.querySelector("img");
+    carouselButton.forEach((otherButton, otherIndex) => {
+      const otherImg = otherButton.querySelector("img");
       if (otherIndex !== index) {
-        other_Img.classList.remove("sizeup-animation");
+        otherImg.classList.remove("sizeup-animation");
       }
     });
   });

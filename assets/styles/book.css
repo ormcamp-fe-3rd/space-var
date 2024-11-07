@@ -45,8 +45,10 @@ body {
   z-index: 0;
   
 }
-.side img {
+.side-bar img {
   margin: 20px 0 0 0;
+  width: 135px;
+  height: 111px;
 }
 .side-bar {
   position: fixed;
@@ -101,6 +103,9 @@ body {
 }
 .carouel-animation button:nth-child(7) {
   padding: 0px 40px 0px 0px;
+}
+.carouel-animation button:hover{
+  cursor: pointer;
 }
 
 @keyframes sizeup {
