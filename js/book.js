@@ -3,14 +3,14 @@ const carousel_Button = document.querySelectorAll(".carouel-animation button");
 const prevButton = document.querySelector(".carouel-prevbtn");
 const nextButton = document.querySelector(".carouel-nextbtn");
 let carouselIndex = 0;
-let hiddent_Count = 2;
+let hiddentCount = 2;
 
-const side_Img = document.querySelector(".side");
+const sideImg = document.querySelector(".side");
 const localhostUrl = window.location.origin;
 
-const planet_Price = document.querySelector(".planet-price");
-const total_Price = document.querySelector(".total-price");
-const planet_Imfr = [
+const planetPrice = document.querySelector(".planet-price");
+const totalPrice = document.querySelector(".total-price");
+const planetImfr = [
   {
     name: "Mercurius",
     price: "100",
@@ -37,40 +37,45 @@ const planet_Imfr = [
     image: `/assets/images/book/planet/planet_Surface/Pluto.svg`,
   },
   {
-    name: "Saturn",
+    name: "Uranus",
     price: "600",
-    image: `/assets/images/book/planet/planet_Surface/Saturn.svg`,
+    image: `/assets/images/book/planet/planet_Surface/Uranus.svg`,
   },
   {
     name: "Uranus",
     price: "700",
-    image: `/assets/images/book/planet/planet_Surface/Uranus.svg`,
+    image: `/assets/images/book/planet/planet_Surface/Neptune.svg`,
   },
   {
-    name: "Neptune",
+    name: "Saturn",
     price: "800",
-    image: `/assets/images/book/planet/planet_Surface/Neptune.svg`,
+    image: `/assets/images/book/planet/planet_Surface/Saturn.svg`,
   },
 ];
 prevButton.addEventListener("click", () => {
   if (carouselIndex === 0) return;
   carouselIndex -= 1;
-  carousel.style.transform = `translateX(-${150 * carouselIndex}px)`;
   nextButton.style.opacity = `100%`;
 
   if (carouselIndex === 0) {
     prevButton.style.opacity = `50%`;
+    carousel.style.transform = `translateX(-${190 * carouselIndex}px)`;
+  }
+  else {
+    carousel.style.transform = `translateX(-${150 * carouselIndex}px)`;
   }
 });
 nextButton.addEventListener("click", () => {
-  if (carouselIndex === hiddent_Count) return;
-
+  if (carouselIndex === hiddentCount) return;
   carouselIndex += 1;
-  carousel.style.transform = `translateX(-${150 * carouselIndex}px)`;
   prevButton.style.opacity = `100%`;
 
-  if (carouselIndex === hiddent_Count) {
+  if (carouselIndex === hiddentCount) {
+    carousel.style.transform = `translateX(-${190 * carouselIndex}px)`;
     nextButton.style.opacity = `50%`;
+  }
+  else {
+    carousel.style.transform = `translateX(-${150 * carouselIndex}px)`;
   }
 });
 
@@ -79,9 +84,9 @@ carousel_Button.forEach((selected_Button, index) => {
     const selected_Img = selected_Button.querySelector("img");
     selected_Img.classList.add("sizeup-animation");
 
-    planet_Price.innerHTML = `${planet_Imfr[index].name}<br>$${planet_Imfr[index].price}(price) + $${planet_Imfr[index].price}(deposit)`;
-    side_Img.style.backgroundImage = `url("${localhostUrl}${planet_Imfr[index].image}")`;
-    total_Price.textContent = `Total $ ${planet_Imfr[index].price * 2}`;
+    planetPrice.innerHTML = `${planetImfr[index].name}<br>$${planetImfr[index].price}(price) + $${planetImfr[index].price}(deposit)`;
+    sideImg.style.backgroundImage = `url("${localhostUrl}${planetImfr[index].image}")`;
+    totalPrice.textContent = `Total $ ${planetImfr[index].price * 2}`;
 
     carousel_Button.forEach((other_Button, otherIndex) => {
       const other_Img = other_Button.querySelector("img");
