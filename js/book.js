@@ -1,103 +1,94 @@
 const carousel = document.querySelector(".carouel-animation");
-const carouselButton = document.querySelectorAll(".carouel-animation button");
-const prevButton = document.querySelector(".carouel-prevbtn");
-const nextButton = document.querySelector(".carouel-nextbtn");
+const carouselBtn = document.querySelectorAll(".carouel-animation button");
+const prevBtn = document.querySelector(".carouel-prevbtn");
+const nextBtn = document.querySelector(".carouel-nextbtn");
 let carouselIndex = 0;
-let hiddentCount = 2;
+let hiddenIndex = 2;
 
-const sideImg = document.querySelector(".side");
-const localhostUrl = window.location.origin;
-
-const planetPrice = document.querySelector(".planet-price");
-const totalPrice = document.querySelector(".total-price");
 const planetArray = [
   {
     name: "Mercurius",
     price: "100",
-    image: `/assets/images/book/planet/surface/Mercurius.svg`,
   },
   {
     name: "Venus",
     price: "200",
-    image: `/assets/images/book/planet/surface/Venus.svg`,
   },
   {
     name: "Mars",
     price: "300",
-    image: `/assets/images/book/planet/surface/Mars.svg`,
   },
   {
     name: "Jupiter",
     price: "400",
-    image: `/assets/images/book/planet/surface/Jupiter.svg`,
   },
   {
     name: "Pluto",
     price: "500",
-    image: `/assets/images/book/planet/surface/Pluto.svg`,
   },
   {
     name: "Uranus",
     price: "600",
-    image: `/assets/images/book/planet/surface/Uranus.svg`,
   },
   {
     name: "Neptune",
     price: "700",
-    image: `/assets/images/book/planet/surface/Neptune.svg`,
   },
   {
     name: "Saturn",
     price: "800",
-    image: `/assets/images/book/planet/surface/Saturn.svg`,
   },
 ];
 
 let reservationInfo = {};
 
-prevButton.addEventListener("click", () => {
+prevBtn.addEventListener("click", () => {
   if (carouselIndex === 0) return;
   carouselIndex -= 1;
-  nextButton.style.opacity = `100%`;
-
-  if (carouselIndex === 0) {
-    prevButton.style.opacity = `50%`;
-    carousel.style.transform = `translateX(-${190 * carouselIndex}px)`;
-  } else {
-    carousel.style.transform = `translateX(-${150 * carouselIndex}px)`;
-  }
+  checkBtnOpacity(prevBtn,nextBtn,carouselIndex,hiddenIndex);
+  checkTransform (carousel, carouselIndex, hiddenIndex);
 });
-nextButton.addEventListener("click", () => {
-  if (carouselIndex === hiddentCount) return;
+
+nextBtn.addEventListener("click", () => {
+  if (carouselIndex === hiddenIndex) return;
   carouselIndex += 1;
-  prevButton.style.opacity = `100%`;
-
-  if (carouselIndex === hiddentCount) {
-    carousel.style.transform = `translateX(-${190 * carouselIndex}px)`;
-    nextButton.style.opacity = `50%`;
-  } else {
-    carousel.style.transform = `translateX(-${150 * carouselIndex}px)`;
-  }
+  checkBtnOpacity(prevBtn,nextBtn,carouselIndex,hiddenIndex);
+  checkTransform (carousel, carouselIndex, hiddenIndex);
 });
 
-carouselButton.forEach((selectedButton, index) => {
-  selectedButton.addEventListener("click", () => {
-    const selectedImg = selectedButton.querySelector("img");
-    selectedImg.classList.add("sizeup-animation");
+function checkBtnOpacity (prevButton, nextButton, index, hiddenIndex) {
+  prevButton.style.opacity = index === 0 ? '50%' : '100%';
+  nextButton.style.opacity = index === hiddenIndex ? '50%' : '100%';
+}
 
-    planetPrice.innerHTML = `${planetArray[index].name}<br>$${planetArray[index].price}(price) + $${planetArray[index].price}(deposit)`;
-    sideImg.style.backgroundImage = `url("${localhostUrl}${planetArray[index].image}")`;
-    totalPrice.textContent = `Total $ ${planetArray[index].price * 2}`;
+function checkTransform (carousel, index, hiddenIndex) {
+  const movement = index === hiddenIndex ? 190 : 150;
+  carousel.style.transform = `translateX(-${movement * index}px)`;
+}
 
+carouselBtn.forEach((button, index) => {
+  button.addEventListener("click", () => {
+    const sideBackground = document.querySelector(".side");
+    const planetPrice = document.querySelector(".planet-price");
+    const totalPrice = document.querySelector(".total-price");
+    const selectBtn = button.querySelector("img");
+    const name = planetArray[index].name;
+    const price =  planetArray[index].price;
+    const localHost = window.location.origin;
+
+    totalPrice.textContent = `Total $ ${price * 2}`;
+    planetPrice.innerHTML = `${name}<br> $${price}(price) + $${price}(deposit)`;
+    sideBackground.style.backgroundImage = `url("${localHost}/assets/images/book/planet/surface/${name}.svg")`;
+    selectBtn.classList.add("sizeup-animation");
+    
     reservationInfo.planet = {
-      name: planetArray[index].name,
-      price: planetArray[index].price * 2,
+      name: name,
+      price: price * 2,
     };
 
-    carouselButton.forEach((otherButton, otherIndex) => {
-      const otherImg = otherButton.querySelector("img");
+    carouselBtn.forEach((otherBtn, otherIndex) => {
       if (otherIndex !== index) {
-        otherImg.classList.remove("sizeup-animation");
+        otherBtn.querySelector("img").classList.remove("sizeup-animation");
       }
     });
   });
