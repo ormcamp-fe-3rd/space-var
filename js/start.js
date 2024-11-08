@@ -78,3 +78,5 @@ window.addEventListener("wheel", (event) => {
 // 페이지가 로드되거나 뒤로 가기/앞으로 가기 시 비디오 상태를 초기화
 window.addEventListener('load', initializeState); // 페이지 로드 시 초기화
 window.addEventListener('popstate', initializeState); // 뒤로 가기/앞으로 가기 시 초기화
+
+//수정 
