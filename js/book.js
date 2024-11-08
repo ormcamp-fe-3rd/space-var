@@ -1,3 +1,9 @@
+import ReservationState from "./states/ReservationState.js";
+import FormState from "./states/FormState.js";
+
+const reservationState = new ReservationState();
+const formState = new FormState();
+
 const PLANETS = [
   {
     name: "Mercurius",
@@ -35,18 +41,6 @@ const PLANETS = [
 
 const HIDDEN_PLANET_COUNT = 2;
 const VISIBLE_PLANET_COUNT = PLANETS.length - HIDDEN_PLANET_COUNT;
-
-// reservation
-let reservationInfo = {};
-function updateReservationInfo(name, price, index) {
-  const name = PLANETS[index].name;
-  const price = PLANETS[index].price;
-
-  reservationInfo.planet = {
-    name: name,
-    price: price * 2,
-  };
-}
 
 // 행성 carousel
 let currentCarouselIndex = 0; // 현재 캐러셀 상태 0 (초기값)
@@ -150,7 +144,7 @@ planetBtns.forEach((planetBtn, index) => {
 // book-form
 const bookForm = document.querySelector(".book-form");
 
-// 1. form validation
+// 폼 검증
 // 1) planet
 let isPlanetSelected = false;
 
@@ -163,6 +157,12 @@ function checkPlanetSeleceted() {
   } else {
     isPlanetSelected = true;
   }
+}
+
+function updateInputValidStates() {
+  let inputValidStates = {};
+
+  return inputValidStates;
 }
 
 // 2-1) input
@@ -385,51 +385,51 @@ function submitBtnStyleToggle() {
 
 //3. after submit
 function saveReservationInfo() {
-  inputs.forEach((input, i) => {
-    switch (i) {
-      case 0:
-        reservationInfo.name = input.value;
-        break;
-      case 1:
-        reservationInfo.birth = input.value;
-        break;
-      case 2:
-        reservationInfo.phone = input.value;
-        break;
-      case 3:
-        reservationInfo.email = input.value;
-        break;
-    }
-  });
+  // inputs.forEach((input, i) => {
+  //   switch (i) {
+  //     case 0:
+  //       reservationInfo.name = input.value;
+  //       break;
+  //     case 1:
+  //       reservationInfo.birth = input.value;
+  //       break;
+  //     case 2:
+  //       reservationInfo.phone = input.value;
+  //       break;
+  //     case 3:
+  //       reservationInfo.email = input.value;
+  //       break;
+  //   }
+  // });
 }
 
 const ticketSection = document.querySelector(".ticket-section");
 const ticketValues = document.querySelectorAll(".value");
 function showTicket() {
   ticketValues.forEach((value, i) => {
-    switch (i) {
-      case 0:
-        value.textContent = reservationInfo.planet.name;
-        break;
-      case 1:
-        value.textContent = localStorage.getItem("seat");
-        break;
-      case 2:
-        value.textContent = reservationInfo.name;
-        break;
-      case 3:
-        value.textContent = reservationInfo.birth;
-        break;
-      case 4:
-        value.textContent = reservationInfo.phone;
-        break;
-      case 5:
-        value.textContent = reservationInfo.email;
-        break;
-      case 6:
-        value.textContent = reservationInfo.planet.price;
-        break;
-    }
+    // switch (i) {
+    //   case 0:
+    //     value.textContent = reservationInfo.planet.name;
+    //     break;
+    //   case 1:
+    //     value.textContent = localStorage.getItem("seat");
+    //     break;
+    //   case 2:
+    //     value.textContent = reservationInfo.name;
+    //     break;
+    //   case 3:
+    //     value.textContent = reservationInfo.birth;
+    //     break;
+    //   case 4:
+    //     value.textContent = reservationInfo.phone;
+    //     break;
+    //   case 5:
+    //     value.textContent = reservationInfo.email;
+    //     break;
+    //   case 6:
+    //     value.textContent = reservationInfo.planet.price;
+    //     break;
+    // }
   });
 
   ticketSection.classList.add("ticket-show");
