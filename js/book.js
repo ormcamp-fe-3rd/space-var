@@ -2,7 +2,7 @@ const carousel = document.querySelector(".carouel-animation"); // 캐러셀 애�
 const carouselBtn = document.querySelectorAll(".carouel-animation button");  // 캐러셀의 각각의 행성 
 const prevBtn = document.querySelector(".carouel-prevbtn");    // 캐러셀 이동의 이전버튼
 const nextBtn = document.querySelector(".carouel-nextbtn");    // 캐러셀 이동의 다음버튼
-const hiddenIndex = 2;   // 캐러셀내 현재 화면에서 숨겨저 있는 행성들의 갯수
+const hiddenIndex = 3;   // 캐러셀내 현재 화면에서 숨겨저 있는 행성들의 갯수
 let carouselIndex = 0; // 현재 캐러셀 위치의 상태
 
 const planetArray = [  // 각각의 행성들의 정보
@@ -72,7 +72,7 @@ function checkBtnOpacity(prevButton, nextButton, index, hiddenIndex) {
 // saturn 은 크기가 달라서 translateX을 늘림
 function checkTransform(carousel, index) {
   const saturnIndex = planetArray.findIndex(planet => planet.name === "Saturn") - showcarouselCount + 1;
-  const movement = index === saturnIndex ? 190 : 150;
+  const movement = index === saturnIndex ? 223 : 136;
   carousel.style.transform = `translateX(-${movement * index}px)`;
 }
 
