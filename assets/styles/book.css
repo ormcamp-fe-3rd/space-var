@@ -31,7 +31,7 @@ body {
 .side {
   min-width: 20%; /*absolute 적용 후 넓어져서 바꿈*/
   padding: 0 40px;
-  background-image: url(../images/book/side-temp.jpg);
+  background-image: url(../images/book/planet/side/default_Side.svg);
   background-size: cover;
   z-index: 0;
   transition: opacity 0.3s ease-in-out;

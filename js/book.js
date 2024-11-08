@@ -31,7 +31,7 @@ const planetArray = [  // 각각의 행성들의 정보
     price: "600",
   },
   {
-    name: "Pluto",
+    name: "Neptune",
     price: "700",
   },
   {
@@ -95,7 +95,7 @@ carouselBtn.forEach((button, index) => {
     // side 이미지 변경시 0.5초 동안 불투명도를 0% ~ 100% 조정해 transition 구현
     sideBackground.style.opacity = "0%";
     setTimeout( () => {
-      sideBackground.style.backgroundImage = `url("${localHost}/assets/images/book/planet/surface/${name}.svg")`;
+      sideBackground.style.backgroundImage = `url("${localHost}/assets/images/book/planet/side/${name}_side.svg")`;
       sideBackground.style.opacity = "100%";
     }, 300);
 
