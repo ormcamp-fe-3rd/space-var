@@ -16,6 +16,7 @@ header {
   justify-content: space-between;
   margin: 0 8%;
   padding: 20px;
+  min-width: 1400px;
 }
 
 .header-logo {
@@ -68,7 +69,7 @@ header {
 }
 
 .spaceship-wrap .spaceship-map {
-  width: 100%;
+  max-width: 1400px;
 }
 
 .seat-wrap .seat-list .btn {
@@ -195,7 +196,7 @@ header {
   justify-content: center;
   position: relative;
   bottom: 0;
-  width: 100%;
+  min-width: 1400px;
   padding: 20px;
 }
 
