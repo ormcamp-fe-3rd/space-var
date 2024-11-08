@@ -28,6 +28,7 @@ body {
   -ms-overflow-style: none; /* 스크롤바 숨김 (Internet Explorer) */
 }
 
+***********************
 /* 웹킷 브라우저에서 스크롤바 숨김 */
 body::-webkit-scrollbar {
   display: none; /* 웹킷 기반 브라우저에서 스크롤바 숨김 */
