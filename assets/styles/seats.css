@@ -1,3 +1,6 @@
+@import "./reset.css";
+@import "./common.css";
+
 html {
   background-image: url(../images/seats/배경화면2.jpg);
   background-repeat: no-repeat;
@@ -23,11 +26,7 @@ header {
 
 /* 왼쪽 버튼 (CONTACT) */
 .header-button-left {
-  background: linear-gradient(
-    to right,
-    #2180e1,
-    #5060f1
-  ); /* 왼쪽에서 오른쪽으로 그라디언트 */
+  background: linear-gradient(to right, #2180e1, #5060f1); /* 왼쪽에서 오른쪽으로 그라디언트 */
   color: #ffffff; /* 텍스트 색상 흰색 */
   padding: 10px 20px;
   text-decoration: none;
@@ -37,20 +36,12 @@ header {
 }
 
 .header-button-left:hover {
-  background: linear-gradient(
-    to right,
-    #2180e1,
-    #2180e1
-  ); /* 호버 시 그라디언트 색상 변경 */
+  background: linear-gradient(to right, #2180e1, #2180e1); /* 호버 시 그라디언트 색상 변경 */
 }
 
 /* 오른쪽 버튼 (BOOK NOW) */
 .header-button-right {
-  background: linear-gradient(
-    to right,
-    #925cee,
-    #6b4bd6
-  ); /* 다른 그라디언트 색상 설정 */
+  background: linear-gradient(to right, #925cee, #6b4bd6); /* 다른 그라디언트 색상 설정 */
   color: #ffffff;
   padding: 10px 20px;
   text-decoration: none;
@@ -60,11 +51,7 @@ header {
 }
 
 .header-button-right:hover {
-  background: linear-gradient(
-    to right,
-    #925cee,
-    #925cee
-  ); /* 오른쪽 버튼 호버 시 다른 색상 */
+  background: linear-gradient(to right, #925cee, #925cee); /* 오른쪽 버튼 호버 시 다른 색상 */
 }
 
 /* 예약 */
@@ -182,21 +169,9 @@ header {
   align-items: center;
   margin: 0 0 0 40px;
   text-decoration: none;
-  background: -moz-linear-gradient(
-    90deg,
-    rgba(33, 128, 225, 1) 0%,
-    rgba(80, 96, 241, 1) 100%
-  );
-  background: -webkit-linear-gradient(
-    90deg,
-    rgba(33, 128, 225, 1) 0%,
-    rgba(80, 96, 241, 1) 100%
-  );
-  background: linear-gradient(
-    90deg,
-    rgba(33, 128, 225, 1) 0%,
-    rgba(80, 96, 241, 1) 100%
-  );
+  background: -moz-linear-gradient(90deg, rgba(33, 128, 225, 1) 0%, rgba(80, 96, 241, 1) 100%);
+  background: -webkit-linear-gradient(90deg, rgba(33, 128, 225, 1) 0%, rgba(80, 96, 241, 1) 100%);
+  background: linear-gradient(90deg, rgba(33, 128, 225, 1) 0%, rgba(80, 96, 241, 1) 100%);
 }
 
 /* 푸터 */
