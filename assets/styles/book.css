@@ -31,10 +31,10 @@ body {
 .side {
   min-width: 20%; /*absolute 적용 후 넓어져서 바꿈*/
   padding: 0 40px;
-  background-image: url(../images/book/side-temp.jpg);
+  background-image: url(../images/book/planet/side/default_Side.svg);
   background-size: cover;
   z-index: 0;
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 .side h1 {
   width: 358px;
@@ -81,10 +81,6 @@ body {
 .carouel-nextbtn {
   margin: 0px 40px 0px 0px;
 }
-.saturn-img {
-  min-width: 198px;
-}
-
 .carousel button {
   background-color: black;
   border: none;
@@ -99,10 +95,7 @@ body {
   transition: transform 0.8s;
 }
 .carouel-animation button {
-  padding: 0px 50px 0px 0px;
-}
-.carouel-animation button:nth-child(7) {
-  padding: 0px 40px 0px 0px;
+  padding: 0px 25px 0px 0px;
 }
 .carouel-animation button:hover {
   cursor: pointer;
