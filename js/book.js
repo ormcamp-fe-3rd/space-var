@@ -40,7 +40,6 @@ const PLANETS = [
 ];
 
 const HIDDEN_PLANET_COUNT = 2;
-const VISIBLE_PLANET_COUNT = PLANETS.length - HIDDEN_PLANET_COUNT;
 
 // 행성 carousel
 let currentCarouselIndex = 0; // 현재 캐러셀 상태 0 (초기값)
@@ -100,7 +99,7 @@ function updatePlanetBtnSize(planetBtn, index) {
 }
 
 // 가격 바뀌기
-function updatePrices() {
+function updatePrices(index) {
   const name = PLANETS[index].name;
   const price = PLANETS[index].price;
 
@@ -112,7 +111,7 @@ function updatePrices() {
 }
 
 // 사이드 섹션의 배경 이미지 바뀌기
-function updateSideBackgroundImage() {
+function updateSideBackgroundImage(index) {
   const name = PLANETS[index].name;
 
   const sideBackground = document.querySelector(".side");
@@ -127,9 +126,8 @@ function updateSideBackgroundImage() {
 
 function handlePlanetBtnClick(planetBtn, index) {
   updatePlanetBtnSize(planetBtn, index);
-  updatePrices();
-  updateSideBackgroundImage();
-  // updateReservationInfo(name, price, index);
+  updatePrices(index);
+  updateSideBackgroundImage(index);
 }
 
 // 이벤트 리스너 등록
