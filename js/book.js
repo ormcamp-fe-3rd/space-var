@@ -1,14 +1,13 @@
-const carousel = document.querySelector(".carouel-animation"); // 캐러셀 애니메이션
-const carouselBtn = document.querySelectorAll(".carouel-animation button");  // 캐러셀의 각각의 행성 
-const prevBtn = document.querySelector(".carouel-prevbtn");    // 캐러셀 이동의 이전버튼
-const nextBtn = document.querySelector(".carouel-nextbtn");    // 캐러셀 이동의 다음버튼
-const hiddenIndex = 3;   // 캐러셀내 현재 화면에서 숨겨저 있는 행성들의 갯수
-let carouselIndex = 0; // 현재 캐러셀 위치의 상태
+const carousel = document.querySelector(".carouel-animation");
+const carouselBtn = document.querySelectorAll(".carouel-animation button");
+const nextBtn = document.querySelector(".carouel-nextbtn");
+const hiddenIndex = 3;
+let carouselIndex = 0;
 
-const planetArray = [  // 각각의 행성들의 정보
+const planetArray = [
   {
-    name: "Mercurius", // 행성 이름
-    price: "100",      // 행성의 가격 ( deposit은 price 의 2배로 지정 )
+    name: "Mercurius",
+    price: "100",
   },
   {
     name: "Venus",
@@ -39,21 +38,17 @@ const planetArray = [  // 각각의 행성들의 정보
     price: "800",
   },
 ];
-const showcarouselCount = planetArray.length - hiddenIndex; // 페이지내에서 보여지고있는 행성들의 갯수
+const showcarouselCount = planetArray.length - hiddenIndex;
 
 let reservationInfo = {};
 
-// 캐러셀의 이전 버튼 클릭시 발생
-// index 값 낮춰 현재 캐러셀 위치 이동 후 버튼의 opacity 및 캐러셀 이동 체크
-prevBtn.addEventListener("click", () => { 
+prevBtn.addEventListener("click", () => {
   if (carouselIndex === 0) return;
   carouselIndex -= 1;
   checkBtnOpacity(prevBtn, nextBtn, carouselIndex, hiddenIndex);
   checkTransform(carousel, carouselIndex);
 });
 
-// 캐러셀의 다음 버튼 클릭시 발생
-// index 값 추가해 캐러셀 위치 이동 후 버튼 opacity 및 캐러셀 이동 체크
 nextBtn.addEventListener("click", () => {
   if (carouselIndex === hiddenIndex) return;
   carouselIndex += 1;
@@ -61,40 +56,36 @@ nextBtn.addEventListener("click", () => {
   checkTransform(carousel, carouselIndex);
 });
 
-// 버튼의 불투명도 (활성화/비활성화) 체크 함수
-// index == 0 이면 처음 위치 (50%) / index == hiddenIndex 이면 마지막 위치 (100%)
 function checkBtnOpacity(prevButton, nextButton, index, hiddenIndex) {
   prevButton.style.opacity = index === 0 ? "50%" : "100%";
   nextButton.style.opacity = index === hiddenIndex ? "50%" : "100%";
 }
 
-// 캐러셀 이동 애니메이션 체크 함수
-// saturn 은 크기가 달라서 translateX을 늘림
 function checkTransform(carousel, index) {
-  const saturnIndex = planetArray.findIndex(planet => planet.name === "Saturn") - showcarouselCount + 1;
+  const saturnIndex =
+    planetArray.findIndex((planet) => planet.name === "Saturn") -
+    showcarouselCount +
+    1;
   const movement = index === saturnIndex ? 223 : 136;
   carousel.style.transform = `translateX(-${movement * index}px)`;
 }
 
-// 캐러셀 내 각 행성버튼들에 대한 클릭시 발생
-// 사용자가 선택한 버튼 클릭시 선택한 행성 사이즈 조절 및 정보 출력
 carouselBtn.forEach((button, index) => {
   button.addEventListener("click", () => {
-    const sideBackground = document.querySelector(".side");      // side 이미지 
-    const planetPrice = document.querySelector(".planet-price"); // 행성의 가격
-    const totalPrice = document.querySelector(".total-price");   // 최종 가격
-    const selectBtn = button.querySelector("img");               // 사용자가 선택한 버튼의 이미지
-    const name = planetArray[index].name;                        // 사용자가 선택한 행성의 이름
-    const price = planetArray[index].price;                      // 사용자가 선택한 행성의 가격
-    const localHost = window.location.origin;                    // 현재 localHost 값 (side 이미지 변경시 상대주소가 적용이 안되서 직접지정 ) 
+    const sideBackground = document.querySelector(".side");
+    const planetPrice = document.querySelector(".planet-price");
+    const totalPrice = document.querySelector(".total-price");
+    const selectBtn = button.querySelector("img");
+    const name = planetArray[index].name;
+    const price = planetArray[index].price;
+    const localHost = window.location.origin;
 
     totalPrice.textContent = `Total $ ${price * 2}`;
     planetPrice.innerHTML = `${name}<br> $${price}(price) + $${price}(deposit)`;
     selectBtn.classList.add("sizeup-animation");
-    
-    // side 이미지 변경시 0.5초 동안 불투명도를 0% ~ 100% 조정해 transition 구현
+
     sideBackground.style.opacity = "0%";
-    setTimeout( () => {
+    setTimeout(() => {
       sideBackground.style.backgroundImage = `url("${localHost}/assets/images/book/planet/side/${name}_side.svg")`;
       sideBackground.style.opacity = "100%";
     }, 300);
@@ -104,10 +95,9 @@ carouselBtn.forEach((button, index) => {
       price: price * 2,
     };
 
-    // 선택한 버튼이 아닌 나머지 버튼 클릭시 발생
-    // 나머지 버튼들의 남아있는 사이즈 조절 이벤트 초기화
     carouselBtn.forEach((otherBtn, otherIndex) => {
-      otherIndex !== index && otherBtn.querySelector("img").classList.remove("sizeup-animation");
+      otherIndex !== index &&
+        otherBtn.querySelector("img").classList.remove("sizeup-animation");
     });
   });
 });
