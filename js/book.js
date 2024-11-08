@@ -341,12 +341,6 @@ function checkCheckboxVaildation(event) {
   }
 }
 
-// 전체 검증
-function checkFormValidation(event) {
-  checkInputValidation(event);
-  checkCheckboxVaildation(event);
-}
-
 // 검증 때마다 버튼 스타일 결정
 function updateSubmitBtnStyle() {
   if (formState.isFormValid) {
@@ -359,19 +353,16 @@ function updateSubmitBtnStyle() {
 }
 
 function handleFormInput(event) {
-  // checkFormValidation(event);
   checkInputValidation(event);
   updateSubmitBtnStyle();
 }
 
 function handleCertificationBtnCilick(event) {
   checkCertication(event);
-  // checkFormValidation(event);
   updateSubmitBtnStyle();
 }
 
 function handleCheckboxClick(event) {
-  // checkFormValidation(event);
   checkCheckboxVaildation(event);
   updateSubmitBtnStyle();
 }
@@ -491,6 +482,7 @@ function formReset() {
   const bookForm = document.querySelector(".book-form");
   bookForm.reset(); // 폼 내용 모두 리셋
   formState.reset(); // 폼 검증 상태도 모두 리셋
+  localStorage.clear(); // seats 페이지에서 localStorage에 저장한 값 비우기
 }
 
 function handleExitBtnClick() {
