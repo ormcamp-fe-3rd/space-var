@@ -350,10 +350,9 @@ function saveReservationInfo() {
   });
 }
 
+const ticketSection = document.querySelector(".ticket-section");
+const ticketValues = document.querySelectorAll(".value");
 function showTicket() {
-  const ticketSection = document.querySelector(".ticket-section");
-  const ticketValues = document.querySelectorAll(".value");
-
   ticketValues.forEach((value, i) => {
     switch (i) {
       case 0:
@@ -384,7 +383,39 @@ function showTicket() {
   submitFormBtn.textContent = "DONE";
 }
 
-function goMainPage() {
+function hideTicket() {
+  ticketSection.classList.remove("ticket-show");
+  submitFormBtn.textContent = "BOOK NOW";
+}
+
+function resetForm() {
+  bookForm.reset();
+
+  localStorage.removeItem("seat");
+
+  isInputsValid = false;
+  isNameValid = false;
+  isBirthValid = false;
+  isPhoneValid = false;
+  isEmailValid = false;
+  isCardNumberValid = false;
+  isExpirationValid = false;
+  isSecurityValid = false;
+
+  phoneVerified = false;
+  emailVerfied = false;
+
+  isCheckValid = false;
+  isAccidentRulesChecked = false;
+  isPersonalInfoChecked = false;
+  isAllConfirmed = false;
+
+  isFormValid = false;
+}
+
+function finishReservation() {
+  hideTicket();
+  resetForm();
   window.location.href = "../pages/start.html";
 }
 
@@ -427,7 +458,7 @@ function handleSubmitBtnClick() {
 }
 
 function handleExitBtnClick() {
-  goMainPage();
+  finishReservation();
 }
 
 inputs.forEach((input) => {
