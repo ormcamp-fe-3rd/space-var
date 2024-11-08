@@ -217,7 +217,7 @@ header {
 .trajectory {
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 0%;
 }
 
 .sun {
@@ -321,7 +321,7 @@ header {
 
 /* 타겟 플래닛 이름*/
 .planet-name {
-  margin: 150px 0 0 220px;
+  margin: 370px 0 0 220px;
   line-height: 1.7;
   color: white;
   font-family: "Zen Dots";
