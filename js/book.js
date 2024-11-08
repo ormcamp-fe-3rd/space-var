@@ -1,14 +1,13 @@
-const carousel = document.querySelector(".carouel-animation"); // 캐러셀 애니메이션
-const carouselBtn = document.querySelectorAll(".carouel-animation button");  // 캐러셀의 각각의 행성 
-const prevBtn = document.querySelector(".carouel-prevbtn");    // 캐러셀 이동의 이전버튼
-const nextBtn = document.querySelector(".carouel-nextbtn");    // 캐러셀 이동의 다음버튼
-const hiddenIndex = 3;   // 캐러셀내 현재 화면에서 숨겨저 있는 행성들의 갯수
-let carouselIndex = 0; // 현재 캐러셀 위치의 상태
+import ReservationState from "./states/ReservationState.js";
+import FormState from "./states/FormState.js";
 
-const planetArray = [  // 각각의 행성들의 정보
+const reservationState = new ReservationState();
+const formState = new FormState();
+
+const PLANETS = [
   {
-    name: "Mercurius", // 행성 이름
-    price: "100",      // 행성의 가격 ( deposit은 price 의 2배로 지정 )
+    name: "Mercurius",
+    price: "100",
   },
   {
     name: "Venus",
@@ -39,83 +38,111 @@ const planetArray = [  // 각각의 행성들의 정보
     price: "800",
   },
 ];
-const showcarouselCount = planetArray.length - hiddenIndex; // 페이지내에서 보여지고있는 행성들의 갯수
 
-let reservationInfo = {};
+const HIDDEN_PLANET_COUNT = 2;
 
-// 캐러셀의 이전 버튼 클릭시 발생
-// index 값 낮춰 현재 캐러셀 위치 이동 후 버튼의 opacity 및 캐러셀 이동 체크
-prevBtn.addEventListener("click", () => { 
-  if (carouselIndex === 0) return;
-  carouselIndex -= 1;
-  checkBtnOpacity(prevBtn, nextBtn, carouselIndex, hiddenIndex);
-  checkTransform(carousel, carouselIndex);
-});
+// 행성 carousel
+let currentCarouselIndex = 0; // 현재 캐러셀 상태 0 (초기값)
 
-// 캐러셀의 다음 버튼 클릭시 발생
-// index 값 추가해 캐러셀 위치 이동 후 버튼 opacity 및 캐러셀 이동 체크
-nextBtn.addEventListener("click", () => {
-  if (carouselIndex === hiddenIndex) return;
-  carouselIndex += 1;
-  checkBtnOpacity(prevBtn, nextBtn, carouselIndex, hiddenIndex);
-  checkTransform(carousel, carouselIndex);
-});
+function updateCarouselBtnOpacity(index, HIDDEN_PLANET_COUNT) {
+  const carouselPrevBtn = document.querySelector(".carousel-prevbtn");
+  const carouselNextBtn = document.querySelector(".carousel-nextbtn");
 
-// 버튼의 불투명도 (활성화/비활성화) 체크 함수
-// index == 0 이면 처음 위치 (50%) / index == hiddenIndex 이면 마지막 위치 (100%)
-function checkBtnOpacity(prevButton, nextButton, index, hiddenIndex) {
-  prevButton.style.opacity = index === 0 ? "50%" : "100%";
-  nextButton.style.opacity = index === hiddenIndex ? "50%" : "100%";
+  carouselPrevBtn.style.opacity = index === 0 ? "50%" : "100%";
+  carouselNextBtn.style.opacity =
+    index === HIDDEN_PLANET_COUNT ? "50%" : "100%";
 }
 
-// 캐러셀 이동 애니메이션 체크 함수
-// saturn 은 크기가 달라서 translateX을 늘림
-function checkTransform(carousel, index) {
-  const saturnIndex = planetArray.findIndex(planet => planet.name === "Saturn") - showcarouselCount + 1;
-  const movement = index === saturnIndex ? 223 : 136;
-  carousel.style.transform = `translateX(-${movement * index}px)`;
+function translateCarousel(currentCarouselIndex) {
+  const carousel = document.querySelector(".carouel-animation");
+
+  const translateDistance = 136;
+  carousel.style.transform = `translateX(-${
+    translateDistance * currentCarouselIndex
+  }px)`;
 }
 
-// 캐러셀 내 각 행성버튼들에 대한 클릭시 발생
-// 사용자가 선택한 버튼 클릭시 선택한 행성 사이즈 조절 및 정보 출력
-carouselBtn.forEach((button, index) => {
-  button.addEventListener("click", () => {
-    const sideBackground = document.querySelector(".side");      // side 이미지 
-    const planetPrice = document.querySelector(".planet-price"); // 행성의 가격
-    const totalPrice = document.querySelector(".total-price");   // 최종 가격
-    const selectBtn = button.querySelector("img");               // 사용자가 선택한 버튼의 이미지
-    const name = planetArray[index].name;                        // 사용자가 선택한 행성의 이름
-    const price = planetArray[index].price;                      // 사용자가 선택한 행성의 가격
-    const localHost = window.location.origin;                    // 현재 localHost 값 (side 이미지 변경시 상대주소가 적용이 안되서 직접지정 ) 
+function handleCarouselPrevBtnClick() {
+  if (currentCarouselIndex === 0) return; // prev 버튼이므로 currentCarouselIndex가 0(처음)이면 더 이상 활성화 x
+  currentCarouselIndex -= 1;
+  updateCarouselBtnOpacity(currentCarouselIndex, HIDDEN_PLANET_COUNT);
+  translateCarousel(currentCarouselIndex);
+}
 
-    totalPrice.textContent = `Total $ ${price * 2}`;
-    planetPrice.innerHTML = `${name}<br> $${price}(price) + $${price}(deposit)`;
-    selectBtn.classList.add("sizeup-animation");
-    
-    // side 이미지 변경시 0.5초 동안 불투명도를 0% ~ 100% 조정해 transition 구현
-    sideBackground.style.opacity = "0%";
-    setTimeout( () => {
-      sideBackground.style.backgroundImage = `url("${localHost}/assets/images/book/planet/side/${name}_side.svg")`;
-      sideBackground.style.opacity = "100%";
-    }, 300);
+function handleCarouselNextBtnClick() {
+  if (currentCarouselIndex === HIDDEN_PLANET_COUNT) return; // next 버튼이므로 currentCarouselIndex가 숨겨진 planet을 다 보여준 상태면 더 이상 활성화 x
+  currentCarouselIndex += 1;
+  updateCarouselBtnOpacity(currentCarouselIndex, HIDDEN_PLANET_COUNT);
+  translateCarousel(currentCarouselIndex);
+}
 
-    reservationInfo.planet = {
-      name: name,
-      price: price * 2,
-    };
+// 이벤트 리스너 등록
+const carouselPrevBtn = document.querySelector(".carousel-prevbtn");
+const carouselNextBtn = document.querySelector(".carousel-nextbtn");
 
-    // 선택한 버튼이 아닌 나머지 버튼 클릭시 발생
-    // 나머지 버튼들의 남아있는 사이즈 조절 이벤트 초기화
-    carouselBtn.forEach((otherBtn, otherIndex) => {
-      otherIndex !== index && otherBtn.querySelector("img").classList.remove("sizeup-animation");
-    });
+carouselPrevBtn.addEventListener("click", handleCarouselPrevBtnClick);
+carouselNextBtn.addEventListener("click", handleCarouselNextBtnClick);
+
+// 각 행성 버튼 클릭하면 일어나는 이벤트들
+// 행성 크기 살짝 커지기
+function updatePlanetBtnSize(planetBtn, index) {
+  const planetBtns = document.querySelectorAll(".carouel-animation button");
+
+  const planetBtnImage = planetBtn.querySelector("img");
+  planetBtnImage.classList.add("sizeup-animation");
+
+  // 나머지 행성들 크기 다시 작아지기
+  planetBtns.forEach((otherBtn, otherIndex) => {
+    otherIndex !== index &&
+      otherBtn.querySelector("img").classList.remove("sizeup-animation");
   });
+}
+
+// 가격 바뀌기
+function updatePrices(index) {
+  const name = PLANETS[index].name;
+  const price = PLANETS[index].price;
+
+  const planetPrice = document.querySelector(".planet-price");
+  const totalPrice = document.querySelector(".total-price");
+
+  totalPrice.textContent = `Total $ ${price * 2}`;
+  planetPrice.innerHTML = `${name}<br> $${price}(price) + $${price}(deposit)`;
+}
+
+// 사이드 섹션의 배경 이미지 바뀌기
+function updateSideBackgroundImage(index) {
+  const name = PLANETS[index].name;
+
+  const sideBackground = document.querySelector(".side");
+  const localHost = window.location.origin;
+
+  sideBackground.style.opacity = "0%";
+  setTimeout(() => {
+    sideBackground.style.backgroundImage = `url("${localHost}/assets/images/book/planet/side/${name}_side.svg")`;
+    sideBackground.style.opacity = "100%";
+  }, 300);
+}
+
+function handlePlanetBtnClick(planetBtn, index) {
+  updatePlanetBtnSize(planetBtn, index);
+  updatePrices(index);
+  updateSideBackgroundImage(index);
+}
+
+// 이벤트 리스너 등록
+const planetBtns = document.querySelectorAll(".carouel-animation button");
+
+planetBtns.forEach((planetBtn, index) => {
+  planetBtn.addEventListener("click", () =>
+    handlePlanetBtnClick(planetBtn, index)
+  );
 });
 
 // book-form
 const bookForm = document.querySelector(".book-form");
 
-// 1. form validation
+// 폼 검증
 // 1) planet
 let isPlanetSelected = false;
 
@@ -128,6 +155,12 @@ function checkPlanetSeleceted() {
   } else {
     isPlanetSelected = true;
   }
+}
+
+function updateInputValidStates() {
+  let inputValidStates = {};
+
+  return inputValidStates;
 }
 
 // 2-1) input
@@ -350,51 +383,51 @@ function submitBtnStyleToggle() {
 
 //3. after submit
 function saveReservationInfo() {
-  inputs.forEach((input, i) => {
-    switch (i) {
-      case 0:
-        reservationInfo.name = input.value;
-        break;
-      case 1:
-        reservationInfo.birth = input.value;
-        break;
-      case 2:
-        reservationInfo.phone = input.value;
-        break;
-      case 3:
-        reservationInfo.email = input.value;
-        break;
-    }
-  });
+  // inputs.forEach((input, i) => {
+  //   switch (i) {
+  //     case 0:
+  //       reservationInfo.name = input.value;
+  //       break;
+  //     case 1:
+  //       reservationInfo.birth = input.value;
+  //       break;
+  //     case 2:
+  //       reservationInfo.phone = input.value;
+  //       break;
+  //     case 3:
+  //       reservationInfo.email = input.value;
+  //       break;
+  //   }
+  // });
 }
 
 const ticketSection = document.querySelector(".ticket-section");
 const ticketValues = document.querySelectorAll(".value");
 function showTicket() {
   ticketValues.forEach((value, i) => {
-    switch (i) {
-      case 0:
-        value.textContent = reservationInfo.planet.name;
-        break;
-      case 1:
-        value.textContent = localStorage.getItem("seat");
-        break;
-      case 2:
-        value.textContent = reservationInfo.name;
-        break;
-      case 3:
-        value.textContent = reservationInfo.birth;
-        break;
-      case 4:
-        value.textContent = reservationInfo.phone;
-        break;
-      case 5:
-        value.textContent = reservationInfo.email;
-        break;
-      case 6:
-        value.textContent = reservationInfo.planet.price;
-        break;
-    }
+    // switch (i) {
+    //   case 0:
+    //     value.textContent = reservationInfo.planet.name;
+    //     break;
+    //   case 1:
+    //     value.textContent = localStorage.getItem("seat");
+    //     break;
+    //   case 2:
+    //     value.textContent = reservationInfo.name;
+    //     break;
+    //   case 3:
+    //     value.textContent = reservationInfo.birth;
+    //     break;
+    //   case 4:
+    //     value.textContent = reservationInfo.phone;
+    //     break;
+    //   case 5:
+    //     value.textContent = reservationInfo.email;
+    //     break;
+    //   case 6:
+    //     value.textContent = reservationInfo.planet.price;
+    //     break;
+    // }
   });
 
   ticketSection.classList.add("ticket-show");
