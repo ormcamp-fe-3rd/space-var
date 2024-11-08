@@ -360,7 +360,7 @@ function showTicket() {
         value.textContent = reservationInfo.planet.name;
         break;
       case 1:
-        value.textContent = reservationInfo.seat;
+        value.textContent = localStorage.getItem("seat");
         break;
       case 2:
         value.textContent = reservationInfo.name;

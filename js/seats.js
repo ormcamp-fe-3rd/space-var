@@ -16,6 +16,7 @@ for (let i = 0; i < seatsBtn.length; i++) {
 
     selectTxt.innerHTML =
       "Selected seat : <span>" + seatsBtn[i].innerText + "</span>";
+    localStorage.setItem("seat", seatsBtn[i].innerText);
 
     for (let j = 0; j < seatsBtn.length; j++) {
       seatsBtn[j].classList.remove("on");
