@@ -19,15 +19,18 @@ h3 {
   font-size: 20px;
   font-weight: 600;
 }
+
 body {
   width: 100%;
   overflow-x: hidden;
 }
+
 .book-planet {
   display: flex;
   position: absolute; /*absolute 적용*/
   z-index: 1; /*absolute 적용 */
 }
+
 .side {
   min-width: 20%; /*absolute 적용 후 넓어져서 바꿈*/
   padding: 0 40px;
@@ -89,7 +92,6 @@ body {
 .animation {
   align-content: center;
   overflow: hidden;
-  
 }
 .carouel-animation {
   display: flex;

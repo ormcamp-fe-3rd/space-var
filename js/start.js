@@ -1,14 +1,12 @@
 const videos = document.querySelectorAll(".video");
 const texts = document.querySelectorAll(".video-text");
 
-const indicator = document.getElementById("videoIndicator");
-const scrollFill = document.getElementById("scrollFill");
+const scrollFill = document.getElementById("scroll-fill");
 const footer = document.getElementById("footer");
 const header = document.getElementById("header");
 const logo = document.getElementById("logo");
 
 let currentVideoIndex = 0;
-
 function initializeState() {
   currentVideoIndex = 0;
   updateIndicator();
@@ -16,8 +14,6 @@ function initializeState() {
 }
 
 function updateIndicator() {
-  indicator.textContent = currentVideoIndex + 1;
-
   scrollFill.style.height =
     ((videos.length - currentVideoIndex - 1) / (videos.length - 1)) * 100 + "%";
 
@@ -58,9 +54,10 @@ function updateVideosAndTexts() {
 let wheelTimeout;
 window.addEventListener("wheel", (event) => {
   event.preventDefault();
-  clearTimeout(wheelTimeout);
-  wheelTimeout = setTimeout(() => handleScroll(event.deltaY), 100);
+  clearTimeout(wheelTimeout); // 기존 타이머 취소
+  wheelTimeout = setTimeout(() => handleScroll(event.deltaY), 100); // 100ms 간격으로 스크롤 처리
 });
 
-window.addEventListener("load", initializeState);
-window.addEventListener("popstate", initializeState);
+// 페이지가 로드되거나 뒤로 가기/앞으로 가기 시 비디오 상태를 초기화
+window.addEventListener("load", initializeState); // 페이지 로드 시 초기화
+window.addEventListener("popstate", initializeState); // 뒤로 가기/앞으로 가기 시 초기화
