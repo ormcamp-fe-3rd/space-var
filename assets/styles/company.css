@@ -17,7 +17,7 @@ body {
 
 .bg {
   position: relative;
-  width: 100%;
+  min-width: 1400px;
   height: 920px;
   box-shadow: 0 0 8px 8px black inset;
 }
@@ -40,8 +40,8 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 8%;
-  padding: 20px;
+  padding: 20px 10%;
+  min-width: 1400px;
 }
 
 .header-logo {
@@ -83,7 +83,9 @@ header {
 /* 소개섹션 */
 
 .introduction {
-  margin: 200px 0 0 300px;
+  width: 1400px;
+  margin: 200px auto 0;
+  padding: 0 50px;
 }
 .intro-title {
   width: 100%;
@@ -105,7 +107,7 @@ header {
 
 /* 전체 섹션의 스타일 */
 .target {
-  width: 1440px;
+  min-width: 1400px;
   height: 740px; /* 화면 전체 높이 */
   margin: 50px auto 0;
 }
@@ -121,7 +123,7 @@ header {
 
 /* 타겟 컨테이너의 스타일 */
 .tar-container {
-  position: absolute;
+  position: relative;
   left: 50%;
   width: 300px;
   height: 300px;
@@ -392,6 +394,7 @@ h2 {
 
 .sec5 {
   margin: 100px 0 0;
+  min-width: 1400px;
   height: 592px;
   background: url(../images/company/bg_sec5.png) no-repeat;
   background-size: cover;
@@ -455,7 +458,7 @@ h2 {
   justify-content: center;
   position: relative;
   bottom: 0;
-  width: 100%;
+  min-width: 1400px;
   padding: 20px;
 }
 
