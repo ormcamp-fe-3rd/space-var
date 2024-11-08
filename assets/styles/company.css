@@ -31,7 +31,7 @@ body {
   z-index: -1;
   opacity: 0.5;
   content: "";
-  background-image: url(../images/space12.jpg);
+  background-image: url(../images/company/space.jpg);
   background-size: cover;
 }
 
