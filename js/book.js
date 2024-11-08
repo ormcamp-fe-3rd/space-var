@@ -39,7 +39,7 @@ const PLANETS = [
   },
 ];
 
-const HIDDEN_PLANET_COUNT = 2;
+const HIDDEN_PLANET_COUNT = 1;
 
 // 행성 carousel
 let currentCarouselIndex = 0; // 현재 캐러셀 상태 0 (초기값)

@@ -28,12 +28,12 @@ body {
 
 .book-planet {
   display: flex;
-  position: absolute; /*absolute 적용*/
-  z-index: 1; /*absolute 적용 */
+  position: absolute;
+  z-index: 1;
 }
 
 .side {
-  min-width: 20%; /*absolute 적용 후 넓어져서 바꿈*/
+  min-width: 25%;
   padding: 0 40px;
   background-image: url(../images/book/planet/side/default_Side.svg);
   background-size: cover;
@@ -56,11 +56,11 @@ body {
 }
 
 .content-wrapper {
+  max-width: 75%;
   height: 100%;
 }
 
 .content {
-  max-width: 75%;
   padding: 50px 35px 0px 65px;
   margin: 0 0 50px 0;
 }
@@ -76,7 +76,6 @@ body {
   display: flex;
   background-color: black;
   height: 160px;
-  max-width: 1340px;
   margin: 0px 0px 35px 0px;
   z-index: 6;
 }
