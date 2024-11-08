@@ -34,6 +34,7 @@ body {
   background-image: url(../images/book/side-temp.jpg);
   background-size: cover;
   z-index: 0;
+  transition: opacity 0.5s ease-in-out;
 }
 .side h1 {
   width: 358px;
