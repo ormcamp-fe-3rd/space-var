@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,14 +7,12 @@
     <link rel="stylesheet" href="../assets/styles/start.css" />
   </head>
   <body>
-    <!-- start-header로 수정  -->
-    <header>
-      <!-- logo = topLeftImage -->
-      <div class="header" id="header">
+    <header class="header" id="header">
+      <nav class="nav">
         <a href="../pages/start.html">
           <img
             src="../assets/images/common/logo.png"
-            alt="Logo"
+            alt="logo"
             class="logo"
             id="logo"
           />
@@ -22,86 +20,82 @@
         <div class="header-btns">
           <a href="./company.html">
             <button class="glowing-btn">
-              <span class="glowing-txt">
+              <span class="glowing-text">
                 Com<span class="faulty-letter">Pa</span>Ny
               </span>
             </button>
           </a>
           <a href="./seats.html">
             <button class="glowing-btn">
-              <span class="glowing-txt">
+              <span class="glowing-text">
                 Bo<span class="faulty-letter">oK</span>NoW
               </span>
             </button>
           </a>
         </div>
-      </div>
+      </nav>
     </header>
-
     <main>
-      <section class="video-container">
-        <video
-          id="video1"
-          class="video active"
-          src="../assets/video/빛나는지구.mp4"
-          autoplay
-          muted
-          loop
-        ></video>
-        <video
-          id="video2"
-          class="video"
-          src="../assets/video/우주선이륙.mp4"
-          autoplay
-          muted
-          loop
-        ></video>
-        <video
-          id="video3"
-          class="video"
-          src="../assets/video/end.mp4"
-          autoplay
-          muted
-          loop
-        ></video>
-
-        <div class="indicator" id="videoIndicator">1</div>
-        <div class="scroll-progress">
-          <div class="scroll-fill" id="scrollFill"></div>
+      <section class="video-section">
+        <div>
+          <video
+            class="video active"
+            src="../assets/videos/earth.mp4"
+            autoplay
+            muted
+            loop
+          ></video>
+          <div class="video-text first">
+            Have you ever thought about leaving the Earth?
+          </div>
         </div>
-
-        <div class="video-text" id="text1">
-          Have you ever thought about leaving the Earth?
+        <div>
+          <video
+            class="video"
+            src="../assets/videos/spaceship.mp4"
+            autoplay
+            muted
+            loop
+          ></video>
+          <div class="video-text second">
+            This is your life chance to change everything.
+          </div>
         </div>
-        <div class="video-text" id="text2">
-          This is your life chance to change everything.
+        <div>
+          <video
+            class="video"
+            src="../assets/videos/night.mp4"
+            autoplay
+            muted
+            loop
+          ></video>
+          <div class="video-text third">
+            Take your opportunity, We will join you.
+          </div>
         </div>
-        <div class="video-text" id="text3">
-          Take your opportunity, We will join you.
+        <div class="scroll-bar">
+          <div class="scroll-fill" id="scroll-fill"></div>
         </div>
       </section>
     </main>
-
-    <footer class="footer" id="footer">
-      <section class="footer-logo">
+    <footer class="footer">
+      <div>
         <a href="../pages/start.html">
           <img
-            id="footer-mainlogo"
+            class="footer-logo"
             src="../assets/images/common/logo.png"
             alt="Logo"
           />
         </a>
-      </section>
-
-      <section class="footer-txt">
+      </div>
+      <div class="footer-text">
         <p>
           ADDRESS : 서울 강남구 강남대로 324 역삼 디오슈페리움 2 층 모두의연구소
         </p>
         <p>CONTACT : 010-0000-0000</p>
         <p>E-MAIL : ZERO-MILEAGE@gmail.com</p>
-      </section>
-
-      <section class="footer-follow">
+      </div>
+      <div class="footer-follow">
         <p>
           FOLLOW <br />
           SPACE_VAR
@@ -117,12 +111,11 @@
           <img
             class="footer-insta"
             src="../assets/images/common/instagram.png"
-            alt="Instagram"
+            alt="instagram"
           />
         </a>
-      </section>
+      </div>
     </footer>
-
     <script src="../js/start.js"></script>
   </body>
 </html>

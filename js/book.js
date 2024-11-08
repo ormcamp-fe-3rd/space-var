@@ -39,7 +39,7 @@ const PLANETS = [
   },
 ];
 
-const HIDDEN_PLANET_COUNT = 2;
+const HIDDEN_PLANET_COUNT = 1;
 
 // 행성 carousel
 let currentCarouselIndex = 0; // 현재 캐러셀 상태 0 (초기값)
@@ -306,9 +306,6 @@ function checkCertication(event) {
   );
 
   // 실제 동작처럼 보이도록 setTimeout 사용
-  // 누를 때마다 타이머 삭제 후 새로 타이머 생성
-  clearTimeout(timer);
-
   btn.textContent = "Waiting...";
 
   // isValid 여부에 따라 VERIFIED, FAILED로 버튼 스타일 바뀜
@@ -341,12 +338,6 @@ function checkCheckboxVaildation(event) {
   }
 }
 
-// 전체 검증
-function checkFormValidation(event) {
-  checkInputValidation(event);
-  checkCheckboxVaildation(event);
-}
-
 // 검증 때마다 버튼 스타일 결정
 function updateSubmitBtnStyle() {
   if (formState.isFormValid) {
@@ -359,19 +350,16 @@ function updateSubmitBtnStyle() {
 }
 
 function handleFormInput(event) {
-  // checkFormValidation(event);
   checkInputValidation(event);
   updateSubmitBtnStyle();
 }
 
 function handleCertificationBtnCilick(event) {
   checkCertication(event);
-  // checkFormValidation(event);
   updateSubmitBtnStyle();
 }
 
 function handleCheckboxClick(event) {
-  // checkFormValidation(event);
   checkCheckboxVaildation(event);
   updateSubmitBtnStyle();
 }
@@ -491,6 +479,7 @@ function formReset() {
   const bookForm = document.querySelector(".book-form");
   bookForm.reset(); // 폼 내용 모두 리셋
   formState.reset(); // 폼 검증 상태도 모두 리셋
+  localStorage.clear(); // seats 페이지에서 localStorage에 저장한 값 비우기
 }
 
 function handleExitBtnClick() {

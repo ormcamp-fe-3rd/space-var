@@ -1,5 +1,6 @@
 @import "./reset.css";
 @import "./common.css";
+
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
 @import url("https://fonts.cdnfonts.com/css/zen-dots");
 
@@ -19,17 +20,20 @@ h3 {
   font-size: 20px;
   font-weight: 600;
 }
+
 body {
   width: 100%;
   overflow-x: hidden;
 }
+
 .book-planet {
   display: flex;
-  position: absolute; /*absolute 적용*/
-  z-index: 1; /*absolute 적용 */
+  position: absolute;
+  z-index: 1;
 }
+
 .side {
-  min-width: 20%; /*absolute 적용 후 넓어져서 바꿈*/
+  min-width: 25%;
   padding: 0 40px;
   background-image: url(../images/book/planet/side/default_Side.svg);
   background-size: cover;
@@ -52,11 +56,11 @@ body {
 }
 
 .content-wrapper {
+  max-width: 75%;
   height: 100%;
 }
 
 .content {
-  max-width: 75%;
   padding: 50px 35px 0px 65px;
   margin: 0 0 50px 0;
 }
@@ -68,11 +72,12 @@ body {
   height: 58px;
   margin: 11px 0px 0px 0px;
 }
+
 .carousel {
   display: flex;
   background-color: black;
+  width: 1180px;
   height: 160px;
-  max-width: 1340px;
   margin: 0px 0px 35px 0px;
   z-index: 6;
 }
@@ -89,7 +94,6 @@ body {
 .animation {
   align-content: center;
   overflow: hidden;
-  
 }
 .carouel-animation {
   display: flex;
