@@ -1,5 +1,8 @@
+@import "./reset.css";
+@import "./common.css";
 /* Google Fonts에서 Raleway 글꼴을 가져옵니다. */
 @import url("https://fonts.googleapis.com/css?family=Raleway");
+/* 리셋 스타일시트와 공통 스타일시트를 가져옵니다. */
 
 /* CSS 변수 선언 - 빛나는 효과에 사용되는 색상 */
 :root {
@@ -12,10 +15,6 @@
 *::after {
   box-sizing: border-box; /* padding과 border가 요소의 크기에 영향을 미치지 않도록 설정 */
 }
-
-/* 리셋 스타일시트와 공통 스타일시트를 가져옵니다. */
-@import "./reset.css";
-@import "./common.css";
 
 /* body 스타일 설정 */
 body {
@@ -31,6 +30,33 @@ body {
 /* 웹킷 브라우저에서 스크롤바 숨김 */
 body::-webkit-scrollbar {
   display: none; /* 웹킷 기반 브라우저에서 스크롤바 숨김 */
+}
+
+.logo {
+  width: 100px;
+  margin: 0 0 0 100px;
+}
+
+/* 우측 상단 버튼 스타일 */
+.header {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  min-width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px 0 0;
+}
+
+/* 버튼 내 링크 스타일 */
+.header a {
+  text-decoration: none; /* 링크의 밑줄 제거 */
+}
+
+.header-btns {
+  min-width: 200px;
 }
 
 /* 비디오 컨테이너 스타일 - 화면 높이의 3배로 설정 */
@@ -173,32 +199,9 @@ body::-webkit-scrollbar {
 
 /* 푸터의 텍스트 스타일 */
 .footer-txt {
-  line-height: 5px;
+  line-height: 12px;
   margin: 0 50% 0 0; /* 텍스트 중앙 정렬 */
 }
-
-/* 우측 상단 버튼 스타일 */
-.button-container {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-  display: flex;
-  gap: 30px;
-  display: none; /* 기본적으로 숨김 */
-}
-
-/* 첫 번째 비디오에서만 버튼 표시 */
-.button-container.show {
-  display: flex;
-  margin: 28px 260px;
-}
-
-/* 버튼 내 링크 스타일 */
-.button-container a {
-  text-decoration: none; /* 링크의 밑줄 제거 */
-}
-
 /* 버튼의 glowing 효과 스타일 */
 .glowing-btn {
   position: relative;
@@ -216,12 +219,12 @@ body::-webkit-scrollbar {
   box-shadow: inset 0px 0px 0.5em 0px var(--glow-color),
     0px 0px 0.5em 0px var(--glow-color);
   animation: border-flicker 2s linear infinite; /* 버튼의 테두리 깜박이는 애니메이션 */
+  margin: 0 30px 0 0;
 }
 
 /* 버튼 내 텍스트의 glowing 효과 */
 .glowing-txt {
   font-family: "Zen Dots", sans-serif;
-  float: left;
   margin: 0 -0.8em 0 0;
   text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color); /* 텍스트 그림자 효과 */
   animation: text-flicker 3s linear infinite; /* 텍스트 깜박이는 애니메이션 */
@@ -393,21 +396,6 @@ body::-webkit-scrollbar {
 }
 
 /* 좌측 상단 이미지 스타일 */
-.top-left-img {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  width: 100px; /* 이미지 크기 */
-  height: auto;
-  z-index: 1000;
-  display: none; /* 기본적으로 숨김 */
-  margin: 15px 260px;
-}
-
-/* 첫 번째 비디오에서만 이미지 표시 */
-.top-left-img.show {
-  display: block;
-}
 
 /* 푸터에 있는 로고 스타일 */
 #footer-mainlogo {

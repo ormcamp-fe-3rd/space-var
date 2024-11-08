@@ -4,32 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>start</title>
-    <link rel="stylesheet" href="../assets/styles/common.css" />
     <link rel="stylesheet" href="../assets/styles/start.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap"
-      rel="stylesheet"
-    />
   </head>
   <body>
+    <!-- start-header로 수정  -->
     <header>
-      <div class="button-container" id="buttonContainer">
-        <a href="./company.html">
-          <button class="glowing-btn">
-            <span class="glowing-txt">
-              Com<span class="faulty-letter">Pa</span>Ny
-            </span>
-          </button>
+      <!-- logo = topLeftImage -->
+      <div class="header" id="header">
+        <a href="../pages/start.html">
+          <img
+            src="../assets/images/common/logo.png"
+            alt="Logo"
+            class="logo"
+            id="logo"
+          />
         </a>
-        <a href="./seats.html">
-          <button class="glowing-btn">
-            <span class="glowing-txt">
-              Bo<span class="faulty-letter">oK</span>NoW
-            </span>
-          </button>
-        </a>
+        <div class="header-btns">
+          <a href="./company.html">
+            <button class="glowing-btn">
+              <span class="glowing-txt">
+                Com<span class="faulty-letter">Pa</span>Ny
+              </span>
+            </button>
+          </a>
+          <a href="./seats.html">
+            <button class="glowing-btn">
+              <span class="glowing-txt">
+                Bo<span class="faulty-letter">oK</span>NoW
+              </span>
+            </button>
+          </a>
+        </div>
       </div>
     </header>
 
@@ -75,15 +80,6 @@
           Take your opportunity, We will join you.
         </div>
       </section>
-
-      <a href="../pages/start.html">
-        <img
-          src="../assets/images/common/logo.png"
-          alt="Logo"
-          class="top-left-img"
-          id="topLeftImage"
-        />
-      </a>
     </main>
 
     <footer class="footer" id="footer">
