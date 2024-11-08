@@ -11,12 +11,14 @@ body {
   -ms-overflow-style: none;
 }
 
+/* 로고 */
 .logo {
   width: 135px;
   height: 111px;
   margin: 0 0 0 100px;
 }
 
+/* 헤더 */
 .header .nav {
   min-width: 1550px;
   position: fixed;
@@ -33,6 +35,51 @@ body {
   min-width: 200px;
 }
 
+.header .glowing-btn {
+  position: relative;
+  color: #52f7ef;
+  padding: 5.6px 16px;
+  border: 2.4px solid #52f7ef;
+  border-radius: 7.2px;
+  background: none;
+  perspective: 32px;
+  font-size: 16px;
+  letter-spacing: 8px;
+  box-shadow: inset 0px 0px 8px 0px #52f7ef, 0px 0px 8px 0px #52f7ef;
+  margin: 0 30px 0 0;
+  cursor: pointer;
+  animation: border-flicker 2s linear infinite;
+}
+
+.header .glowing-text {
+  font-family: "Zen Dots", sans-serif;
+  margin: 0 -12.8px 0 0;
+  text-shadow: 0 0 2px hsl(0 0% 100% / 0.3), 0 0 7.2px #52f7ef;
+  animation: text-flicker 3s linear infinite;
+}
+
+.header .faulty-letter {
+  opacity: 0.5;
+  animation: faulty-flicker 2s linear infinite;
+}
+
+.header .glowing-btn:hover {
+  color: rgb(129, 255, 249);
+  text-shadow: none;
+  animation: none;
+}
+
+.header .glowing-btn:hover .glowing-text {
+  animation: none;
+}
+
+.header .glowing-btn:hover .faulty-letter {
+  animation: none;
+  text-shadow: none;
+  opacity: 1;
+}
+
+/* video 섹션 */
 .video-section {
   position: relative;
   min-width: 1400px;
@@ -53,14 +100,44 @@ body {
   opacity: 1;
 }
 
-.video-indicator {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  padding: 10px;
-  font-size: 10px;
+.video-text {
+  font-family: "Zen Dots", sans-serif;
+  font-weight: 400;
+  position: absolute;
+  font-size: 20px;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  z-index: 10;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
 
+.video-text.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* video 섹션마다 있는 글 */
+.first {
+  top: 5%;
+  left: 5%;
+  font-size: 40px;
+}
+
+.second {
+  top: 15%;
+  left: 25%;
+  font-size: 40px;
+}
+
+.third {
+  top: 25%;
+  left: 50%;
+  font-size: 40px;
+}
+
+/* 스크롤 바 */
 .scroll-bar {
   width: 15px;
   height: 700px;
@@ -86,71 +163,21 @@ body {
   transition: height 1s ease;
 }
 
-.video-text {
-  font-family: "Zen Dots", sans-serif;
-  font-weight: 400;
-  position: absolute;
-  font-size: 20px;
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-  z-index: 10;
-  opacity: 0;
-  transform: translateX(-100%);
-  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-}
-
-.video-text.active {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-#text1 {
-  top: 5%;
-  left: 5%;
-  font-size: 40px;
-}
-#text2 {
-  top: 15%;
-  left: 5%;
-  font-size: 40px;
-}
-#text3 {
-  top: 25%;
-  left: 5%;
-  font-size: 40px;
-}
-
-@media (min-width: 600px) {
-  .video-text {
-    font-size: 30px;
-  }
-  #text1 {
-    left: 10%;
-  }
-  #text2 {
-    left: 30%;
-  }
-  #text3 {
-    left: 40%;
-  }
-}
-
+/* footer */
 .footer {
+  width: 100%;
   height: 10%;
-  background-color: rgba(49, 49, 49, 0.8);
   color: white;
+  background-color: rgba(49, 49, 49, 1);
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
   bottom: 0;
-  width: 100%;
   opacity: 0;
-  transition: opacity 2s ease-in-out;
-  pointer-events: none;
+  transition: opacity 1s ease-in-out;
   font-size: 10px;
   font-family: "Zen Dots", sans-serif;
-  font-weight: 400;
 }
 
 .footer.active {
@@ -159,54 +186,23 @@ body {
 }
 
 .footer-text {
+  min-width: max-content;
   line-height: 12px;
   margin: 0 50% 0 0;
 }
 
-.glowing-btn {
-  position: relative;
-  color: #52f7ef;
-  padding: 5.6px 16px;
-  border: 2.4px solid #52f7ef;
-  border-radius: 7.2px;
-  background: none;
-  perspective: 32px;
-  font-size: 16px;
-  letter-spacing: 8px;
-  box-shadow: inset 0px 0px 8px 0px #52f7ef, 0px 0px 8px 0px #52f7ef;
-  margin: 0 30px 0 0;
-  cursor: pointer;
-  animation: border-flicker 2s linear infinite;
+.footer-logo {
+  width: 100px;
+  margin: 10px;
 }
 
-.glowing-text {
-  font-family: "Zen Dots", sans-serif;
-  margin: 0 -12.8px 0 0;
-  text-shadow: 0 0 2px hsl(0 0% 100% / 0.3), 0 0 7.2px #52f7ef;
-  animation: text-flicker 3s linear infinite;
+.footer-facebook,
+.footer-insta {
+  width: 20px;
+  height: auto;
 }
 
-.faulty-letter {
-  opacity: 0.5;
-  animation: faulty-flicker 2s linear infinite;
-}
-
-.glowing-btn:hover {
-  color: rgb(129, 255, 249);
-  text-shadow: none;
-  animation: none;
-}
-
-.glowing-btn:hover .glowing-text {
-  animation: none;
-}
-
-.glowing-btn:hover .faulty-letter {
-  animation: none;
-  text-shadow: none;
-  opacity: 1;
-}
-
+/* 애니메이션 */
 @keyframes faulty-flicker {
   0% {
     opacity: 0.1;
@@ -295,22 +291,4 @@ body {
   100% {
     opacity: 1;
   }
-}
-
-@media only screen and (max-width: 600px) {
-  .glowing-btn {
-    font-size: 16px;
-  }
-}
-
-#footer-mainlogo {
-  height: auto;
-  width: 100px;
-  margin: 10px;
-}
-
-.footer-facebook,
-.footer-insta {
-  width: 20px;
-  height: auto;
 }

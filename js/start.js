@@ -15,7 +15,7 @@ function checkScrollSection(deltaY) {
 }
 
 function updateScrollFillStyle() {
-  const scrollFill = document.getElementById("scroll-fill");
+  const scrollFill = document.querySelector(".scroll-fill");
   const videos = document.querySelectorAll(".video");
 
   const totalSections = videos.length - 1;
@@ -36,14 +36,14 @@ function showVideosAndTexts() {
 }
 
 function updateFooterStyle() {
-  const footer = document.getElementById("footer");
+  const footer = document.querySelector(".footer");
 
   // 마지막 섹션일 때 푸터 나타나도록
   if (currentSectionIndex === 2) footer.classList.toggle("active");
 }
 
 // 디바운싱: 연속적으로 발생하는 이벤트를 그룹화해서, 마지막 이벤트만 처리하는 기술
-// 100ms 동안 추가 스크롤이 없을 때만 실제 동작을 실행
+// 80ms 동안 추가 스크롤이 없을 때만 실제 동작을 실행
 // 연속적인 스크롤 중에는 계속 타이머를 초기화하면서 실행을 미룸
 // 결과적으로 스크롤이 "멈춘 시점"의 마지막 위치에서만 동작
 
@@ -56,7 +56,7 @@ function handleWheel(event) {
     updateScrollFillStyle();
     updateFooterStyle();
     showVideosAndTexts();
-  }, 80); // 100ms 간격으로 스크롤 처리 // 스크롤이 0.08초 동안 멈췄을 때 비디오와 텍스트를 업데이트 하기
+  }, 80); // 80ms 간격으로 스크롤 처리 // 스크롤이 0.08초 동안 멈췄을 때 비디오와 텍스트를 업데이트 하기
 }
 
 // 이벤트 리스너 등록
