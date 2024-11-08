@@ -2,7 +2,6 @@ let currentSectionIndex = 0;
 
 function checkScrollSection(deltaY) {
   const videos = document.querySelectorAll(".video");
-
   if (deltaY > 50 && currentSectionIndex < videos.length - 1) {
     // 아래로 스크롤(deltaY가 50보다 클 때)하고, 현재 섹션이 마지막 섹션이 아닐 때
     //  다음 섹션으로 이동
@@ -39,7 +38,11 @@ function updateFooterStyle() {
   const footer = document.querySelector(".footer");
 
   // 마지막 섹션일 때 푸터 나타나도록
-  if (currentSectionIndex === 2) footer.classList.toggle("active");
+  if (currentSectionIndex === 2) {
+    footer.classList.add("active");
+  } else {
+    footer.classList.remove("active");
+  }
 }
 
 // 디바운싱: 연속적으로 발생하는 이벤트를 그룹화해서, 마지막 이벤트만 처리하는 기술
