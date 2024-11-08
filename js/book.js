@@ -88,8 +88,14 @@ carouselBtn.forEach((button, index) => {
 
     totalPrice.textContent = `Total $ ${price * 2}`;
     planetPrice.innerHTML = `${name}<br> $${price}(price) + $${price}(deposit)`;
-    sideBackground.style.backgroundImage = `url("${localHost}/assets/images/book/planet/surface/${name}.svg")`;
     selectBtn.classList.add("sizeup-animation");
+    
+    // side 이미지 변경시 0.5초 동안 불투명도를 10% ~ 100% 조정해 transition 구현
+    sideBackground.style.opacity = "10%";
+    setTimeout( () => {
+      sideBackground.style.backgroundImage = `url("${localHost}/assets/images/book/planet/surface/${name}.svg")`;
+      sideBackground.style.opacity = "100%";
+    }, 500);
 
     reservationInfo.planet = {
       name: name,
