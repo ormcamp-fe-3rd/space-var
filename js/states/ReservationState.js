@@ -8,7 +8,10 @@ class ReservationState {
   }
 
   setPlanet(planet) {
-    this.planet = planet;
+    this.planet = {
+      name: planet.name,
+      price: planet.price * 2,
+    };
   }
 
   setName(name) {
