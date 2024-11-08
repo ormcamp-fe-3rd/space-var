@@ -45,23 +45,23 @@ let reservationInfo = {};
 prevBtn.addEventListener("click", () => {
   if (carouselIndex === 0) return;
   carouselIndex -= 1;
-  checkBtnOpacity(prevBtn,nextBtn,carouselIndex,hiddenIndex);
-  checkTransform (carousel, carouselIndex, hiddenIndex);
+  checkBtnOpacity(prevBtn, nextBtn, carouselIndex, hiddenIndex);
+  checkTransform(carousel, carouselIndex, hiddenIndex);
 });
 
 nextBtn.addEventListener("click", () => {
   if (carouselIndex === hiddenIndex) return;
   carouselIndex += 1;
-  checkBtnOpacity(prevBtn,nextBtn,carouselIndex,hiddenIndex);
-  checkTransform (carousel, carouselIndex, hiddenIndex);
+  checkBtnOpacity(prevBtn, nextBtn, carouselIndex, hiddenIndex);
+  checkTransform(carousel, carouselIndex, hiddenIndex);
 });
 
-function checkBtnOpacity (prevButton, nextButton, index, hiddenIndex) {
-  prevButton.style.opacity = index === 0 ? '50%' : '100%';
-  nextButton.style.opacity = index === hiddenIndex ? '50%' : '100%';
+function checkBtnOpacity(prevButton, nextButton, index, hiddenIndex) {
+  prevButton.style.opacity = index === 0 ? "50%" : "100%";
+  nextButton.style.opacity = index === hiddenIndex ? "50%" : "100%";
 }
 
-function checkTransform (carousel, index, hiddenIndex) {
+function checkTransform(carousel, index, hiddenIndex) {
   const movement = index === hiddenIndex ? 190 : 150;
   carousel.style.transform = `translateX(-${movement * index}px)`;
 }
@@ -73,14 +73,14 @@ carouselBtn.forEach((button, index) => {
     const totalPrice = document.querySelector(".total-price");
     const selectBtn = button.querySelector("img");
     const name = planetArray[index].name;
-    const price =  planetArray[index].price;
+    const price = planetArray[index].price;
     const localHost = window.location.origin;
 
     totalPrice.textContent = `Total $ ${price * 2}`;
     planetPrice.innerHTML = `${name}<br> $${price}(price) + $${price}(deposit)`;
     sideBackground.style.backgroundImage = `url("${localHost}/assets/images/book/planet/surface/${name}.svg")`;
     selectBtn.classList.add("sizeup-animation");
-    
+
     reservationInfo.planet = {
       name: name,
       price: price * 2,
@@ -360,7 +360,7 @@ function showTicket() {
         value.textContent = reservationInfo.planet.name;
         break;
       case 1:
-        value.textContent = reservationInfo.seat;
+        value.textContent = localStorage.getItem("seat");
         break;
       case 2:
         value.textContent = reservationInfo.name;
