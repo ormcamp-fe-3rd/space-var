@@ -365,7 +365,6 @@ body {
   width: 950px;
   min-width: 500px;
   display: flex;
-  /* background-color: rgb(59, 19, 19); */
   background-color: white;
   border-radius: 5px;
   box-shadow: 0 10px 10px #000000;
@@ -385,11 +384,12 @@ body {
 
 .exit {
   position: absolute;
-  top: -20px;
-  right: 0;
+  bottom: -30px;
+  right: 5px;
   color: white;
   cursor: pointer;
   z-index: 3;
+  font-family: "Zen Dots", sans-serif;
 }
 
 .ticket-content {
