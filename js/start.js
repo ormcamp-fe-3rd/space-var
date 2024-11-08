@@ -79,4 +79,4 @@ window.addEventListener("wheel", (event) => {
 window.addEventListener('load', initializeState); // 페이지 로드 시 초기화
 window.addEventListener('popstate', initializeState); // 뒤로 가기/앞으로 가기 시 초기화
 
-//수정 
+//수..
