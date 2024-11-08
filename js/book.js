@@ -306,9 +306,6 @@ function checkCertication(event) {
   );
 
   // 실제 동작처럼 보이도록 setTimeout 사용
-  // 누를 때마다 타이머 삭제 후 새로 타이머 생성
-  clearTimeout(timer);
-
   btn.textContent = "Waiting...";
 
   // isValid 여부에 따라 VERIFIED, FAILED로 버튼 스타일 바뀜
