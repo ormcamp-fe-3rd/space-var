@@ -26,7 +26,11 @@ header {
 
 /* 왼쪽 버튼 (CONTACT) */
 .header-button-left {
-  background: linear-gradient(to right, #2180e1, #5060f1); /* 왼쪽에서 오른쪽으로 그라디언트 */
+  background: linear-gradient(
+    to right,
+    #2180e1,
+    #5060f1
+  ); /* 왼쪽에서 오른쪽으로 그라디언트 */
   color: #ffffff; /* 텍스트 색상 흰색 */
   padding: 10px 20px;
   text-decoration: none;
@@ -36,12 +40,20 @@ header {
 }
 
 .header-button-left:hover {
-  background: linear-gradient(to right, #2180e1, #2180e1); /* 호버 시 그라디언트 색상 변경 */
+  background: linear-gradient(
+    to right,
+    #2180e1,
+    #2180e1
+  ); /* 호버 시 그라디언트 색상 변경 */
 }
 
 /* 오른쪽 버튼 (BOOK NOW) */
 .header-button-right {
-  background: linear-gradient(to right, #925cee, #6b4bd6); /* 다른 그라디언트 색상 설정 */
+  background: linear-gradient(
+    to right,
+    #925cee,
+    #6b4bd6
+  ); /* 다른 그라디언트 색상 설정 */
   color: #ffffff;
   padding: 10px 20px;
   text-decoration: none;
@@ -51,7 +63,11 @@ header {
 }
 
 .header-button-right:hover {
-  background: linear-gradient(to right, #925cee, #925cee); /* 오른쪽 버튼 호버 시 다른 색상 */
+  background: linear-gradient(
+    to right,
+    #925cee,
+    #925cee
+  ); /* 오른쪽 버튼 호버 시 다른 색상 */
 }
 
 /* 예약 */
@@ -125,26 +141,26 @@ header {
   background: #5060f1;
 }
 
-.total {
+.selected-seat {
   overflow: hidden;
   max-height: 0;
   transition: all 0.3s ease-in-out;
 }
 
-.total-wrap {
+.selected-seat-wrap {
   margin: 0 0 213px;
   padding: 68px 0 0;
   border-top: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-.total-wrap .total-txt {
+.selected-seat-wrap .selected-seat-text {
   display: block;
   font-size: 32px;
   font-weight: 600;
   text-align: center;
 }
 
-.total-wrap .btn-wrap {
+.selected-seat-wrap .btn-wrap {
   display: flex;
   justify-content: center;
   margin: 81px 0 0;
@@ -163,15 +179,27 @@ header {
   cursor: pointer;
 }
 
-.btn-wrap .btn-primary {
+.btn-wrap .btn-next {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 0 0 40px;
   text-decoration: none;
-  background: -moz-linear-gradient(90deg, rgba(33, 128, 225, 1) 0%, rgba(80, 96, 241, 1) 100%);
-  background: -webkit-linear-gradient(90deg, rgba(33, 128, 225, 1) 0%, rgba(80, 96, 241, 1) 100%);
-  background: linear-gradient(90deg, rgba(33, 128, 225, 1) 0%, rgba(80, 96, 241, 1) 100%);
+  background: -moz-linear-gradient(
+    90deg,
+    rgba(33, 128, 225, 1) 0%,
+    rgba(80, 96, 241, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    90deg,
+    rgba(33, 128, 225, 1) 0%,
+    rgba(80, 96, 241, 1) 100%
+  );
+  background: linear-gradient(
+    90deg,
+    rgba(33, 128, 225, 1) 0%,
+    rgba(80, 96, 241, 1) 100%
+  );
 }
 
 /* 푸터 */
