@@ -16,6 +16,7 @@ h2 {
   font-size: 32px;
   font-weight: 700;
 }
+
 h3 {
   font-size: 20px;
   font-weight: 600;
@@ -40,16 +41,19 @@ body {
   z-index: 0;
   transition: opacity 0.3s ease-in-out;
 }
+
 .side h1 {
   width: 358px;
   height: 214px;
   z-index: 0;
 }
+
 .side-bar img {
   margin: 20px 0 0 0;
   width: 135px;
   height: 111px;
 }
+
 .side-bar {
   position: fixed;
   z-index: 0;
@@ -64,10 +68,12 @@ body {
   padding: 50px 35px 0px 65px;
   margin: 0 0 50px 0;
 }
+
 .price {
   display: flex;
   justify-content: space-between;
 }
+
 .book-price h3 {
   height: 58px;
   margin: 11px 0px 0px 0px;
@@ -84,25 +90,31 @@ body {
 .carouel-prevbtn {
   margin: 0px 0px 0px 40px;
 }
+
 .carouel-nextbtn {
   margin: 0px 40px 0px 0px;
 }
+
 .carousel button {
   background-color: black;
   border: none;
 }
+
 .animation {
   align-content: center;
   overflow: hidden;
 }
+
 .carouel-animation {
   display: flex;
   margin: 0px 20px 0px 20px;
   transition: transform 0.8s;
 }
+
 .carouel-animation button {
   padding: 0px 25px 0px 0px;
 }
+
 .carouel-animation button:hover {
   cursor: pointer;
 }
@@ -115,6 +127,7 @@ body {
     transform: scale(1.2);
   }
 }
+
 .sizeup-animation {
   animation: sizeup 0.3s forwards;
 }
