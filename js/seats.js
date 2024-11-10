@@ -68,8 +68,9 @@ const resetBtn = document.querySelector(".selected-seat-wrap .btn-reset");
 
 resetBtn.addEventListener("click", handleResetBtnClick);
 
-function handleNextBtnClick() {
+function handleNextBtnClick(event) {
   if (!Array.from(seatsBtns).some((btn) => btn.classList.contains("on"))) {
+    event.preventDefault();
     alert("Please select a seat.");
   }
 }
