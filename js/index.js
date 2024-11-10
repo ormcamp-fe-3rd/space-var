@@ -1,19 +1,15 @@
-const button = document.querySelector(".button");
-const background = document.querySelector(".background");
-
 // 화면의 가로와 세로 크기를 가져옴
-let width = window.innerWidth;
-let height = window.innerHeight;
-let r = Math.sqrt(width * width + height * height); // 화면 대각선 길이를 계산
+function getScreenDimensions() {
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+  const r = Math.sqrt(width * width + height * height); // 화면 대각선 길이 계산
+  return { width, height, r };
+}
 
-// 화면 크기에 따른 원의 크기 재계산
-window.addEventListener("resize", () => {
-  width = window.innerWidth;
-  height = window.innerHeight;
-  r = Math.sqrt(width * width + height * height);
-});
+function createCircle() {
+  const button = document.querySelector(".button");
+  const background = document.querySelector(".background");
 
-button.addEventListener("click", function (e) {
   // 버튼의 위치를 계산
   const rect = button.getBoundingClientRect();
   const startX = rect.left + rect.width / 2;
@@ -34,6 +30,11 @@ button.addEventListener("click", function (e) {
   circle.style.pointerEvents = "none";
   circle.style.borderRadius = "50%";
   circle.style.opacity = "1";
+}
+
+function startAnimation() {
+  const circle = document.querySelector("#circle");
+  const { r } = getScreenDimensions();
 
   // 애니메이션을 시작하기 전에 렌더링을 요청
   requestAnimationFrame(() => {
@@ -44,9 +45,22 @@ button.addEventListener("click", function (e) {
     circle.style.marginLeft = `-${r}px`;
     circle.style.marginTop = `-${r}px`;
   });
+}
 
+function handleCircleTransition() {
   // 애니메이션이 종료되면 링크로 즉시 이동하도록 설정
   circle.addEventListener("transitionend", () => {
     window.location.href = button.getAttribute("data-link");
   });
-});
+}
+
+function handleLogoBtnClick() {
+  createCircle();
+  startAnimation();
+  handleCircleTransition();
+}
+
+// 이벤트 리스너 등록
+const button = document.querySelector(".button");
+
+button.addEventListener("click", handleLogoBtnClick);
