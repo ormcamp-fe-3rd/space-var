@@ -1,4 +1,4 @@
-class FormState {
+class FormValidation {
   constructor() {
     // 1. 행성 선택 여부
     this.isPlanetSelected = false;
@@ -129,4 +129,4 @@ class FormState {
   }
 }
 
-export default FormState;
+export default FormValidation;
