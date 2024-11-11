@@ -1,5 +1,5 @@
-import ReservationState from "./store/ReservationState.js";
-import FormState from "./store/FormState.js";
+import ReservationState from "./domain/reservation/ReservationState.js";
+import FormState from "./domain/validation/FormState.js";
 
 const reservationState = new ReservationState();
 const formState = new FormState();
