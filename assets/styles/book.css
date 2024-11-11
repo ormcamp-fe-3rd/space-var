@@ -185,7 +185,7 @@ body {
   margin: 50px 50px 10px 0;
 }
 
-.customer .info1 {
+.customer .info-name-birth {
   display: flex;
   justify-content: space-between;
 }
@@ -290,7 +290,7 @@ body {
   font-weight: 700;
   margin: 0 50px 0 0;
 }
-.payment .info2 {
+.payment .info-phone-email {
   display: flex;
   justify-content: space-between;
 }
