@@ -29,7 +29,7 @@
             <button type="button" class="carousel-prevbtn" style="opacity: 50%">
               <img
                 src="../assets/images/book/planet/button/left_btn.svg"
-                alt="carousel-left-button"
+                alt="carousel left button"
               />
             </button>
             <div class="animation">
@@ -43,43 +43,43 @@
                 <button type="button">
                   <img
                     src="../assets/images/book/planet/Venus.svg"
-                    alt="planet-venus"
+                    alt="target planet venus"
                   />
                 </button>
                 <button type="button">
                   <img
                     src="../assets/images/book/planet/Mars.svg"
-                    alt="planet-mars"
+                    alt="target planet mars"
                   />
                 </button>
                 <button type="button">
                   <img
                     src="../assets/images/book/planet/Jupiter.svg"
-                    alt="planet-jupiter"
+                    alt="target planet jupiter"
                   />
                 </button>
                 <button type="button">
                   <img
                     src="../assets/images/book/planet/Saturn.svg"
-                    alt="planet-saturn"
+                    alt="target planet saturn"
                   />
                 </button>
                 <button type="button">
                   <img
                     src="../assets/images/book/planet/Uranus.svg"
-                    alt="planet-uranus"
+                    alt="target planet uranus"
                   />
                 </button>
                 <button type="button">
                   <img
                     src="../assets/images/book/planet/Neptune.svg"
-                    alt="planet-neptune"
+                    alt="target planet neptune"
                   />
                 </button>
                 <button type="button">
                   <img
                     src="../assets/images/book/planet/Pluto.svg"
-                    alt="planet-pluto"
+                    alt="target planet pluto"
                   />
                 </button>
               </div>
@@ -87,7 +87,7 @@
             <button class="carousel-nextbtn">
               <img
                 src="../assets/images/book/planet/button/right_btn.svg"
-                alt=" carousel-right-buttn"
+                alt=" carousel right button"
               />
             </button>
           </div>
@@ -106,6 +106,7 @@
                       name="name"
                       autocomplete="name"
                       aria-required="true"
+                      aria-describedby="type your name"
                     />
                   </div>
                   <div class="info-container border">
@@ -118,6 +119,7 @@
                       maxlength="10"
                       autocomplete="bday"
                       aria-required="true"
+                      aria-description="birth have to be typed like 19991122 and available year, month, date will be passed"
                     />
                   </div>
                 </div>
@@ -132,11 +134,14 @@
                       maxlength="13"
                       autocomplete="tel"
                       aria-required="true"
+                      aria-description="phone have to be typed like 01011112222"
                     />
                     <button
                       type="button"
                       class="certification-btn not-verified"
                       id="certification-phone"
+                      role="status"
+                      aria-live="polite"
                       aria-required="true"
                       aria-description="if you are done typing your phone number, you have to press this certification button to verify your phone number. If your number is available and you typed your phone number right, this button is going to be `VERIFIED` button. but if it's not, it's going to be `FAILED` button. If you want to book, you have to verify your phone number."
                     >
@@ -152,13 +157,16 @@
                       id="email"
                       autocomplete="email"
                       aria-required="true"
+                      aria-description="email have to include @"
                     />
                     <button
                       type="button"
                       class="certification-btn not-verified"
                       id="certification-email"
+                      role="status"
+                      aria-live="polite"
                       aria-required="true"
-                      aria-description="if you are dont typing your email, you have to press this certification button to verify your email. If your email is available and you typed your email right, this button is going to be `VERIFIED` button. but if it's not, it's going to be `FAILED` button. If you want to book, you have to verify your email."
+                      aria-description="if you are done typing your email, you have to press this certification button to verify your email. If your email is available and you typed your email right, this button is going to be `VERIFIED` button. but if it's not, it's going to be `FAILED` button. If you want to book, you have to verify your email."
                     >
                       CERTIFICATION
                     </button>
@@ -264,7 +272,7 @@
                     />
                   </div>
                 </div>
-                <div class="info1">
+                <div>
                   <div class="info-container border">
                     <label for="card-number">CARD NUMBER</label>
                     <input
@@ -275,10 +283,11 @@
                       maxlength="19"
                       autocomplete="cc-number"
                       aria-required="true"
+                      aria-description="card number have to be type like 1234123412341234"
                     />
                   </div>
                 </div>
-                <div class="info2">
+                <div class="card-expiration-security-code">
                   <div class="info-container border">
                     <label for="expiration">EXPIRATION (MM/YY)</label>
                     <input
@@ -289,6 +298,7 @@
                       maxlength="5"
                       autocomplete="cc-exp"
                       aria-required="true"
+                      aria-description="card expiration have to be type like 12(month)24(year), and only available year and month will be passed"
                     />
                   </div>
                   <div class="info-container border">
@@ -300,6 +310,8 @@
                       name="security-code"
                       maxlength="4"
                       autocomplete="cc-csc"
+                      aria-required="true"
+                      aria-description="security code have to be type like 1234"
                     />
                   </div>
                 </div>

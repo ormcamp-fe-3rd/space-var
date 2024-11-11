@@ -290,7 +290,7 @@ body {
   font-weight: 700;
   margin: 0 50px 0 0;
 }
-.payment .info-phone-email {
+.payment .card-expiration-security-code {
   display: flex;
   justify-content: space-between;
 }
