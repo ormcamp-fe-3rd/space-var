@@ -1,3 +1,6 @@
+@import "../common/reset.css";
+@import "../common/common.css";
+
 body {
   margin: 0;
   overflow: hidden;
@@ -14,7 +17,7 @@ body {
 .button {
   width: 308px;
   height: 288px;
-  background-image: url("../images/common/logo.png");
+  background-image: url("../../images/common/logo.png");
   background-size: cover;
   border: 0;
   cursor: pointer;
@@ -27,7 +30,7 @@ body {
 .button:active {
   margin-left: 5px;
   margin-top: 5px;
-  background-image: url("../images/common/logo-clicked.png");
+  background-image: url("../../images/common/logo-clicked.png");
 }
 
 #circle {

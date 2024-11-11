@@ -1,4 +1,4 @@
-class ReservationState {
+class FormData {
   constructor() {
     this.planet = "";
     this.name = "";
@@ -31,4 +31,4 @@ class ReservationState {
   }
 }
 
-export default ReservationState;
+export default FormData;

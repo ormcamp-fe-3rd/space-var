@@ -1,5 +1,5 @@
-@import "./reset.css";
-@import "./common.css";
+@import "../common/reset.css";
+@import "../common/common.css";
 @import url("https://fonts.cdnfonts.com/css/zen-dots");
 
 *,
@@ -31,7 +31,7 @@ body {
   z-index: -1;
   opacity: 0.5;
   content: "";
-  background-image: url(../images/company/space.jpg);
+  background-image: url(../../images/company/space.jpg);
   background-size: cover;
 }
 
@@ -412,7 +412,7 @@ h2 {
   margin: 100px 0 0;
   min-width: 1400px;
   height: 592px;
-  background: url(../images/company/bg_sec5.png) no-repeat;
+  background: url(../../images/company/bg_sec5.png) no-repeat;
   background-size: cover;
 }
 

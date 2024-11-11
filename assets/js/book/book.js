@@ -1,8 +1,8 @@
-import ReservationState from "./store/ReservationState.js";
-import FormState from "./store/FormState.js";
+import FormData from "../../models/book/FormData.js";
+import FormValidation from "../../models/book/FormValidation.js";
 
-const reservationState = new ReservationState();
-const formState = new FormState();
+const formData = new FormData();
+const formValidation = new FormValidation();
 
 const PLANETS = [
   {
@@ -131,8 +131,8 @@ function handlePlanetBtnClick(planetBtn, index) {
   updatePlanetBtnSize(planetBtn, index);
   updatePrices(index);
   updateSideBackgroundImage(index);
-  reservationState.setPlanet(PLANETS[index]); // 선택한 행성 정보 저장
-  formState.setPlanetSelected(); // planet 선택됨
+  formData.setPlanet(PLANETS[index]); // 선택한 행성 정보 저장
+  formValidation.setPlanetSelected(); // planet 선택됨
   updateSubmitBtnStyle();
 }
 
@@ -234,38 +234,42 @@ function checkInputValidation(event) {
   let id = event.target.id; // 현재 입력란의 ID 값을 이용함
   switch (id) {
     case "name":
-      formState.setNameValid(checkNameRegex(event).length > 0); // 한 글자라도 적히면 됨
-      updateInputBorder(event, formState.isNameValid);
+      formValidation.setNameValid(checkNameRegex(event).length > 0); // 한 글자라도 적히면 됨
+      updateInputBorder(event, formValidation.isNameValid);
       break;
 
     case "birth":
-      formState.setBirthValid(checkBirthRegex(event).length === 10); // 슬래시 포함 10자
-      updateInputBorder(event, formState.isBirthValid);
+      formValidation.setBirthValid(checkBirthRegex(event).length === 10); // 슬래시 포함 10자
+      updateInputBorder(event, formValidation.isBirthValid);
       break;
 
     case "phone":
-      formState.setPhoneValid(checkPhoneRegex(event).length === 13); // 하이픈 포함 13자
-      updateInputBorder(event, formState.isPhoneValid);
+      formValidation.setPhoneValid(checkPhoneRegex(event).length === 13); // 하이픈 포함 13자
+      updateInputBorder(event, formValidation.isPhoneValid);
       break;
 
     case "email":
-      formState.setEmailValid(checkEmailRegex(event)); // 이메일은 길이 제한이 없음. (양식 맞는지 판별만 하고 boolean 값 반환)
-      updateInputBorder(event, formState.isEmailValid);
+      formValidation.setEmailValid(checkEmailRegex(event)); // 이메일은 길이 제한이 없음. (양식 맞는지 판별만 하고 boolean 값 반환)
+      updateInputBorder(event, formValidation.isEmailValid);
       break;
 
     case "card-number":
-      formState.setCardNumberValid(checkCardNumberRegex(event).length === 19); // 하이픈 포함 19자
-      updateInputBorder(event, formState.isCardNumberValid);
+      formValidation.setCardNumberValid(
+        checkCardNumberRegex(event).length === 19
+      ); // 하이픈 포함 19자
+      updateInputBorder(event, formValidation.isCardNumberValid);
       break;
 
     case "expiration":
-      formState.setExpirationValid(checkExpirationRegex(event).length === 5); // 슬래시 포함 5자
-      updateInputBorder(event, formState.isExpirationValid);
+      formValidation.setExpirationValid(
+        checkExpirationRegex(event).length === 5
+      ); // 슬래시 포함 5자
+      updateInputBorder(event, formValidation.isExpirationValid);
       break;
 
     case "security-code":
-      formState.setSecurityValid(checkSecurityRegex(event).length === 4); // 4글자
-      updateInputBorder(event, formState.isSecurityValid);
+      formValidation.setSecurityValid(checkSecurityRegex(event).length === 4); // 4글자
+      updateInputBorder(event, formValidation.isSecurityValid);
       break;
   }
 }
@@ -296,16 +300,16 @@ function checkCertication(event) {
   // 전화번호 검증 버튼/이메일 검증 중 선택된 버튼에 따라 isValid에 값이 다르게 담김(관련 입력란 검증 값 가져옴)
   const isValid =
     id === "certification-phone"
-      ? formState.isPhoneValid
-      : formState.isEmailValid;
+      ? formValidation.isPhoneValid
+      : formValidation.isEmailValid;
 
   // 전화번호 버튼일 때 isValid의 값이 바뀌고 그 값이 들어감. 아니라면 이전 값 유지
-  formState.setPhoneVerified(
-    id === "certification-phone" ? isValid : formState.isPhoneVerified
+  formValidation.setPhoneVerified(
+    id === "certification-phone" ? isValid : formValidation.isPhoneVerified
   );
 
-  formState.setEmailVerified(
-    id === "certification-email" ? isValid : formState.isEmailVerfied
+  formValidation.setEmailVerified(
+    id === "certification-email" ? isValid : formValidation.isEmailVerfied
   );
 
   // 실제 동작처럼 보이도록 setTimeout 사용
@@ -328,22 +332,22 @@ function checkCheckboxVaildation(event) {
   let id = event.target.id;
   switch (id) {
     case "accident-rules": // 사고 관련 사항 체크박스
-      formState.setAccidentRulesChecked(event.target.checked);
+      formValidation.setAccidentRulesChecked(event.target.checked);
       break;
 
     case "personal-info": // 개인 정보 관련 체크박스
-      formState.setPersonalInfoChecked(event.target.checked);
+      formValidation.setPersonalInfoChecked(event.target.checked);
       break;
 
     case "check-all": // 모두 확인 및 결제 체크박스
-      formState.setAllConfirmedChecked(event.target.checked);
+      formValidation.setAllConfirmedChecked(event.target.checked);
       break;
   }
 }
 
 // 검증 때마다 버튼 스타일 결정
 function updateSubmitBtnStyle() {
-  if (formState.isFormValid) {
+  if (formValidation.isFormValid) {
     submitFormBtn.classList.remove("disabled");
     submitFormBtn.classList.add("activated");
   } else {
@@ -394,16 +398,16 @@ function saveReservationState() {
   inputs.forEach((input, i) => {
     switch (i) {
       case 0:
-        reservationState.setName(input.value);
+        formData.setName(input.value);
         break;
       case 1:
-        reservationState.setBirth(input.value);
+        formData.setBirth(input.value);
         break;
       case 2:
-        reservationState.setPhone(input.value);
+        formData.setPhone(input.value);
         break;
       case 3:
-        reservationState.setEmail(input.value);
+        formData.setEmail(input.value);
         break;
     }
   });
@@ -417,25 +421,25 @@ function showReservationState() {
   ticketValues.forEach((value, i) => {
     switch (i) {
       case 0:
-        value.textContent = reservationState.planet.name;
+        value.textContent = formData.planet.name;
         break;
       case 1:
         value.textContent = localStorage.getItem("seat"); // seat 페이지에서 localStorage에 저장한 내용 가져옴
         break;
       case 2:
-        value.textContent = reservationState.name;
+        value.textContent = formData.name;
         break;
       case 3:
-        value.textContent = reservationState.birth;
+        value.textContent = formData.birth;
         break;
       case 4:
-        value.textContent = reservationState.phone;
+        value.textContent = formData.phone;
         break;
       case 5:
-        value.textContent = reservationState.email;
+        value.textContent = formData.email;
         break;
       case 6:
-        value.textContent = reservationState.planet.price;
+        value.textContent = formData.planet.price;
         break;
     }
   });
@@ -447,7 +451,7 @@ let submitTimer;
 function showTicket() {
   clearTimeout(submitTimer);
 
-  if (formState.isFormValid) {
+  if (formValidation.isFormValid) {
     submitFormBtn.textContent = "Waiting...";
 
     setTimeout(() => {
@@ -481,7 +485,7 @@ function hideTicket() {
 function formReset() {
   const bookForm = document.querySelector(".book-form");
   bookForm.reset(); // 폼 내용 모두 리셋
-  formState.reset(); // 폼 검증 상태도 모두 리셋
+  formValidation.reset(); // 폼 검증 상태도 모두 리셋
   localStorage.clear(); // seats 페이지에서 localStorage에 저장한 값 비우기
 }
 
