@@ -8,7 +8,7 @@
 
 #### 페이지 소개
 
-##### 첫 화면 `entry.html`
+##### 첫 화면 `index.html`
 
 ![0](https://github.com/user-attachments/assets/9bc01ddb-0255-4082-9997-894feaf5246e)
 ![0-1](https://github.com/user-attachments/assets/6d3ac7fd-58a1-4f65-81bc-45f0bdaeacb7)
