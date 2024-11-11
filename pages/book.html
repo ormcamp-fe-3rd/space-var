@@ -11,7 +11,7 @@
       <div class="side">
         <div class="side-bar">
           <a href="start.html">
-            <img src="../assets/images/common/logo.png" />
+            <img src="../assets/images/common/logo.png" alt="logo" />
           </a>
           <h1>HAVE A NICE EXPERIENCE!<br /><br />LOVE YOURSELF ALWAYS:)</h1>
         </div>
@@ -26,39 +26,133 @@
             </div>
           </div>
           <div class="carousel">
-            <button type="button" class="carousel-prevbtn" style="opacity: 50%">
-              <img src="../assets/images/book/planet/button/left_btn.svg" />
+            <button
+              type="button"
+              class="carousel-prevbtn"
+              style="opacity: 50%"
+              aria-label="see hidden previous target planets"
+            >
+              <img
+                src="../assets/images/book/planet/button/left_btn.svg"
+                alt="carousel left button"
+              />
             </button>
             <div class="animation">
               <div class="carouel-animation">
-                <button type="button">
-                  <img src="../assets/images/book/planet/Mercurius.svg" />
+                <button
+                  type="button"
+                  role="button"
+                  aria-live="polite"
+                  aria-label="Select Mercurius as target planet. $100 plus deposit $100 total $200"
+                  aria-required="true"
+                  aria-pressed="false"
+                >
+                  <img
+                    src="../assets/images/book/planet/Mercurius.svg"
+                    alt="planet-mercurius"
+                  />
                 </button>
-                <button type="button">
-                  <img src="../assets/images/book/planet/Venus.svg" />
+                <button
+                  type="button"
+                  role="button"
+                  aria-live="polite"
+                  aria-label="Select Venus as target planet. $200 plus deposit $200 total $400"
+                  aria-required="true"
+                  aria-pressed="false"
+                >
+                  <img
+                    src="../assets/images/book/planet/Venus.svg"
+                    alt="target planet venus"
+                  />
                 </button>
-                <button type="button">
-                  <img src="../assets/images/book/planet/Mars.svg" />
+                <button
+                  type="button"
+                  role="button"
+                  aria-live="polite"
+                  aria-label="Select Mars as target planet. $300 plus deposit $300 total $600"
+                  aria-required="true"
+                  aria-pressed="false"
+                >
+                  <img
+                    src="../assets/images/book/planet/Mars.svg"
+                    alt="target planet mars"
+                  />
                 </button>
-                <button type="button">
-                  <img src="../assets/images/book/planet/Jupiter.svg" />
+                <button
+                  type="button"
+                  role="button"
+                  aria-live="polite"
+                  aria-label="Select Jupiter as target planet. $400 plus deposit $400 total $800"
+                  aria-required="true"
+                  aria-pressed="false"
+                >
+                  <img
+                    src="../assets/images/book/planet/Jupiter.svg"
+                    alt="target planet jupiter"
+                  />
                 </button>
-                <button type="button">
-                  <img src="../assets/images/book/planet/Saturn.svg" />
+                <button
+                  type="button"
+                  role="button"
+                  aria-live="polite"
+                  aria-label="Select Saturn as target planet. $500 plus deposit $500 total $1000"
+                  aria-required="true"
+                  aria-pressed="false"
+                >
+                  <img
+                    src="../assets/images/book/planet/Saturn.svg"
+                    alt="target planet saturn"
+                  />
                 </button>
-                <button type="button">
-                  <img src="../assets/images/book/planet/Uranus.svg" />
+                <button
+                  type="button"
+                  role="button"
+                  aria-live="polite"
+                  aria-label="Select Uranus as target planet. $600 plus deposit $600 total $1200"
+                  aria-required="true"
+                  aria-pressed="false"
+                >
+                  <img
+                    src="../assets/images/book/planet/Uranus.svg"
+                    alt="target planet uranus"
+                  />
                 </button>
-                <button type="button">
-                  <img src="../assets/images/book/planet/Neptune.svg" />
+                <button
+                  type="button"
+                  role="button"
+                  aria-live="polite"
+                  aria-label="Select Neptune as target planet. $700 plus deposit $700 total $1400"
+                  aria-required="true"
+                  aria-pressed="false"
+                >
+                  <img
+                    src="../assets/images/book/planet/Neptune.svg"
+                    alt="target planet neptune"
+                  />
                 </button>
-                <button type="button">
-                  <img src="../assets/images/book/planet/Pluto.svg" />
+                <button
+                  type="button"
+                  role="button"
+                  aria-live="polite"
+                  aria-label="Select Pluto as target planet. $800 plus deposit $800 total $1600"
+                  aria-required="true"
+                  aria-pressed="false"
+                >
+                  <img
+                    src="../assets/images/book/planet/Pluto.svg"
+                    alt="target planet pluto"
+                  />
                 </button>
               </div>
             </div>
-            <button class="carousel-nextbtn">
-              <img src="../assets/images/book/planet/button/right_btn.svg" />
+            <button
+              class="carousel-nextbtn"
+              aria-label="see more target planets"
+            >
+              <img
+                src="../assets/images/book/planet/button/right_btn.svg"
+                alt=" carousel right button"
+              />
             </button>
           </div>
           <!-- book-form -->
@@ -66,51 +160,83 @@
             <form class="book-form">
               <div class="customer">
                 <div class="title">CUSTOMER INFORMATION</div>
-                <div class="info1">
+                <div class="info-name-birth">
                   <div class="info-container border">
-                    <label>NAME</label>
-                    <input class="input" type="text" id="name" />
-                  </div>
-                  <div class="info-container border">
-                    <label>BIRTH</label>
+                    <label for="name">NAME</label>
                     <input
                       class="input"
                       type="text"
+                      id="name"
+                      name="name"
+                      autocomplete="name"
+                      aria-required="true"
+                      aria-describedby="type your name"
+                    />
+                  </div>
+                  <div class="info-container border">
+                    <label for="birth">BIRTH</label>
+                    <input
+                      class="input"
+                      type="text"
+                      name="birth"
                       id="birth"
                       maxlength="10"
+                      autocomplete="bday"
+                      aria-required="true"
+                      aria-description="birth have to be typed like 19991122 and available year, month, date will be passed"
                     />
                   </div>
                 </div>
-                <div class="info2">
+                <div class="info-phone-email">
                   <div class="info-container border">
-                    <label>PHONE NUMBER</label>
+                    <label for="phone">PHONE NUMBER</label>
                     <input
                       class="input"
-                      type="text"
+                      name="phone"
+                      type="tel"
                       id="phone"
                       maxlength="13"
+                      autocomplete="tel"
+                      aria-required="true"
+                      aria-description="phone have to be typed like 01011112222"
                     />
                     <button
                       type="button"
                       class="certification-btn not-verified"
                       id="certification-phone"
+                      role="status"
+                      aria-live="polite"
+                      aria-required="true"
+                      aria-description="if you are done typing your phone number, you have to press this certification button to verify your phone number. If your number is available and you typed your phone number right, this button is going to be `VERIFIED` button. but if it's not, it's going to be `FAILED` button. If you want to book, you have to verify your phone number."
                     >
                       CERTIFICATION
                     </button>
                   </div>
                   <div class="info-container border">
-                    <label>EMAIL</label>
-                    <input class="input" type="email" id="email" />
+                    <label for="email">EMAIL</label>
+                    <input
+                      class="input"
+                      type="email"
+                      name="email"
+                      id="email"
+                      autocomplete="email"
+                      aria-required="true"
+                      aria-description="email have to include @"
+                    />
                     <button
                       type="button"
                       class="certification-btn not-verified"
                       id="certification-email"
+                      role="status"
+                      aria-live="polite"
+                      aria-required="true"
+                      aria-description="if you are done typing your email, you have to press this certification button to verify your email. If your email is available and you typed your email right, this button is going to be `VERIFIED` button. but if it's not, it's going to be `FAILED` button. If you want to book, you have to verify your email."
                     >
                       CERTIFICATION
                     </button>
                   </div>
                 </div>
-                <div class="info3">
+                <div>
                   <div class="policy border">
                     1. We hereby notify that space flights may involve safety
                     risks due to unexpected weather changes. <br />For this,
@@ -150,6 +276,8 @@
                       type="checkbox"
                       class="checkbox-hidden"
                       id="accident-rules"
+                      name="accident-rules"
+                      aria-required="true"
                     />
                     <label class="checkbox" for="accident-rules"></label>
                     <label for="accident-rules"
@@ -159,7 +287,7 @@
                     </label>
                   </div>
                 </div>
-                <div class="info4">
+                <div>
                   <div class="policy border">
                     1. Personal Information Collection Space Bar collects
                     essential information required for basic membership
@@ -179,6 +307,8 @@
                       type="checkbox"
                       class="checkbox-hidden"
                       id="personal-info"
+                      name="personal-info"
+                      aria-required="true"
                     />
                     <label for="personal-info" class="checkbox"></label>
                     <label for="personal-info"
@@ -192,43 +322,60 @@
                 <div class="title-container">
                   <div class="title">PAYMENT</div>
                   <div>
-                    <img src="../assets/images/book/form/visa.svg" alt="" />
-                    <img src="../assets/images/book/form/jcb.svg" alt="" />
+                    <img
+                      src="../assets/images/book/form/visa.svg"
+                      alt="visa-image"
+                    />
+                    <img
+                      src="../assets/images/book/form/jcb.svg"
+                      alt="jcv-image"
+                    />
                     <img
                       src="../assets/images/book/form/mastercard.svg"
-                      alt=""
+                      alt="mastercard-image"
                     />
                   </div>
                 </div>
-                <div class="info1">
+                <div>
                   <div class="info-container border">
-                    <label>CARD NUMBER</label>
+                    <label for="card-number">CARD NUMBER</label>
                     <input
                       class="input"
                       type="text"
                       id="card-number"
+                      name="card-number"
                       maxlength="19"
+                      autocomplete="cc-number"
+                      aria-required="true"
+                      aria-description="card number have to be type like 1234123412341234"
                     />
                   </div>
                 </div>
-                <div class="info2">
+                <div class="card-expiration-security-code">
                   <div class="info-container border">
-                    <label>EXPIRATION (MM/YY)</label>
+                    <label for="expiration">EXPIRATION (MM/YY)</label>
                     <input
                       class="input"
                       type="text"
                       id="expiration"
+                      name="expiration"
                       maxlength="5"
+                      autocomplete="cc-exp"
+                      aria-required="true"
+                      aria-description="card expiration have to be type like 12(month)24(year), and only available year and month will be passed"
                     />
                   </div>
                   <div class="info-container border">
-                    <label>SECURITY CODE</label>
+                    <label for="security-code">SECURITY CODE</label>
                     <input
                       class="input"
                       type="password"
-                      maxlength="4"
                       id="security-code"
-                      autocomplete="off"
+                      name="security-code"
+                      maxlength="4"
+                      autocomplete="cc-csc"
+                      aria-required="true"
+                      aria-description="security code have to be type like 1234"
                     />
                   </div>
                 </div>
@@ -237,6 +384,8 @@
                     type="checkbox"
                     class="checkbox-hidden"
                     id="check-all"
+                    name="check-all"
+                    aria-required="true"
                   />
                   <label for="check-all" class="checkbox"></label>
                   <label for="check-all"
@@ -246,7 +395,15 @@
                 </div>
               </div>
               <div class="submit-btn-container">
-                <button class="submit-btn disabled" type="button">
+                <button
+                  class="submit-btn disabled"
+                  type="submit"
+                  role="status"
+                  aria-live="polite"
+                  aria-description=" To enable booking, you must select a target planet and Fill
+                in all required information and Verify phone and email(certification button) and Agree
+                to all terms(checkbox)"
+                >
                   BOOK NOW
                 </button>
               </div>

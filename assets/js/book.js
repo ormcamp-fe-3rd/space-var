@@ -89,12 +89,15 @@ function updatePlanetBtnSize(planetBtn, index) {
   const planetBtns = document.querySelectorAll(".carouel-animation button");
 
   const planetBtnImage = planetBtn.querySelector("img");
+  planetBtn.setAttribute("aria-pressed", "true");
   planetBtnImage.classList.add("sizeup-animation");
 
   // 나머지 행성들 크기 다시 작아지기
   planetBtns.forEach((otherBtn, otherIndex) => {
-    otherIndex !== index &&
+    if (otherIndex !== index) {
+      otherBtn.setAttribute("aria-pressed", "false");
       otherBtn.querySelector("img").classList.remove("sizeup-animation");
+    }
   });
 }
 

@@ -185,7 +185,7 @@ body {
   margin: 50px 50px 10px 0;
 }
 
-.customer .info1 {
+.customer .info-name-birth {
   display: flex;
   justify-content: space-between;
 }
@@ -235,7 +235,14 @@ body {
 }
 
 .book-form .check input[type="checkbox"] {
-  display: none;
+  /* display: none; */
+  position: absolute;
+  opacity: 0;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  cursor: pointer;
+  z-index: 1;
 }
 
 .book-form .check .checkbox {
@@ -283,7 +290,7 @@ body {
   font-weight: 700;
   margin: 0 50px 0 0;
 }
-.payment .info2 {
+.payment .card-expiration-security-code {
   display: flex;
   justify-content: space-between;
 }
