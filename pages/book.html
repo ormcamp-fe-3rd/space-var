@@ -99,15 +99,23 @@
                 <div class="info1">
                   <div class="info-container border">
                     <label>NAME</label>
-                    <input class="input" type="text" id="name" />
+                    <input
+                      class="input"
+                      type="text"
+                      id="name"
+                      name="name"
+                      autocomplete="name"
+                    />
                   </div>
                   <div class="info-container border">
                     <label>BIRTH</label>
                     <input
                       class="input"
                       type="text"
+                      name="birth"
                       id="birth"
                       maxlength="10"
+                      autocomplete="bday"
                     />
                   </div>
                 </div>
@@ -116,9 +124,11 @@
                     <label>PHONE NUMBER</label>
                     <input
                       class="input"
+                      name="phone"
                       type="text"
                       id="phone"
                       maxlength="13"
+                      autocomplete="tel"
                     />
                     <button
                       type="button"
@@ -130,7 +140,13 @@
                   </div>
                   <div class="info-container border">
                     <label>EMAIL</label>
-                    <input class="input" type="email" id="email" />
+                    <input
+                      class="input"
+                      type="email"
+                      name="email"
+                      id="email"
+                      autocomplete="email"
+                    />
                     <button
                       type="button"
                       class="certification-btn not-verified"
@@ -243,7 +259,9 @@
                       class="input"
                       type="text"
                       id="card-number"
+                      name="card-number"
                       maxlength="19"
+                      autocomplete="cc-number"
                     />
                   </div>
                 </div>
@@ -254,7 +272,9 @@
                       class="input"
                       type="text"
                       id="expiration"
+                      name="expiration"
                       maxlength="5"
+                      autocomplete="cc-exp"
                     />
                   </div>
                   <div class="info-container border">
@@ -262,8 +282,9 @@
                     <input
                       class="input"
                       type="password"
-                      maxlength="4"
                       id="security-code"
+                      name="security-code"
+                      maxlength="4"
                       autocomplete="off"
                     />
                   </div>
