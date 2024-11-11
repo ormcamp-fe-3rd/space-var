@@ -465,7 +465,7 @@ h2 {
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-/* footer */
+/* 푸터 */
 #footer-mainlogo {
   height: auto;
   width: 100px;
@@ -490,7 +490,7 @@ h2 {
   padding: 20px;
 }
 
-.footer-text {
+.footer-txt {
   font-size: 10px;
   line-height: 1.5;
   margin-right: 40%;
