@@ -235,21 +235,25 @@ function checkInputValidation(event) {
   switch (id) {
     case "name":
       formValidation.setNameValid(checkNameRegex(event).length > 0); // 한 글자라도 적히면 됨
+      resetCertification();
       updateInputBorder(event, formValidation.isNameValid);
       break;
 
     case "birth":
       formValidation.setBirthValid(checkBirthRegex(event).length === 10); // 슬래시 포함 10자
+      resetCertification();
       updateInputBorder(event, formValidation.isBirthValid);
       break;
 
     case "phone":
       formValidation.setPhoneValid(checkPhoneRegex(event).length === 13); // 하이픈 포함 13자
+      resetCertification();
       updateInputBorder(event, formValidation.isPhoneValid);
       break;
 
     case "email":
       formValidation.setEmailValid(checkEmailRegex(event)); // 이메일은 길이 제한이 없음. (양식 맞는지 판별만 하고 boolean 값 반환)
+      resetCertification();
       updateInputBorder(event, formValidation.isEmailValid);
       break;
 
@@ -257,6 +261,7 @@ function checkInputValidation(event) {
       formValidation.setCardNumberValid(
         checkCardNumberRegex(event).length === 19
       ); // 하이픈 포함 19자
+      resetCertification();
       updateInputBorder(event, formValidation.isCardNumberValid);
       break;
 
@@ -264,11 +269,13 @@ function checkInputValidation(event) {
       formValidation.setExpirationValid(
         checkExpirationRegex(event).length === 5
       ); // 슬래시 포함 5자
+      resetCertification();
       updateInputBorder(event, formValidation.isExpirationValid);
       break;
 
     case "security-code":
       formValidation.setSecurityValid(checkSecurityRegex(event).length === 4); // 4글자
+      resetCertification();
       updateInputBorder(event, formValidation.isSecurityValid);
       break;
   }
@@ -286,6 +293,23 @@ function updateInputBorder(event, valid) {
   } else {
     inputContainer.classList.remove("required");
     inputContainer.classList.add("border");
+  }
+}
+
+// 전화, 이메일 입력란 수정할 시, CERTIFICATION도 reset
+function resetCertification() {
+  const certificationBtns = bookForm.querySelectorAll(".certification-btn");
+
+  if (!formValidation.isPhoneValid) {
+    certificationBtns[0].className = "certification-btn not-verified";
+    certificationBtns[0].textContent = "CERTIFICATION";
+    return;
+  }
+
+  if (!formValidation.isEmailValid) {
+    certificationBtns[1].className = "certification-btn not-verified";
+    certificationBtns[1].textContent = "CERTIFICATION";
+    return;
   }
 }
 
