@@ -204,7 +204,7 @@ body {
   width: 100%;
 }
 
-.customer .certification-btn {
+.customer .confirm-btn {
   min-width: 140px;
   height: 32px;
   border: none;
@@ -212,20 +212,20 @@ body {
   margin: 0 0 0 20px;
 }
 
-.customer .certification-btn:hover {
+.customer .confirm-btn:hover {
   cursor: pointer;
 }
 
-.customer .certification-btn.not-verified {
+.customer .confirm-btn.not-verified {
   background-color: #5b5b5b;
   color: white;
 }
-.customer .certification-btn.verified {
+.customer .confirm-btn.verified {
   background-color: #43b96b;
   color: white;
 }
 
-.customer .certification-btn.rejected {
+.customer .confirm-btn.rejected {
   background-color: #b94343;
   color: white;
 }

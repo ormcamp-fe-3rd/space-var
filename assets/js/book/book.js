@@ -159,7 +159,7 @@ function checkNameRegex(event) {
     ""
   );
 
-  return event.target.value;
+  return event.target.value.length > 0;
 }
 
 // BIRTH
@@ -171,7 +171,25 @@ function checkBirthRegex(event) {
     .replace(/\/{1,2}$/g, "")
     .trim();
 
-  return event.target.value;
+  // 년도 및 월 확인
+  const [year, month, date] = event.target.value.split("/").map(Number);
+
+  const currentYear = new Date().getFullYear();
+  const lastDay = new Date(new Date().getFullYear(), month, 0).getDate();
+
+  // 성인만 예약가능 (최대 100살 - 건강 고려)
+  if (
+    year > currentYear - 20 ||
+    year < currentYear - 100 ||
+    month < 1 ||
+    month > 12 ||
+    date > lastDay ||
+    date < 1
+  ) {
+    return false;
+  }
+
+  return event.target.value.length === 10;
 }
 
 // PHONE
@@ -183,17 +201,18 @@ function checkPhoneRegex(event) {
     .replace(/\-{1,2}$/g, "")
     .trim();
 
-  return event.target.value;
+  return event.target.value.length === 13;
 }
 
 // EMAIL
 // ...@...
 function checkEmailRegex(event) {
   event.target.value = event.target.value
-    .replace(/[^a-zA-Z0-9@.]/g, "") // 영문, 숫자, @, . 만 허용
+    .replace(/[^a-zA-Z0-9@._-]/g, "")
     .trim();
 
-  return event.target.value.includes("@");
+  const emailRegex = /^.+@.+$/;
+  return emailRegex.test(event.target.value);
 }
 
 // CARD NUMBER
@@ -205,7 +224,7 @@ function checkCardNumberRegex(event) {
     .replace(/\-{1,2}$/g, "")
     .trim();
 
-  return event.target.value;
+  return event.target.value.length === 19;
 }
 
 // EXPIRATION
@@ -213,11 +232,27 @@ function checkCardNumberRegex(event) {
 function checkExpirationRegex(event) {
   event.target.value = event.target.value
     .replace(/[^0-9]/g, "")
-    .replace(/^(\d{0,2})(\d{0,2})$/g, "$1/$2")
+    .replace(/^(\d{2})(\d{2})$/g, "$1/$2")
     .replace(/\/{1,2}$/g, "")
     .trim();
 
-  return event.target.value;
+  // 년도 및 월 확인
+  const currentYear = new Date().getFullYear() % 100;
+  const currentMonth = new Date().getMonth() + 1;
+
+  const [month, year] = event.target.value.split("/").map(Number);
+
+  if (
+    month > 12 ||
+    month < 1 ||
+    year < currentYear ||
+    (year === currentYear && month < currentMonth) ||
+    event.target.value.length < 5
+  ) {
+    return false;
+  }
+
+  return true;
 }
 
 // SECURITY CODE
@@ -225,7 +260,7 @@ function checkExpirationRegex(event) {
 function checkSecurityRegex(event) {
   event.target.value = event.target.value.replace(/[^0-9]/g, "").slice(0, 4);
 
-  return event.target.value;
+  return event.target.value.length === 4;
 }
 
 // 전체 입력란 검증
@@ -234,41 +269,39 @@ function checkInputValidation(event) {
   let id = event.target.id; // 현재 입력란의 ID 값을 이용함
   switch (id) {
     case "name":
-      formValidation.setNameValid(checkNameRegex(event).length > 0); // 한 글자라도 적히면 됨
+      formValidation.setNameValid(checkNameRegex(event));
       updateInputBorder(event, formValidation.isNameValid);
       break;
 
     case "birth":
-      formValidation.setBirthValid(checkBirthRegex(event).length === 10); // 슬래시 포함 10자
+      formValidation.setBirthValid(checkBirthRegex(event));
       updateInputBorder(event, formValidation.isBirthValid);
       break;
 
     case "phone":
-      formValidation.setPhoneValid(checkPhoneRegex(event).length === 13); // 하이픈 포함 13자
+      formValidation.setPhoneValid(checkPhoneRegex(event));
+      resetCertification(event);
       updateInputBorder(event, formValidation.isPhoneValid);
       break;
 
     case "email":
-      formValidation.setEmailValid(checkEmailRegex(event)); // 이메일은 길이 제한이 없음. (양식 맞는지 판별만 하고 boolean 값 반환)
+      formValidation.setEmailValid(checkEmailRegex(event));
+      resetCertification(event);
       updateInputBorder(event, formValidation.isEmailValid);
       break;
 
     case "card-number":
-      formValidation.setCardNumberValid(
-        checkCardNumberRegex(event).length === 19
-      ); // 하이픈 포함 19자
+      formValidation.setCardNumberValid(checkCardNumberRegex(event));
       updateInputBorder(event, formValidation.isCardNumberValid);
       break;
 
     case "expiration":
-      formValidation.setExpirationValid(
-        checkExpirationRegex(event).length === 5
-      ); // 슬래시 포함 5자
+      formValidation.setExpirationValid(checkExpirationRegex(event));
       updateInputBorder(event, formValidation.isExpirationValid);
       break;
 
     case "security-code":
-      formValidation.setSecurityValid(checkSecurityRegex(event).length === 4); // 4글자
+      formValidation.setSecurityValid(checkSecurityRegex(event));
       updateInputBorder(event, formValidation.isSecurityValid);
       break;
   }
@@ -289,6 +322,23 @@ function updateInputBorder(event, valid) {
   }
 }
 
+// 전화, 이메일 입력란 수정할 시, CERTIFICATION도 reset
+function resetCertification(event) {
+  const confirmBtns = bookForm.querySelectorAll(".confirm-btn");
+
+  if (event.target.id === "phone") {
+    confirmBtns[0].className = "confirm-btn not-verified";
+    confirmBtns[0].textContent = "CONFIRM";
+    return;
+  }
+
+  if (event.target.id === "email") {
+    confirmBtns[1].className = "confirm-btn not-verified";
+    confirmBtns[1].textContent = "CONFIRM";
+    return;
+  }
+}
+
 // 2. CERTIFICATION 버튼
 let timer;
 
@@ -299,17 +349,17 @@ function checkCertication(event) {
   // 실제 API 구현은 현재 힘드므로, 전화번호와, 이메일 양식이 맞으면 검증되도록 함
   // 전화번호 검증 버튼/이메일 검증 중 선택된 버튼에 따라 isValid에 값이 다르게 담김(관련 입력란 검증 값 가져옴)
   const isValid =
-    id === "certification-phone"
+    id === "confirm-phone"
       ? formValidation.isPhoneValid
       : formValidation.isEmailValid;
 
   // 전화번호 버튼일 때 isValid의 값이 바뀌고 그 값이 들어감. 아니라면 이전 값 유지
   formValidation.setPhoneVerified(
-    id === "certification-phone" ? isValid : formValidation.isPhoneVerified
+    id === "confirm-phone" ? isValid : formValidation.isPhoneVerified
   );
 
   formValidation.setEmailVerified(
-    id === "certification-email" ? isValid : formValidation.isEmailVerfied
+    id === "confirm-email" ? isValid : formValidation.isEmailVerfied
   );
 
   // 실제 동작처럼 보이도록 setTimeout 사용
@@ -318,10 +368,10 @@ function checkCertication(event) {
   // isValid 여부에 따라 VERIFIED, FAILED로 버튼 스타일 바뀜
   timer = setTimeout(() => {
     if (isValid) {
-      btn.className = "certification-btn verified";
+      btn.className = "confirm-btn verified";
       btn.textContent = "VERIFIED";
     } else {
-      btn.className = "certification-btn rejected";
+      btn.className = "confirm-btn rejected";
       btn.textContent = "FAILED";
     }
   }, 1000);
@@ -375,14 +425,14 @@ function handleCheckboxClick(event) {
 const bookForm = document.querySelector(".book-form");
 
 const inputs = bookForm.querySelectorAll(".input");
-const certificationBtns = bookForm.querySelectorAll(".certification-btn");
+const confirmBtns = bookForm.querySelectorAll(".confirm-btn");
 const checkboxes = bookForm.querySelectorAll(".checkbox-hidden");
 
 inputs.forEach((input) => {
   input.addEventListener("input", handleFormInput);
 });
 
-certificationBtns.forEach((certificationBtn) => {
+confirmBtns.forEach((certificationBtn) => {
   certificationBtn.addEventListener("click", handleCertificationBtnCilick);
 });
 
