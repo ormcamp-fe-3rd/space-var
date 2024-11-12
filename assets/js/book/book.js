@@ -159,7 +159,7 @@ function checkNameRegex(event) {
     ""
   );
 
-  return event.target.value;
+  return event.target.value.length > 0;
 }
 
 // BIRTH
@@ -171,7 +171,25 @@ function checkBirthRegex(event) {
     .replace(/\/{1,2}$/g, "")
     .trim();
 
-  return event.target.value;
+  // 년도 및 월 확인
+  const [year, month, date] = event.target.value.split("/").map(Number);
+
+  const currentYear = new Date().getFullYear();
+  const lastDay = new Date(new Date().getFullYear(), month, 0).getDate();
+
+  // 성인만 예약가능 (최대 100살 - 건강 고려)
+  if (
+    year > currentYear - 20 ||
+    year < currentYear - 100 ||
+    month < 1 ||
+    month > 12 ||
+    date > lastDay ||
+    date < 1
+  ) {
+    return false;
+  }
+
+  return event.target.value.length === 10;
 }
 
 // PHONE
@@ -183,7 +201,7 @@ function checkPhoneRegex(event) {
     .replace(/\-{1,2}$/g, "")
     .trim();
 
-  return event.target.value;
+  return event.target.value.length === 13;
 }
 
 // EMAIL
@@ -206,7 +224,7 @@ function checkCardNumberRegex(event) {
     .replace(/\-{1,2}$/g, "")
     .trim();
 
-  return event.target.value;
+  return event.target.value.length === 19;
 }
 
 // EXPIRATION
@@ -214,11 +232,27 @@ function checkCardNumberRegex(event) {
 function checkExpirationRegex(event) {
   event.target.value = event.target.value
     .replace(/[^0-9]/g, "")
-    .replace(/^(\d{0,2})(\d{0,2})$/g, "$1/$2")
+    .replace(/^(\d{2})(\d{2})$/g, "$1/$2")
     .replace(/\/{1,2}$/g, "")
     .trim();
 
-  return event.target.value;
+  // 년도 및 월 확인
+  const currentYear = new Date().getFullYear() % 100;
+  const currentMonth = new Date().getMonth() + 1;
+
+  const [month, year] = event.target.value.split("/").map(Number);
+
+  if (
+    month > 12 ||
+    month < 1 ||
+    year < currentYear ||
+    (year === currentYear && month < currentMonth) ||
+    event.target.value.length < 5
+  ) {
+    return false;
+  }
+
+  return true;
 }
 
 // SECURITY CODE
@@ -226,7 +260,7 @@ function checkExpirationRegex(event) {
 function checkSecurityRegex(event) {
   event.target.value = event.target.value.replace(/[^0-9]/g, "").slice(0, 4);
 
-  return event.target.value;
+  return event.target.value.length === 4;
 }
 
 // 전체 입력란 검증
@@ -235,43 +269,39 @@ function checkInputValidation(event) {
   let id = event.target.id; // 현재 입력란의 ID 값을 이용함
   switch (id) {
     case "name":
-      formValidation.setNameValid(checkNameRegex(event).length > 0); // 한 글자라도 적히면 됨
+      formValidation.setNameValid(checkNameRegex(event));
       updateInputBorder(event, formValidation.isNameValid);
       break;
 
     case "birth":
-      formValidation.setBirthValid(checkBirthRegex(event).length === 10); // 슬래시 포함 10자
+      formValidation.setBirthValid(checkBirthRegex(event));
       updateInputBorder(event, formValidation.isBirthValid);
       break;
 
     case "phone":
-      formValidation.setPhoneValid(checkPhoneRegex(event).length === 13); // 하이픈 포함 13자
+      formValidation.setPhoneValid(checkPhoneRegex(event));
       resetCertification(event);
       updateInputBorder(event, formValidation.isPhoneValid);
       break;
 
     case "email":
-      formValidation.setEmailValid(checkEmailRegex(event)); // 이메일은 길이 제한이 없음. (양식 맞는지 판별만 하고 boolean 값 반환)
+      formValidation.setEmailValid(checkEmailRegex(event));
       resetCertification(event);
       updateInputBorder(event, formValidation.isEmailValid);
       break;
 
     case "card-number":
-      formValidation.setCardNumberValid(
-        checkCardNumberRegex(event).length === 19
-      ); // 하이픈 포함 19자
+      formValidation.setCardNumberValid(checkCardNumberRegex(event));
       updateInputBorder(event, formValidation.isCardNumberValid);
       break;
 
     case "expiration":
-      formValidation.setExpirationValid(
-        checkExpirationRegex(event).length === 5
-      ); // 슬래시 포함 5자
+      formValidation.setExpirationValid(checkExpirationRegex(event));
       updateInputBorder(event, formValidation.isExpirationValid);
       break;
 
     case "security-code":
-      formValidation.setSecurityValid(checkSecurityRegex(event).length === 4); // 4글자
+      formValidation.setSecurityValid(checkSecurityRegex(event));
       updateInputBorder(event, formValidation.isSecurityValid);
       break;
   }
