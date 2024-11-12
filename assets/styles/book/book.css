@@ -409,6 +409,8 @@ body {
   cursor: pointer;
   z-index: 3;
   font-family: "Zen Dots", sans-serif;
+  border: none;
+  background-color: transparent;
 }
 
 .ticket-content {

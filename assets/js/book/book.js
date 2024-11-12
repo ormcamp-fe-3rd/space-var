@@ -543,7 +543,7 @@ function formReset() {
 function handleExitBtnClick() {
   hideTicket();
   formReset();
-  window.location.href = "../../pages/start.html";
+  window.location.href = "../../pages/start/start.html";
 }
 
 // 이벤트 리스너 등록
