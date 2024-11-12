@@ -513,7 +513,8 @@ function showTicket() {
   }
 }
 
-function handleSubmitBtnClick() {
+function handleSubmitBtnClick(event) {
+  event.preventDefault();
   saveReservationState();
   showReservationState();
   showTicket();
