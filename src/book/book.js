@@ -1,48 +1,20 @@
+import { PLANETS, HIDDEN_PLANET_COUNT } from "./const/index.js";
+
 import FormData from "/src/book/models/FormData.js";
 import FormValidation from "/src/book/models/FormValidation.js";
 
 const formData = new FormData();
 const formValidation = new FormValidation();
 
-const PLANETS = [
-  {
-    name: "Mercurius",
-    price: "100",
-  },
-  {
-    name: "Venus",
-    price: "200",
-  },
-  {
-    name: "Mars",
-    price: "300",
-  },
-  {
-    name: "Jupiter",
-    price: "400",
-  },
-  {
-    name: "Saturn",
-    price: "500",
-  },
-  {
-    name: "Uranus",
-    price: "600",
-  },
-  {
-    name: "Neptune",
-    price: "700",
-  },
-  {
-    name: "Pluto",
-    price: "800",
-  },
-];
-
-const HIDDEN_PLANET_COUNT = 1;
-
 // 행성 carousel
-let currentCarouselIndex = 0; // 현재 캐러셀 상태 0 (초기값)
+// 현재 캐러셀 상태 0 (초기값)
+let currentCarouselIndex = 0;
+
+// widow.addEventListener("");
+
+function getCurrentCarouselIndex() {
+  return currentCarouselIndex;
+}
 
 function updateCarouselBtnOpacity(index, HIDDEN_PLANET_COUNT) {
   const carouselPrevBtn = document.querySelector(".carousel-prevbtn");
@@ -63,6 +35,7 @@ function translateCarousel(currentCarouselIndex) {
 }
 
 function handleCarouselPrevBtnClick() {
+  let currentCarouselIndex = 0;
   if (currentCarouselIndex === 0) return; // prev 버튼이므로 currentCarouselIndex가 0(처음)이면 더 이상 활성화 x
   currentCarouselIndex -= 1;
   updateCarouselBtnOpacity(currentCarouselIndex, HIDDEN_PLANET_COUNT);
@@ -70,6 +43,8 @@ function handleCarouselPrevBtnClick() {
 }
 
 function handleCarouselNextBtnClick() {
+  let currentCarouselIndex = 0;
+
   if (currentCarouselIndex === HIDDEN_PLANET_COUNT) return; // next 버튼이므로 currentCarouselIndex가 숨겨진 planet을 다 보여준 상태면 더 이상 활성화 x
   currentCarouselIndex += 1;
   updateCarouselBtnOpacity(currentCarouselIndex, HIDDEN_PLANET_COUNT);
@@ -446,17 +421,18 @@ function saveReservationState() {
   const inputs = bookForm.querySelectorAll(".input");
 
   inputs.forEach((input, i) => {
-    switch (i) {
-      case 0:
+    let name = input.name;
+    switch (name) {
+      case "name":
         formData.setName(input.value);
         break;
-      case 1:
+      case "birth":
         formData.setBirth(input.value);
         break;
-      case 2:
+      case "phone":
         formData.setPhone(input.value);
         break;
-      case 3:
+      case "email":
         formData.setEmail(input.value);
         break;
     }
