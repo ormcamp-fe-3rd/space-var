@@ -16,7 +16,7 @@ function updateSelectedSeatSectionText(event) {
     ".selected-seat-wrap .selected-seat-text"
   );
 
-  selectedSeatText.innerHTML =
+  selectedSeatText.textContent =
     "Selected seat : <span>" + event.target.innerText + "</span>";
 }
 

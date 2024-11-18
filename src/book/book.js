@@ -1,5 +1,5 @@
-import FormData from "../../models/book/FormData.js";
-import FormValidation from "../../models/book/FormValidation.js";
+import FormData from "/assets/models/book/FormData.js";
+import FormValidation from "/assets/models/book/FormValidation.js";
 
 const formData = new FormData();
 const formValidation = new FormValidation();
