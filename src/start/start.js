@@ -1,5 +1,4 @@
-// const FINAL_SECTION_INDEX = require("./const");
-const FINAL_SECTION_INDEX = 2;
+import { FINAL_SECTION_INDEX } from "./const/index.js";
 
 let currentSectionIndex = 0;
 
