@@ -1,3 +1,6 @@
+// const FINAL_SECTION_INDEX = require("./const");
+const FINAL_SECTION_INDEX = 2;
+
 let currentSectionIndex = 0;
 
 function checkScrollSection(deltaY) {
@@ -22,23 +25,36 @@ function updateScrollFillStyle() {
   scrollFill.style.height = 100 - progress + "%";
 }
 
-function showVideosAndTexts() {
-  const videos = document.querySelectorAll(".video");
-  const texts = document.querySelectorAll(".video-text");
-
-  videos.forEach((video, index) => {
-    video.classList.toggle("active", index === currentSectionIndex);
-  });
-  texts.forEach((text, index) =>
-    text.classList.toggle("active", index === currentSectionIndex)
-  );
+function switchActiveVideoContents() {
+  // const videos = document.querySelectorAll(".video");
+  // videos.forEach((video, index) => {
+  //   video.classList.toggle("active", index === currentSectionIndex);
+  // });
+  // const text = document.querySelector(".video-text");
+  // const videoSection = document.querySelector(".video-section");
+  // const video = videoSection.querySelector("video");
+  // console.log(text);
+  // if (currentSectionIndex === 1) {
+  //   video.src = "/src/start/assets/videos/spaceship.mp4";
+  //   text.classList.toggle("second");
+  //   text.textContent = "This is your life chance to change everything.";
+  // } else if (currentSectionIndex === 2) {
+  //   video.src = "/src/start/assets/videos/night.mp4";
+  //   text.classList.toggle("third");
+  //   text.textContent = "Take your opportunity, We will join you.";
+  // } else {
+  //   video.src = "/src/start/assets/videos/earth.mp4";
+  //   text.classList.toggle("first");
+  //   text.textContent = "Have you ever thought about leaving the Earth?";
+  // }
+  // currentSectionIndex++;
 }
 
-function updateFooterStyle() {
+function toggleFooterOnFinalSection() {
   const footer = document.querySelector(".footer");
 
   // 마지막 섹션일 때 푸터 나타나도록
-  if (currentSectionIndex === 2) {
+  if (currentSectionIndex === FINAL_SECTION_INDEX) {
     footer.classList.add("active");
   } else {
     footer.classList.remove("active");
@@ -57,8 +73,8 @@ function handleWheel(event) {
   wheelTimeout = setTimeout(() => {
     checkScrollSection(event.deltaY);
     updateScrollFillStyle();
-    updateFooterStyle();
-    showVideosAndTexts();
+    toggleFooterOnFinalSection();
+    switchActiveVideoContents();
   }, 80); // 80ms 간격으로 스크롤 처리 // 스크롤이 0.08초 동안 멈췄을 때 비디오와 텍스트를 업데이트 하기
 }
 
@@ -68,8 +84,8 @@ window.addEventListener("wheel", (event) => handleWheel(event));
 function resetScroll() {
   currentSectionIndex = 0;
   updateScrollFillStyle();
-  updateFooterStyle();
-  showVideosAndTexts();
+  toggleFooterOnFinalSection();
+  switchActiveVideoContents();
 }
 
 // 이벤트 리스너 등록
