@@ -1,8 +1,8 @@
-@import "../common/reset.css";
-@import "../common/common.css";
+@import "/src/shared/reset.css";
+@import "/src/shared/common.css";
 
 html {
-  background-image: url(../../images/seats/배경화면2.jpg);
+  background-image: url(/src/seats/assets/images/배경화면2.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   color: white;

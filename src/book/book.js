@@ -1,5 +1,5 @@
-import FormData from "/assets/models/book/FormData.js";
-import FormValidation from "/assets/models/book/FormValidation.js";
+import FormData from "/src/book/models/FormData.js";
+import FormValidation from "/src/book/models/FormValidation.js";
 
 const formData = new FormData();
 const formValidation = new FormValidation();
@@ -122,7 +122,7 @@ function updateSideBackgroundImage(index) {
 
   sideBackground.style.opacity = "0%";
   setTimeout(() => {
-    sideBackground.style.backgroundImage = `url("${localHost}/assets/images/book/planet/side/${name}_side.svg")`;
+    sideBackground.style.backgroundImage = `url("${localHost}/src/book/assets/images/planet/side/${name}_side.svg")`;
     sideBackground.style.opacity = "100%";
   }, 300);
 }

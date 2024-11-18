@@ -16,8 +16,7 @@ function updateSelectedSeatSectionText(event) {
     ".selected-seat-wrap .selected-seat-text"
   );
 
-  selectedSeatText.textContent =
-    "Selected seat : <span>" + event.target.innerText + "</span>";
+  selectedSeatText.textContent = "Selected seat : " + event.target.innerText;
 }
 
 // 선택한 좌석 버튼 스타일 변경
