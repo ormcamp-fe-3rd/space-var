@@ -444,27 +444,29 @@ function showReservationState() {
   const ticketSection = document.querySelector(".ticket-section");
   const ticketValues = ticketSection.querySelectorAll(".value");
 
-  ticketValues.forEach((value, i) => {
-    switch (i) {
-      case 0:
+  ticketValues.forEach((value) => {
+    const id = value.id;
+
+    switch (id) {
+      case "ticket-planet":
         value.textContent = formData.planet.name;
         break;
-      case 1:
+      case "ticket-seat":
         value.textContent = localStorage.getItem("seat"); // seat 페이지에서 localStorage에 저장한 내용 가져옴
         break;
-      case 2:
+      case "ticket-name":
         value.textContent = formData.name;
         break;
-      case 3:
+      case "ticket-birth":
         value.textContent = formData.birth;
         break;
-      case 4:
+      case "ticket-phone":
         value.textContent = formData.phone;
         break;
-      case 5:
+      case "ticket-email":
         value.textContent = formData.email;
         break;
-      case 6:
+      case "ticket-price":
         value.textContent = formData.planet.price;
         break;
     }
