@@ -7,14 +7,31 @@ const formData = new FormData();
 const formValidation = new FormValidation();
 
 // 행성 carousel
-// 현재 캐러셀 상태 0 (초기값)
-let currentCarouselIndex = 0;
+function createCarouselState() {
+  let index = 0;
 
-// widow.addEventListener("");
+  function getCurrentIndex() {
+    return index;
+  }
 
-function getCurrentCarouselIndex() {
-  return currentCarouselIndex;
+  function decreaseIndex() {
+    index -= 1;
+    return index;
+  }
+
+  function increaseIndex() {
+    index += 1;
+    return index;
+  }
+
+  return {
+    getCurrentIndex,
+    decreaseIndex,
+    increaseIndex,
+  };
 }
+
+let currentCarouselState = createCarouselState();
 
 function updateCarouselBtnOpacity(index, HIDDEN_PLANET_COUNT) {
   const carouselPrevBtn = document.querySelector(".carousel-prevbtn");
@@ -35,18 +52,18 @@ function translateCarousel(currentCarouselIndex) {
 }
 
 function handleCarouselPrevBtnClick() {
-  let currentCarouselIndex = 0;
+  let currentCarouselIndex = currentCarouselState.getCurrentIndex();
   if (currentCarouselIndex === 0) return; // prev 버튼이므로 currentCarouselIndex가 0(처음)이면 더 이상 활성화 x
-  currentCarouselIndex -= 1;
+  currentCarouselIndex = currentCarouselState.decreaseIndex();
   updateCarouselBtnOpacity(currentCarouselIndex, HIDDEN_PLANET_COUNT);
   translateCarousel(currentCarouselIndex);
 }
 
 function handleCarouselNextBtnClick() {
-  let currentCarouselIndex = 0;
+  let currentCarouselIndex = currentCarouselState.getCurrentIndex();
 
   if (currentCarouselIndex === HIDDEN_PLANET_COUNT) return; // next 버튼이므로 currentCarouselIndex가 숨겨진 planet을 다 보여준 상태면 더 이상 활성화 x
-  currentCarouselIndex += 1;
+  currentCarouselIndex = currentCarouselState.increaseIndex();
   updateCarouselBtnOpacity(currentCarouselIndex, HIDDEN_PLANET_COUNT);
   translateCarousel(currentCarouselIndex);
 }
@@ -85,7 +102,7 @@ function updatePrices(index) {
   const totalPrice = document.querySelector(".total-price");
 
   totalPrice.textContent = `Total $ ${price * 2}`;
-  planetPrice.innerHTML = `${name}<br> $${price}(price) + $${price}(deposit)`;
+  planetPrice.textContent = `${name} $${price}(price) + $${price}(deposit)`;
 }
 
 // 사이드 섹션의 배경 이미지 바뀌기
