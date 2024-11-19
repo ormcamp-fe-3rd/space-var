@@ -16,7 +16,7 @@ function updateSelectedSeatSectionText(event) {
     ".selected-seat-wrap .selected-seat-text"
   );
 
-  selectedSeatText.textContent = "Selected seat : " + event.target.innerText;
+  selectedSeatText.textContent = "Selected seat : " + event.target.textContent;
 }
 
 // 선택한 좌석 버튼 스타일 변경
@@ -34,7 +34,7 @@ function handleSeatsBtnClick(event) {
   showSelectedSeatSection();
   updateSelectedSeatSectionText(event);
   updateSelectedSeatBtnStyle(event);
-  localStorage.setItem("seat", event.target.innerText);
+  localStorage.setItem("seat", event.target.textContent);
 }
 
 // 이벤트 리스너 등록
@@ -60,7 +60,7 @@ function resetSelectedSeatsSectionText() {
     ".selected-seat-wrap .selected-seat-text"
   );
 
-  selectedSeatText.innerText = "Please select a seat.";
+  selectedSeatText.textContent = "Please select a seat.";
 }
 
 function handleResetBtnClick() {
