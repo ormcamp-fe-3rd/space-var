@@ -52,28 +52,22 @@ function updateScrollFillStyle() {
   const scrollFill = document.querySelector(".scroll-fill");
 
   const progress = (currentSectionIndex / TOTAL_SECTION_COUNT) * 100;
-  console.log(progress);
   scrollFill.style.height = 100 - progress + "%";
 }
 
 function switchActiveVideoContents() {
   let currentSectionIndex = currentSectionState.getCurrentIndex();
 
-  const text = document.querySelector(".video-text");
-  const videoSection = document.querySelector(".video-section");
-  const video = videoSection.querySelector("video");
+  console.log(currentSectionIndex);
+  const videos = document.querySelectorAll(".video");
+  const texts = document.querySelectorAll(".video-text");
 
-  if (currentSectionIndex === 1) {
-    video.src = "/src/start/assets/videos/spaceship.mp4";
-    text.textContent = "This is your life chance to change everything.";
-  } else if (currentSectionIndex === 2) {
-    video.src = "/src/start/assets/videos/night.mp4";
-    text.textContent = "Take your opportunity, We will join you.";
-  } else {
-    video.src = "/src/start/assets/videos/earth.mp4";
-    text.classList.toggle("active");
-    text.textContent = "Have you ever thought about leaving the Earth?";
-  }
+  videos.forEach((video, index) => {
+    video.classList.toggle("active", index === currentSectionIndex);
+  });
+  texts.forEach((text, index) =>
+    text.classList.toggle("active", index === currentSectionIndex)
+  );
 }
 
 function toggleFooterOnFinalSection() {
