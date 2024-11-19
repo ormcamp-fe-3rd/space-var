@@ -259,10 +259,7 @@ function resetCertification(id) {
 // 2. CERTIFICATION 버튼
 let timer;
 
-function checkCertication(event) {
-  const id = event.target.id;
-  const btn = event.target;
-
+function checkCertication(id, btn) {
   // 실제 API 구현은 현재 힘드므로, 전화번호와, 이메일 양식이 맞으면 검증되도록 함
   // 전화번호 검증 버튼/이메일 검증 중 선택된 버튼에 따라 isValid에 값이 다르게 담김(관련 입력란 검증 값 가져옴)
   const isValid =
@@ -290,19 +287,18 @@ function checkCertication(event) {
 }
 
 // 3. 체크 박스들 검증
-function checkCheckboxVaildation(event) {
-  let id = event.target.id;
+function checkCheckboxVaildation(id, checked) {
   switch (id) {
     case "accident-rules": // 사고 관련 사항 체크박스
-      formValidator.setAccidentRulesChecked(event.target.checked);
+      formValidator.setAccidentRulesChecked(checked);
       break;
 
     case "personal-info": // 개인 정보 관련 체크박스
-      formValidator.setPersonalInfoChecked(event.target.checked);
+      formValidator.setPersonalInfoChecked(checked);
       break;
 
     case "check-all": // 모두 확인 및 결제 체크박스
-      formValidator.setAllConfirmChecked(event.target.checked);
+      formValidator.setAllConfirmChecked(checked);
       break;
   }
 }
@@ -332,12 +328,18 @@ function handleFormInput(event) {
 }
 
 function handleCertificationBtnCilick(event) {
-  checkCertication(event);
+  const id = event.target.id;
+  const certificationBtn = event.target;
+
+  checkCertication(id, certificationBtn);
   updateSubmitBtnStyle();
 }
 
 function handleCheckboxClick(event) {
-  checkCheckboxVaildation(event);
+  const id = event.target.id;
+  const checked = event.target.checked;
+
+  checkCheckboxVaildation(id, checked);
   updateSubmitBtnStyle();
 }
 
