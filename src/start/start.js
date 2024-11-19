@@ -32,7 +32,9 @@ function createSectionState() {
 let currentSectionState = createSectionState();
 
 function checkScrollSection(deltaY) {
+
   let currentSectionIndex = currentSectionState.getCurrentIndex();
+
   if (deltaY > 50 && currentSectionIndex < FINAL_SECTION_INDEX) {
     // 아래로 스크롤(deltaY가 50보다 클 때)하고, 현재 섹션이 마지막 섹션이 아닐 때
     //  다음 섹션으로 이동
@@ -57,26 +59,27 @@ function updateScrollFillStyle() {
 }
 
 function switchActiveVideoContents() {
-  const text = document.querySelector(".video-text");
 
-  console.log(text);
+  let currentSectionIndex = currentSectionState.getCurrentIndex();
+  
+  const text = document.querySelector(".video-text");
   const videoSection = document.querySelector(".video-section");
   const video = videoSection.querySelector("video");
 
-  let currentSectionIndex = currentSectionState.getCurrentIndex();
-
   if (currentSectionIndex === 1) {
     video.src = "/src/start/assets/videos/spaceship.mp4";
-    text.classList.toggle("second");
-    text.textContent = "This is your life chance to change everything.";
+    text.textContent = "This is your life chance to change everything."
+    
   } else if (currentSectionIndex === 2) {
     video.src = "/src/start/assets/videos/night.mp4";
-    text.classList.toggle("third");
-    text.textContent = "Take your opportunity, We will join you.";
+    text.textContent = "Take your opportunity, We will join you."
   } else {
     video.src = "/src/start/assets/videos/earth.mp4";
-    text.classList.toggle("first");
-    text.textContent = "Have you ever thought about leaving the Earth?";
+    text.classList.toggle("active");
+    text.textContent = "Have you ever thought about leaving the Earth?"
+
+
+
   }
 }
 
@@ -103,6 +106,7 @@ function handleWheel(event) {
   // 기존 타이머 취소
   wheelTimeout = setTimeout(() => {
     checkScrollSection(event.deltaY);
+
     updateScrollFillStyle();
     toggleFooterOnFinalSection();
     switchActiveVideoContents();
