@@ -1,48 +1,37 @@
-import FormData from "/assets/models/book/FormData.js";
-import FormValidation from "/assets/models/book/FormValidation.js";
+import { PLANETS, HIDDEN_PLANET_COUNT } from "./const/index.js";
+
+import FormData from "/src/book/models/FormData.js";
+import FormValidation from "/src/book/models/FormValidation.js";
 
 const formData = new FormData();
 const formValidation = new FormValidation();
 
-const PLANETS = [
-  {
-    name: "Mercurius",
-    price: "100",
-  },
-  {
-    name: "Venus",
-    price: "200",
-  },
-  {
-    name: "Mars",
-    price: "300",
-  },
-  {
-    name: "Jupiter",
-    price: "400",
-  },
-  {
-    name: "Saturn",
-    price: "500",
-  },
-  {
-    name: "Uranus",
-    price: "600",
-  },
-  {
-    name: "Neptune",
-    price: "700",
-  },
-  {
-    name: "Pluto",
-    price: "800",
-  },
-];
-
-const HIDDEN_PLANET_COUNT = 1;
-
 // 행성 carousel
-let currentCarouselIndex = 0; // 현재 캐러셀 상태 0 (초기값)
+function createCarouselState() {
+  let index = 0;
+
+  function getCurrentIndex() {
+    return index;
+  }
+
+  function decreaseIndex() {
+    index -= 1;
+    return index;
+  }
+
+  function increaseIndex() {
+    index += 1;
+    return index;
+  }
+
+  return {
+    getCurrentIndex,
+    decreaseIndex,
+    increaseIndex,
+  };
+}
+
+let currentCarouselState = createCarouselState();
 
 function updateCarouselBtnOpacity(index, HIDDEN_PLANET_COUNT) {
   const carouselPrevBtn = document.querySelector(".carousel-prevbtn");
@@ -63,15 +52,18 @@ function translateCarousel(currentCarouselIndex) {
 }
 
 function handleCarouselPrevBtnClick() {
+  let currentCarouselIndex = currentCarouselState.getCurrentIndex();
   if (currentCarouselIndex === 0) return; // prev 버튼이므로 currentCarouselIndex가 0(처음)이면 더 이상 활성화 x
-  currentCarouselIndex -= 1;
+  currentCarouselIndex = currentCarouselState.decreaseIndex();
   updateCarouselBtnOpacity(currentCarouselIndex, HIDDEN_PLANET_COUNT);
   translateCarousel(currentCarouselIndex);
 }
 
 function handleCarouselNextBtnClick() {
+  let currentCarouselIndex = currentCarouselState.getCurrentIndex();
+
   if (currentCarouselIndex === HIDDEN_PLANET_COUNT) return; // next 버튼이므로 currentCarouselIndex가 숨겨진 planet을 다 보여준 상태면 더 이상 활성화 x
-  currentCarouselIndex += 1;
+  currentCarouselIndex = currentCarouselState.increaseIndex();
   updateCarouselBtnOpacity(currentCarouselIndex, HIDDEN_PLANET_COUNT);
   translateCarousel(currentCarouselIndex);
 }
@@ -110,7 +102,7 @@ function updatePrices(index) {
   const totalPrice = document.querySelector(".total-price");
 
   totalPrice.textContent = `Total $ ${price * 2}`;
-  planetPrice.innerHTML = `${name}<br> $${price}(price) + $${price}(deposit)`;
+  planetPrice.textContent = `${name} $${price}(price) + $${price}(deposit)`;
 }
 
 // 사이드 섹션의 배경 이미지 바뀌기
@@ -122,7 +114,7 @@ function updateSideBackgroundImage(index) {
 
   sideBackground.style.opacity = "0%";
   setTimeout(() => {
-    sideBackground.style.backgroundImage = `url("${localHost}/assets/images/book/planet/side/${name}_side.svg")`;
+    sideBackground.style.backgroundImage = `url("${localHost}/src/book/assets/images/planet/side/${name}_side.svg")`;
     sideBackground.style.opacity = "100%";
   }, 300);
 }
@@ -446,17 +438,18 @@ function saveReservationState() {
   const inputs = bookForm.querySelectorAll(".input");
 
   inputs.forEach((input, i) => {
-    switch (i) {
-      case 0:
+    let name = input.name;
+    switch (name) {
+      case "name":
         formData.setName(input.value);
         break;
-      case 1:
+      case "birth":
         formData.setBirth(input.value);
         break;
-      case 2:
+      case "phone":
         formData.setPhone(input.value);
         break;
-      case 3:
+      case "email":
         formData.setEmail(input.value);
         break;
     }
@@ -468,27 +461,29 @@ function showReservationState() {
   const ticketSection = document.querySelector(".ticket-section");
   const ticketValues = ticketSection.querySelectorAll(".value");
 
-  ticketValues.forEach((value, i) => {
-    switch (i) {
-      case 0:
+  ticketValues.forEach((value) => {
+    const id = value.id;
+
+    switch (id) {
+      case "ticket-planet":
         value.textContent = formData.planet.name;
         break;
-      case 1:
+      case "ticket-seat":
         value.textContent = localStorage.getItem("seat"); // seat 페이지에서 localStorage에 저장한 내용 가져옴
         break;
-      case 2:
+      case "ticket-name":
         value.textContent = formData.name;
         break;
-      case 3:
+      case "ticket-birth":
         value.textContent = formData.birth;
         break;
-      case 4:
+      case "ticket-phone":
         value.textContent = formData.phone;
         break;
-      case 5:
+      case "ticket-email":
         value.textContent = formData.email;
         break;
-      case 6:
+      case "ticket-price":
         value.textContent = formData.planet.price;
         break;
     }

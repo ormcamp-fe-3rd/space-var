@@ -1,19 +1,53 @@
-let currentSectionIndex = 0;
+import { FINAL_SECTION_INDEX } from "./const/index.js";
+
+function createSectionState() {
+  let index = 0;
+
+  function getCurrentIndex() {
+    return index;
+  }
+
+  function decreaseIndex(number) {
+    index -= number;
+    return index;
+  }
+
+  function increaseIndex(number) {
+    index += number;
+    return index;
+  }
+
+  function resetIndex() {
+    index = 0;
+  }
+
+  return {
+    getCurrentIndex,
+    decreaseIndex,
+    increaseIndex,
+    resetIndex,
+  };
+}
+
+let currentSectionState = createSectionState();
 
 function checkScrollSection(deltaY) {
-  const videos = document.querySelectorAll(".video");
-  if (deltaY > 50 && currentSectionIndex < videos.length - 1) {
+  let currentSectionIndex = currentSectionState.getCurrentIndex();
+  if (deltaY > 50 && currentSectionIndex < FINAL_SECTION_INDEX) {
     // 아래로 스크롤(deltaY가 50보다 클 때)하고, 현재 섹션이 마지막 섹션이 아닐 때
     //  다음 섹션으로 이동
-    currentSectionIndex++;
+    currentSectionIndex = currentSectionState.increaseIndex(1);
   } else if (deltaY < -50 && currentSectionIndex > 0) {
     // 위로 스크롤(deltaY가 -50보다 작을 때)하고, 현재 섹션이 첫 번째 섹션이 아닐 때
     //  이전 섹션으로 이동
-    currentSectionIndex--;
+    currentSectionIndex = currentSectionState.decreaseIndex(1);
   }
+
+  currentSectionIndex = currentSectionState.getCurrentIndex();
 }
 
 function updateScrollFillStyle() {
+  let currentSectionIndex = currentSectionState.getCurrentIndex();
   const scrollFill = document.querySelector(".scroll-fill");
   const videos = document.querySelectorAll(".video");
 
@@ -22,23 +56,36 @@ function updateScrollFillStyle() {
   scrollFill.style.height = 100 - progress + "%";
 }
 
-function showVideosAndTexts() {
-  const videos = document.querySelectorAll(".video");
-  const texts = document.querySelectorAll(".video-text");
+function switchActiveVideoContents() {
+  const text = document.querySelector(".video-text");
 
-  videos.forEach((video, index) => {
-    video.classList.toggle("active", index === currentSectionIndex);
-  });
-  texts.forEach((text, index) =>
-    text.classList.toggle("active", index === currentSectionIndex)
-  );
+  console.log(text);
+  const videoSection = document.querySelector(".video-section");
+  const video = videoSection.querySelector("video");
+
+  let currentSectionIndex = currentSectionState.getCurrentIndex();
+
+  if (currentSectionIndex === 1) {
+    video.src = "/src/start/assets/videos/spaceship.mp4";
+    text.classList.toggle("second");
+    text.textContent = "This is your life chance to change everything.";
+  } else if (currentSectionIndex === 2) {
+    video.src = "/src/start/assets/videos/night.mp4";
+    text.classList.toggle("third");
+    text.textContent = "Take your opportunity, We will join you.";
+  } else {
+    video.src = "/src/start/assets/videos/earth.mp4";
+    text.classList.toggle("first");
+    text.textContent = "Have you ever thought about leaving the Earth?";
+  }
 }
 
-function updateFooterStyle() {
+function toggleFooterOnFinalSection() {
+  let currentSectionIndex = currentSectionState.getCurrentIndex();
   const footer = document.querySelector(".footer");
 
   // 마지막 섹션일 때 푸터 나타나도록
-  if (currentSectionIndex === 2) {
+  if (currentSectionIndex === FINAL_SECTION_INDEX) {
     footer.classList.add("active");
   } else {
     footer.classList.remove("active");
@@ -57,8 +104,8 @@ function handleWheel(event) {
   wheelTimeout = setTimeout(() => {
     checkScrollSection(event.deltaY);
     updateScrollFillStyle();
-    updateFooterStyle();
-    showVideosAndTexts();
+    toggleFooterOnFinalSection();
+    switchActiveVideoContents();
   }, 80); // 80ms 간격으로 스크롤 처리 // 스크롤이 0.08초 동안 멈췄을 때 비디오와 텍스트를 업데이트 하기
 }
 
@@ -66,10 +113,10 @@ function handleWheel(event) {
 window.addEventListener("wheel", (event) => handleWheel(event));
 
 function resetScroll() {
-  currentSectionIndex = 0;
+  currentSectionState.resetIndex();
   updateScrollFillStyle();
-  updateFooterStyle();
-  showVideosAndTexts();
+  toggleFooterOnFinalSection();
+  switchActiveVideoContents();
 }
 
 // 이벤트 리스너 등록

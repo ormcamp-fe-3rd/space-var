@@ -1,5 +1,5 @@
-@import "../common/reset.css";
-@import "../common/common.css";
+@import "/src/shared/reset.css";
+@import "/src/shared/common.css";
 
 /* common.css의 로컬 폰트 적용이 안되는 문제로 인해 파일에 직접 import해서 사용 */
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
