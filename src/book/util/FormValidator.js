@@ -143,12 +143,6 @@ class FormValidator {
   }
 
   get isFormValid() {
-    console.log(
-      this.validationState.isPlanetSelected,
-      this.isInputsValid,
-      this.isVerified,
-      this.isCheckValid
-    );
     return (
       this.validationState.isPlanetSelected &&
       this.isInputsValid &&
